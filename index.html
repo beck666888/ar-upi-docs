@@ -1,147 +1,157 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR UPI 需求文档导航</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+    <title>Untitled Document</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link type="text/css" href="resources/css/reset.css" rel="Stylesheet" />
+    <link type="text/css" href="resources/css/default.css" rel="Stylesheet" />
+    <link rel='icon' type='image/svg+xml' href='resources/images/favicon_play.svg' />
+    <link rel='alternate icon' href='resources/images/favicon_play.ico' />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <script type="text/javascript">
+        if (location.href.toString().indexOf('file://localhost/') == 0) {
+            location.href = location.href.toString().replace('file://localhost/', 'file:///');
         }
-        body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f7f9fc;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #1a73e8;
-            margin-bottom: 20px;
-            text-align: center;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #eaeaea;
-        }
-        h2 {
-            color: #34a853;
-            margin: 25px 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eaeaea;
-        }
-        .phase-tag {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        .phase-1 {
-            background-color: #e6f4ea;
-            color: #137333;
-        }
-        .phase-2 {
-            background-color: #e8f0fe;
-            color: #1967d2;
-        }
-        .docs-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 15px;
-        }
-        .doc-card {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid #e0e0e0;
-        }
-        .doc-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            background-color: #e8f0fe;
-        }
-        .doc-card a {
-            color: #1a73e8;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: block;
-            padding: 5px 0;
-        }
-        .doc-card p {
-            margin-top: 8px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .last-updated {
-            margin-top: 5px;
-            font-style: italic;
-            color: #999;
-        }
-    </style>
+    </script>
+    <!--<link type="text/css" rel="Stylesheet" href="plugins/sitemap/styles/sitemap.css" />
+    <link type="text/css" rel="Stylesheet" href="plugins/page_notes/styles/page_notes.css" />
+    <link type="text/css" rel="Stylesheet" href="plugins/debug/styles/debug.css" />
+    <link type="text/css" rel="Stylesheet" href="plugins/handoff/styles/handoff.css" />
+    <link type="text/css" rel="Stylesheet" href="plugins/handoff/styles/codemirror.css" />-->
 </head>
-<body>
-    <div class="container">
-        <h1>AR UPI 需求文档导航</h1>
-        
-        <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span></h2>
-        <div class="docs-list">
-            <div class="doc-card">
-                <a href="需求列表.html" target="_blank">需求列表</a>
-                <p>查看AR UPI相关的需求清单和汇总</p>
+<body scroll="no" class="hashover" style="overflow: hidden;">
+    <div id="topPanel">
+        <div id="interfaceControlFrame">
+            <div id="interfaceControlFrameLeft">
+                <div id="interfaceControlFrameMinimizeContainer">
+                    <a title="Collapse" id="interfaceControlFrameMinimizeButton">
+                        <div id="minimizeArrow" class="minimizeButtonHover minimizeIcon"></div>
+                        <div id="minimizeX" class="minimizeButton minimizeIcon"></div>
+                    </a>
+                </div>
+                <div id="interfaceControlFrameCloseContainer">
+                    <a title="Close" id="interfaceControlFrameCloseButton">CLOSE</a>
+                </div>
+
+                <div id="sitemapControlFrameContainer" title="Project Pages">
+                    <div id="projectControlFrameHeaderContainer">
+                        <ul id="projectControlFrameHeader"></ul>
+                    </div>
+
+                    <div id="interfacePageNameContainer">
+                        <div id="interfacePageNameButton" class='pageNameHeader'>
+                            &nbsp;
+                        </div>
+                        <div id="interfacePageCount" class='pageCountHeader'>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="interfaceAdaptiveViewsContainer" title="Adaptive Views">
+                    <div id="interfaceAdaptiveViewsIconButton">&nbsp;</div>
+                    <div id="interfaceAdaptiveViewsButton" class='adaptiveViewHeader'>
+                        &nbsp;
+                    </div>
+                    <div id="adaptiveViewsDropdown" class="caret"></div>
+                </div>
             </div>
-            
-            <div class="doc-card">
-                <a href="收银台.html" target="_blank">收银台</a>
-                <p>查看收银台功能的基础设计和需求说明</p>
+
+            <div id="interfaceControlFrameContainer">
+                <div id="handoffControlFrameHeaderContainer">
+                    <ul id="handoffControlFrameHeader"></ul>
+                </div>
+                <div id="interfaceControlFrameLogoContainer">
+                    <!--<div id="previewNotice">
+                        Local Preview
+                    </div>-->
+                </div>
             </div>
-            
-            <div class="doc-card">
-                <a href="申诉页面.html" target="_blank">申诉页面</a>
-                <p>查看申诉页面的设计和需求说明</p>
+
+            <div id="interfaceControlFrameRight">
+                <div id="publishContainer">
+                    <a id="publishButton">Share Prototype</a>
+                </div>
+
+                <div id="scaleMenuButton" title="Zoom and Scale">
+                    <div id="scaleValue">100%</div>
+                    <div id="expandScaleArrow" class="caret"></div>
+                </div>
+
+                <div id="inspectControlFrameHeaderContainer">
+                    <ul id="inspectControlFrameHeader">
+                        <li id="overflowBtn">
+                            <a id="overflowMenuButton" title="Options"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="separatorContainer">
+                    <div class="separator"></div>
+                </div>
+
+                <div id="overflowMadeWith"><a href="https://www.axure.com" id="axureLogo"></a></div>
+
             </div>
+
         </div>
-        
-        <h2>二期需求 <span class="phase-tag phase-2">Phase 2</span></h2>
-        <div class="docs-list">
-            <div class="doc-card">
-                <a href="充值页面.html" target="_blank">充值页面</a>
-                <p>查看充值页面的设计和需求说明（基础功能）</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="收银台页面优化.html" target="_blank">收银台页面优化</a>
-                <p>查看收银台页面优化的设计和需求说明</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="申诉页面_1.html" target="_blank">申诉页面(备选版本)</a>
-                <p>查看申诉页面的备选设计方案</p>
-            </div>
-        </div>
-        
-        <footer>
-            <p>AR UPI 需求文档导航站</p>
-            <p class="last-updated">最后更新时间: <script>document.write(new Date().toLocaleDateString('zh-CN'))</script></p>
-        </footer>
     </div>
+    <div id="popupContainer">
+        <div id='interfaceAdaptiveViewsListContainer'>
+        </div>
+
+        <div id='interfaceScaleListContainer'>
+        </div>
+
+        <div id='overflowMenuContainer'>
+        </div>
+
+        <div id='scaleMenuContainer'>
+        </div>
+    </div>
+    <div id="outerContainer">
+        <div id="clippingBounds">
+            <div id="clippingBoundsScrollContainer"></div>
+        </div>
+
+        <div id="mHideSidebar"></div>
+        <div id="lsplitbar" class="splitbar"></div>
+        <div id="mainPanel">
+            <div id="mainPanelContainer" style="position: relative; width:100%; height: 100%;">
+                <div id="clipFrameScroll" style="position: relative; width:100%; height: 100%; background-color: #ffffff;">
+                    <iframe id="mainFrame" name="mainFrame" width="100%" height="100%" src="about:blank" frameborder="0" style="display: block;position:absolute;" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="rsplitbar" class="splitbar"></div>
+    </div>
+
+    <div id="maximizePanelContainer" class="maximizePanelContainer">
+        <div id="maximizePanelOver">
+            <div id="maximizePanel" title="Expand" class="maximizePanelOver">
+                <div id="maximizeButton" class="maximizeButton maximizeIcon"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobileControlFrameContainer"></div>
+
+<!-- 11.0.0.4122 -->
+<script src="resources/scripts/jquery-3.7.1.min.js"></script>
+<script src="resources/scripts/axure/jquery.nicescroll.min.js"></script>
+<script src="resources/scripts/axutils.js"></script>
+<script src="resources/scripts/messagecenter.js"></script>
+<script src="resources/scripts/player/axplayer.js"></script>
+<script src="resources/scripts/player/init.js"></script>
+
+
 </body>
-</html> 
+</html>
