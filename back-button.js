@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var backButton = document.createElement('button');
     backButton.className = 'back-button';
     backButton.innerHTML = '←';
-    backButton.title = '返回上一页';
+    backButton.title = '返回导航页';
     
-    // 添加点击事件：返回主页
+    // 添加点击事件：返回导航页
     backButton.addEventListener('click', function() {
-        window.location.href = 'index.html';
+        window.location.href = 'ar_upi_docs_index.html';
     });
     
     // 将按钮添加到页面中
