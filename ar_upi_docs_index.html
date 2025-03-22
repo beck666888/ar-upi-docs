@@ -109,6 +109,39 @@
             font-style: italic;
             color: #999;
         }
+        
+        /* Tab Styles */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            margin: 0 5px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-color: #fff;
+            color: #1a73e8;
+            border-bottom: 2px solid #1a73e8;
+            position: relative;
+            top: 1px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -153,34 +186,44 @@
         
         <h2>三期需求 <span class="phase-tag phase-3">Phase 3</span></h2>
         
-        <h3>AR UPI</h3>
-        <div class="docs-list category-section">
-            <div class="doc-card">
-                <a href="UPI三期需求/upi_彩票端-收银台.html">彩票端-收银台</a>
-                <p>查看彩票端收银台的设计和功能说明</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="UPI三期需求/upi_后台-平台参数配置-买入参数配置.html">后台-平台参数配置</a>
-                <p>查看后台平台买入参数配置的说明</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="UPI三期需求/upi_钱包端-收银台.html">钱包端-收银台</a>
-                <p>查看钱包端收银台的设计和功能说明</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="UPI三期需求/upi_页面提示优化.html">页面提示优化</a>
-                <p>查看页面提示信息优化的说明</p>
+        <!-- 添加标签切换 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('upi-tab')">AR UPI需求</button>
+            <button class="tab-btn" onclick="openTab('wallet-tab')">AR Wallet需求</button>
+        </div>
+        
+        <!-- AR UPI 需求标签内容 -->
+        <div id="upi-tab" class="tab-content active">
+            <div class="docs-list category-section">
+                <div class="doc-card">
+                    <a href="UPI三期需求/upi_彩票端-收银台.html">彩票端-收银台</a>
+                    <p>查看彩票端收银台的设计和功能说明</p>
+                </div>
+                
+                <div class="doc-card">
+                    <a href="UPI三期需求/upi_后台-平台参数配置-买入参数配置.html">后台-平台参数配置</a>
+                    <p>查看后台平台买入参数配置的说明</p>
+                </div>
+                
+                <div class="doc-card">
+                    <a href="UPI三期需求/upi_钱包端-收银台.html">钱包端-收银台</a>
+                    <p>查看钱包端收银台的设计和功能说明</p>
+                </div>
+                
+                <div class="doc-card">
+                    <a href="UPI三期需求/upi_页面提示优化.html">页面提示优化</a>
+                    <p>查看页面提示信息优化的说明</p>
+                </div>
             </div>
         </div>
         
-        <h3>ARwallet</h3>
-        <div class="docs-list category-section">
-            <div class="doc-card">
-                <a href="UPI三期需求/ar_wallet同步arupi需求.html">同步ARUPI需求</a>
-                <p>查看ARwallet同步ARUPI需求的说明</p>
+        <!-- AR Wallet 需求标签内容 -->
+        <div id="wallet-tab" class="tab-content">
+            <div class="docs-list category-section">
+                <div class="doc-card">
+                    <a href="UPI三期需求/ar_wallet同步arupi需求.html">同步ARUPI需求</a>
+                    <p>查看ARwallet同步ARUPI需求的说明</p>
+                </div>
             </div>
         </div>
         
@@ -189,5 +232,25 @@
             <p class="last-updated">最后更新时间: <script>document.write(new Date().toLocaleDateString('zh-CN'))</script></p>
         </footer>
     </div>
+    
+    <script>
+        function openTab(tabName) {
+            // 隐藏所有标签内容
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 取消所有标签按钮的激活状态
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // 显示选中的标签内容并激活对应按钮
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html> 
