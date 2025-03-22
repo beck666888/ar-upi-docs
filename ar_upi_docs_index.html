@@ -38,6 +38,11 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #eaeaea;
         }
+        h3 {
+            color: #ea4335;
+            margin: 20px 0 10px 20px;
+            font-size: 1.2rem;
+        }
         .phase-tag {
             display: inline-block;
             padding: 3px 8px;
@@ -54,11 +59,19 @@
             background-color: #e8f0fe;
             color: #1967d2;
         }
+        .phase-3 {
+            background-color: #fce8e6;
+            color: #c5221f;
+        }
         .docs-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             margin-top: 15px;
+        }
+        .category-section {
+            margin-left: 20px;
+            margin-bottom: 20px;
         }
         .doc-card {
             background-color: #f8f9fa;
@@ -135,6 +148,39 @@
             <div class="doc-card">
                 <a href="申诉页面_1.html">申诉页面(备选版本)</a>
                 <p>查看申诉页面的备选设计方案</p>
+            </div>
+        </div>
+        
+        <h2>三期需求 <span class="phase-tag phase-3">Phase 3</span></h2>
+        
+        <h3>AR UPI</h3>
+        <div class="docs-list category-section">
+            <div class="doc-card">
+                <a href="upi_彩票端-收银台.html">彩票端-收银台</a>
+                <p>查看彩票端收银台的设计和功能说明</p>
+            </div>
+            
+            <div class="doc-card">
+                <a href="upi_后台-平台参数配置-买入参数配置.html">后台-平台参数配置</a>
+                <p>查看后台平台买入参数配置的说明</p>
+            </div>
+            
+            <div class="doc-card">
+                <a href="upi_钱包端-收银台.html">钱包端-收银台</a>
+                <p>查看钱包端收银台的设计和功能说明</p>
+            </div>
+            
+            <div class="doc-card">
+                <a href="upi_页面提示优化.html">页面提示优化</a>
+                <p>查看页面提示信息优化的说明</p>
+            </div>
+        </div>
+        
+        <h3>ARwallet</h3>
+        <div class="docs-list category-section">
+            <div class="doc-card">
+                <a href="ar_wallet同步arupi需求.html">同步ARUPI需求</a>
+                <p>查看ARwallet同步ARUPI需求的说明</p>
             </div>
         </div>
         
