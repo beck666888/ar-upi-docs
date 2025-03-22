@@ -63,6 +63,22 @@
             background-color: #fce8e6;
             color: #c5221f;
         }
+        .status-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+            background-color: #d2e3fc;
+            color: #1967d2;
+            border: 1px solid #8ab4f8;
+        }
+        .status-online {
+            background-color: #e6f4ea;
+            color: #137333;
+            border: 1px solid #81c995;
+        }
         .docs-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -148,7 +164,7 @@
     <div class="container">
         <h1>AR UPI 需求文档导航</h1>
         
-        <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span></h2>
+        <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span> <span class="status-tag status-online">已上线</span></h2>
         <div class="docs-list">
             <div class="doc-card">
                 <a href="需求列表.html">需求列表</a>
