@@ -240,63 +240,78 @@
             </div>
         </div>
         
-        <h2>二期需求 <span class="phase-tag phase-2">Phase 2</span> <span class="status-tag status-online">已上线</span></h2>
-        <div class="docs-list">
-            <div class="doc-card">
-                <a href="充值页面.html">充值页面</a>
-                <p>查看充值页面的设计和需求说明（基础功能）</p>
+        <!-- 二期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase2-content')">
+                <h2>二期需求 <span class="phase-tag phase-2">Phase 2</span> <span class="status-tag status-online">已上线</span></h2>
+                <div class="toggle-icon" id="phase2-toggle"></div>
             </div>
-            
-            <div class="doc-card">
-                <a href="收银台页面优化.html">收银台页面优化</a>
-                <p>查看收银台页面优化的设计和需求说明</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="申诉页面_1.html">申诉页面(备选版本)</a>
-                <p>查看申诉页面的备选设计方案</p>
-            </div>
-        </div>
-        
-        <h2>三期需求 <span class="phase-tag phase-3">Phase 3</span></h2>
-        
-        <!-- 添加标签切换 -->
-        <div class="tabs">
-            <button class="tab-btn active" onclick="openTab('upi-tab')">AR UPI需求</button>
-            <button class="tab-btn" onclick="openTab('wallet-tab')">AR Wallet需求</button>
-        </div>
-        
-        <!-- AR UPI 需求标签内容 -->
-        <div id="upi-tab" class="tab-content active">
-            <div class="docs-list category-section">
-                <div class="doc-card">
-                    <a href="UPI三期需求/upi_彩票端-收银台.html">彩票端-收银台</a>
-                    <p>查看彩票端收银台的设计和功能说明</p>
-                </div>
-                
-                <div class="doc-card">
-                    <a href="UPI三期需求/upi_后台-平台参数配置-买入参数配置.html">后台-平台参数配置</a>
-                    <p>查看后台平台买入参数配置的说明</p>
-                </div>
-                
-                <div class="doc-card">
-                    <a href="UPI三期需求/upi_钱包端-收银台.html">钱包端-收银台</a>
-                    <p>查看钱包端收银台的设计和功能说明</p>
-                </div>
-                
-                <div class="doc-card">
-                    <a href="UPI三期需求/upi_页面提示优化.html">页面提示优化</a>
-                    <p>查看页面提示信息优化的说明</p>
+            <div class="collapsible-content" id="phase2-content">
+                <div class="docs-list">
+                    <div class="doc-card">
+                        <a href="充值页面.html">充值页面</a>
+                        <p>查看充值页面的设计和需求说明（基础功能）</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="收银台页面优化.html">收银台页面优化</a>
+                        <p>查看收银台页面优化的设计和需求说明</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="申诉页面_1.html">申诉页面(备选版本)</a>
+                        <p>查看申诉页面的备选设计方案</p>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- AR Wallet 需求标签内容 -->
-        <div id="wallet-tab" class="tab-content">
-            <div class="docs-list category-section">
-                <div class="doc-card">
-                    <a href="UPI三期需求/ar_wallet同步arupi需求.html">同步ARUPI需求</a>
-                    <p>查看ARwallet同步ARUPI需求的说明</p>
+        <!-- 三期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase3-content')">
+                <h2>三期需求 <span class="phase-tag phase-3">Phase 3</span></h2>
+                <div class="toggle-icon" id="phase3-toggle"></div>
+            </div>
+            <div class="collapsible-content" id="phase3-content">
+                <!-- 添加标签切换 -->
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('upi-tab')">AR UPI需求</button>
+                    <button class="tab-btn" onclick="openTab('wallet-tab')">AR Wallet需求</button>
+                </div>
+                
+                <!-- AR UPI 需求标签内容 -->
+                <div id="upi-tab" class="tab-content active">
+                    <div class="docs-list category-section">
+                        <div class="doc-card">
+                            <a href="UPI三期需求/upi_彩票端-收银台.html">彩票端-收银台</a>
+                            <p>查看彩票端收银台的设计和功能说明</p>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <a href="UPI三期需求/upi_后台-平台参数配置-买入参数配置.html">后台-平台参数配置</a>
+                            <p>查看后台平台买入参数配置的说明</p>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <a href="UPI三期需求/upi_钱包端-收银台.html">钱包端-收银台</a>
+                            <p>查看钱包端收银台的设计和功能说明</p>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <a href="UPI三期需求/upi_页面提示优化.html">页面提示优化</a>
+                            <p>查看页面提示信息优化的说明</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AR Wallet 需求标签内容 -->
+                <div id="wallet-tab" class="tab-content">
+                    <div class="docs-list category-section">
+                        <div class="doc-card">
+                            <a href="UPI三期需求/ar_wallet同步arupi需求.html">同步ARUPI需求</a>
+                            <p>查看ARwallet同步ARUPI需求的说明</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
