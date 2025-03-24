@@ -158,31 +158,72 @@
         .tab-content.active {
             display: block;
         }
+        
+        /* 折叠面板样式 */
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .collapsible-header h2 {
+            margin: 0;
+            flex: 1;
+        }
+        .toggle-btn {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+        .toggle-btn:hover {
+            background: #e6e6e6;
+        }
+        .collapsible-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out;
+        }
+        .collapsible-content.collapsed {
+            max-height: 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>AR UPI 需求文档导航</h1>
         
-        <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span> <span class="status-tag status-online">已上线</span></h2>
-        <div class="docs-list">
-            <div class="doc-card">
-                <a href="需求列表.html">需求列表</a>
-                <p>查看AR UPI相关的需求清单和汇总</p>
+        <!-- 一期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase1-content')">
+                <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span> <span class="status-tag status-online">已上线</span></h2>
+                <button class="toggle-btn" id="phase1-toggle">收起</button>
             </div>
-            
-            <div class="doc-card">
-                <a href="收银台.html">收银台</a>
-                <p>查看收银台功能的基础设计和需求说明</p>
-            </div>
-            
-            <div class="doc-card">
-                <a href="申诉页面.html">申诉页面</a>
-                <p>查看申诉页面的设计和需求说明</p>
+            <div class="collapsible-content" id="phase1-content">
+                <div class="docs-list">
+                    <div class="doc-card">
+                        <a href="需求列表.html">需求列表</a>
+                        <p>查看AR UPI相关的需求清单和汇总</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="收银台.html">收银台</a>
+                        <p>查看收银台功能的基础设计和需求说明</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="申诉页面.html">申诉页面</a>
+                        <p>查看申诉页面的设计和需求说明</p>
+                    </div>
+                </div>
             </div>
         </div>
         
-        <h2>二期需求 <span class="phase-tag phase-2">Phase 2</span></h2>
+        <h2>二期需求 <span class="phase-tag phase-2">Phase 2</span> <span class="status-tag status-online">已上线</span></h2>
         <div class="docs-list">
             <div class="doc-card">
                 <a href="充值页面.html">充值页面</a>
@@ -266,6 +307,25 @@
             // 显示选中的标签内容并激活对应按钮
             document.getElementById(tabName).classList.add("active");
             event.currentTarget.classList.add("active");
+        }
+        
+        // 折叠面板功能
+        function toggleCollapse(contentId) {
+            var content = document.getElementById(contentId);
+            var toggleBtn = document.getElementById(contentId.replace('content', 'toggle'));
+            
+            if (content.classList.contains('collapsed')) {
+                // 展开面板
+                content.classList.remove('collapsed');
+                toggleBtn.textContent = '收起';
+            } else {
+                // 收起面板
+                content.classList.add('collapsed');
+                toggleBtn.textContent = '展开';
+            }
+            
+            // 阻止点击事件冒泡
+            event.stopPropagation();
         }
     </script>
 </body>
