@@ -184,27 +184,21 @@
         .toggle-icon:hover {
             background-color: #e6e6e6;
         }
-        .toggle-icon:before,
-        .toggle-icon:after {
+        .toggle-icon:before {
             content: '';
             position: absolute;
-            background-color: #666;
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #666;
+            border-bottom: 2px solid #666;
+            transform: rotate(45deg);
+            top: 6px;
+            left: 7px;
             transition: transform 0.3s ease;
         }
-        .toggle-icon:before {
-            width: 2px;
-            height: 12px;
-            top: 5px;
-            left: 10px;
-        }
-        .toggle-icon:after {
-            width: 12px;
-            height: 2px;
-            top: 10px;
-            left: 5px;
-        }
         .toggle-icon.collapsed:before {
-            transform: rotate(90deg);
+            transform: rotate(-45deg);
+            top: 8px;
         }
         .collapsible-content {
             max-height: 1000px;
