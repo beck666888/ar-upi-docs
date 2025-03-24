@@ -170,18 +170,41 @@
             margin: 0;
             flex: 1;
         }
-        .toggle-btn {
-            background: #f0f0f0;
+        .toggle-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
             border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-size: 0.8rem;
+            position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-left: 10px;
         }
-        .toggle-btn:hover {
-            background: #e6e6e6;
+        .toggle-icon:hover {
+            background-color: #e6e6e6;
+        }
+        .toggle-icon:before,
+        .toggle-icon:after {
+            content: '';
+            position: absolute;
+            background-color: #666;
+            transition: transform 0.3s ease;
+        }
+        .toggle-icon:before {
+            width: 2px;
+            height: 12px;
+            top: 5px;
+            left: 10px;
+        }
+        .toggle-icon:after {
+            width: 12px;
+            height: 2px;
+            top: 10px;
+            left: 5px;
+        }
+        .toggle-icon.collapsed:before {
+            transform: rotate(90deg);
         }
         .collapsible-content {
             max-height: 1000px;
@@ -201,7 +224,7 @@
         <div class="collapsible-panel">
             <div class="collapsible-header" onclick="toggleCollapse('phase1-content')">
                 <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span> <span class="status-tag status-online">已上线</span></h2>
-                <button class="toggle-btn" id="phase1-toggle">收起</button>
+                <div class="toggle-icon" id="phase1-toggle"></div>
             </div>
             <div class="collapsible-content" id="phase1-content">
                 <div class="docs-list">
@@ -312,16 +335,16 @@
         // 折叠面板功能
         function toggleCollapse(contentId) {
             var content = document.getElementById(contentId);
-            var toggleBtn = document.getElementById(contentId.replace('content', 'toggle'));
+            var toggleIcon = document.getElementById(contentId.replace('content', 'toggle'));
             
             if (content.classList.contains('collapsed')) {
                 // 展开面板
                 content.classList.remove('collapsed');
-                toggleBtn.textContent = '收起';
+                toggleIcon.classList.remove('collapsed');
             } else {
                 // 收起面板
                 content.classList.add('collapsed');
-                toggleBtn.textContent = '展开';
+                toggleIcon.classList.add('collapsed');
             }
             
             // 阻止点击事件冒泡
