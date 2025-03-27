@@ -63,6 +63,10 @@
             background-color: #fce8e6;
             color: #c5221f;
         }
+        .phase-4 {
+            background-color: #f3e8fd;
+            color: #9334e6;
+        }
         .status-tag {
             display: inline-block;
             padding: 3px 8px;
@@ -83,6 +87,11 @@
             background-color: #fef7e0;
             color: #b06000;
             border: 1px solid #f5c77e;
+        }
+        .status-new {
+            background-color: #e8f0fe;
+            color: #1967d2;
+            border: 1px solid #8ab4f8;
         }
         .docs-list {
             display: grid;
@@ -316,6 +325,22 @@
                             <a href="UPI三期需求/ar_wallet同步arupi需求.html">同步ARUPI需求</a>
                             <p>查看ARwallet同步ARUPI需求的说明</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 四期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase4-content')">
+                <h2>四期需求 <span class="phase-tag phase-4">Phase 4</span> <span class="status-tag status-new">新增</span></h2>
+                <div class="toggle-icon" id="phase4-toggle"></div>
+            </div>
+            <div class="collapsible-content" id="phase4-content">
+                <div class="docs-list">
+                    <div class="doc-card">
+                        <a href="UPI四期需求/强制充值_取消.html">强制充值/取消</a>
+                        <p>查看强制充值和取消功能的设计和需求说明</p>
                     </div>
                 </div>
             </div>
