@@ -55,6 +55,18 @@
             background-color: #e3f2fd;
             color: #1565c0;
         }
+        .phase-2 {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .phase-3 {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+        .phase-4 {
+            background-color: #ede7f6;
+            color: #5e35b1;
+        }
         .status-tag {
             display: inline-block;
             padding: 3px 8px;
@@ -70,6 +82,16 @@
             background-color: #e6f4ea;
             color: #137333;
             border: 1px solid #81c995;
+        }
+        .status-new {
+            background-color: #e8f0fe;
+            color: #1967d2;
+            border: 1px solid #8ab4f8;
+        }
+        .status-dev {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+            border: 1px solid #ce93d8;
         }
         .docs-list {
             display: grid;
@@ -112,6 +134,39 @@
             margin-top: 5px;
             font-style: italic;
             color: #999;
+        }
+        
+        /* Tab Styles */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            cursor: pointer;
+            margin: 0 5px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            background-color: #fff;
+            color: #1976d2;
+            border-bottom: 2px solid #1976d2;
+            position: relative;
+            top: 1px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
         
         /* 折叠面板样式 */
@@ -169,27 +224,98 @@
     <div class="container">
         <h1>彩票需求文档导航</h1>
         
-        <!-- 一期需求可折叠面板 -->
+        <!-- 二期需求可折叠面板 -->
         <div class="collapsible-panel">
-            <div class="collapsible-header" onclick="toggleCollapse('phase1-content')">
-                <h2>一期需求 <span class="phase-tag phase-1">Phase 1</span> <span class="status-tag status-online">已上线</span></h2>
-                <div class="toggle-icon" id="phase1-toggle"></div>
+            <div class="collapsible-header" onclick="toggleCollapse('phase2-content')">
+                <h2>二期需求 <span class="phase-tag phase-2">Phase 2</span> <span class="status-tag status-online">已上线</span></h2>
+                <div class="toggle-icon" id="phase2-toggle"></div>
             </div>
-            <div class="collapsible-content" id="phase1-content">
+            <div class="collapsible-content" id="phase2-content">
                 <div class="docs-list">
                     <div class="doc-card">
-                        <a href="lottery_docs/彩票功能列表.html">彩票功能列表</a>
-                        <p>查看彩票相关的功能清单和汇总</p>
+                        <a href="lottery_docs/彩票支付优化.html">彩票支付优化</a>
+                        <p>查看彩票支付流程优化的设计和需求说明</p>
                     </div>
                     
                     <div class="doc-card">
-                        <a href="lottery_docs/彩票投注流程.html">彩票投注流程</a>
-                        <p>查看彩票投注流程的基础设计和需求说明</p>
+                        <a href="lottery_docs/历史开奖查询.html">历史开奖查询</a>
+                        <p>查看历史开奖查询功能的设计和需求说明</p>
                     </div>
                     
                     <div class="doc-card">
-                        <a href="lottery_docs/开奖规则.html">开奖规则</a>
-                        <p>查看彩票开奖规则的设计和需求说明</p>
+                        <a href="lottery_docs/用户中心优化.html">用户中心优化</a>
+                        <p>查看用户中心优化功能的设计说明</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 三期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase3-content')">
+                <h2>三期需求 <span class="phase-tag phase-3">Phase 3</span> <span class="status-tag status-new">新增</span></h2>
+                <div class="toggle-icon" id="phase3-toggle"></div>
+            </div>
+            <div class="collapsible-content" id="phase3-content">
+                <!-- 添加标签切换 -->
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="openTab('feature-tab')">功能优化</button>
+                    <button class="tab-btn" onclick="openTab('admin-tab')">后台管理</button>
+                </div>
+                
+                <!-- 功能优化标签内容 -->
+                <div id="feature-tab" class="tab-content active">
+                    <div class="docs-list category-section">
+                        <div class="doc-card">
+                            <a href="lottery_docs/phase3/自动投注功能.html">自动投注功能</a>
+                            <p>查看自动投注功能的设计和需求说明</p>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <a href="lottery_docs/phase3/追号功能.html">追号功能</a>
+                            <p>查看追号功能的设计和需求说明</p>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <a href="lottery_docs/phase3/数据分析工具.html">数据分析工具</a>
+                            <p>查看数据分析工具的设计和需求说明</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 后台管理标签内容 -->
+                <div id="admin-tab" class="tab-content">
+                    <div class="docs-list category-section">
+                        <div class="doc-card">
+                            <a href="lottery_docs/phase3/管理后台优化.html">管理后台优化</a>
+                            <p>查看管理后台优化的设计和需求说明</p>
+                        </div>
+                        
+                        <div class="doc-card">
+                            <a href="lottery_docs/phase3/风控系统.html">风控系统</a>
+                            <p>查看风控系统的设计和需求说明</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 四期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase4-content')">
+                <h2>四期需求 <span class="phase-tag phase-4">Phase 4</span> <span class="status-tag status-dev">开发中</span></h2>
+                <div class="toggle-icon" id="phase4-toggle"></div>
+            </div>
+            <div class="collapsible-content" id="phase4-content">
+                <div class="docs-list">
+                    <div class="doc-card">
+                        <a href="lottery_docs/phase4/社交互动功能.html">社交互动功能</a>
+                        <p>查看社交互动功能的设计和需求说明</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="lottery_docs/phase4/AI预测系统.html">AI预测系统</a>
+                        <p>查看AI预测系统的设计和需求说明</p>
                     </div>
                 </div>
             </div>
@@ -202,6 +328,24 @@
     </div>
     
     <script>
+        function openTab(tabName) {
+            // 隐藏所有标签内容
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 取消所有标签按钮的激活状态
+            var tabButtons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // 显示选中的标签内容并激活对应按钮
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+        
         // 折叠面板功能
         function toggleCollapse(contentId) {
             var content = document.getElementById(contentId);
