@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彩票需求文档导航</title>
+    <title>需求文档导航</title>
     <style>
         * {
             margin: 0;
@@ -32,6 +32,43 @@
             padding-bottom: 15px;
             border-bottom: 2px solid #eaeaea;
         }
+        /* 顶部标签样式 */
+        .top-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0 30px;
+            gap: 10px;
+        }
+        .top-tab-btn {
+            background-color: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #757575;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 160px;
+            text-align: center;
+        }
+        .top-tab-btn.active {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            border-color: #1976d2;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .top-tab-btn:hover:not(.active) {
+            background-color: #f1f1f1;
+            transform: translateY(-2px);
+        }
+        /* 内容区域样式 */
+        .top-tab-content {
+            display: none;
+        }
+        .top-tab-content.active {
+            display: block;
+        }
         .empty-content {
             text-align: center;
             margin: 50px 0;
@@ -59,18 +96,56 @@
 </head>
 <body>
     <div class="container">
-        <h1>彩票需求文档导航</h1>
+        <h1>需求文档导航</h1>
         
-        <!-- 空白内容区域 -->
-        <div class="empty-content">
-            <p>暂无需求文档</p>
-            <p>请稍后查看更新...</p>
+        <!-- 顶部标签切换 -->
+        <div class="top-tabs">
+            <button class="top-tab-btn active" onclick="switchTopTab('lottery-content')">彩票需求</button>
+            <button class="top-tab-btn" onclick="switchTopTab('arb-content')">ARB需求</button>
+        </div>
+        
+        <!-- 彩票需求内容 -->
+        <div id="lottery-content" class="top-tab-content active">
+            <div class="empty-content">
+                <p>暂无彩票需求文档</p>
+                <p>请稍后查看更新...</p>
+            </div>
+        </div>
+        
+        <!-- ARB需求内容 -->
+        <div id="arb-content" class="top-tab-content">
+            <div class="empty-content">
+                <p>暂无ARB需求文档</p>
+                <p>请稍后查看更新...</p>
+            </div>
         </div>
         
         <footer>
-            <p>彩票需求文档导航站</p>
+            <p>需求文档导航站</p>
             <p class="last-updated">最后更新时间: <script>document.write(new Date().toLocaleDateString('zh-CN'))</script></p>
         </footer>
     </div>
+    
+    <script>
+        function switchTopTab(contentId) {
+            // 隐藏所有标签内容
+            var tabContents = document.getElementsByClassName("top-tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 取消所有标签按钮的激活状态
+            var tabButtons = document.getElementsByClassName("top-tab-btn");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // 显示选中的标签内容
+            document.getElementById(contentId).classList.add("active");
+            
+            // 激活对应的标签按钮
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html> 
