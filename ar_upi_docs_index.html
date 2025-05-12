@@ -67,6 +67,10 @@
             background-color: #f3e8fd;
             color: #9334e6;
         }
+        .phase-5 {
+            background-color: #ffebee;
+            color: #c62828;
+        }
         .status-tag {
             display: inline-block;
             padding: 3px 8px;
@@ -333,7 +337,7 @@
         <!-- 四期需求可折叠面板 -->
         <div class="collapsible-panel">
             <div class="collapsible-header" onclick="toggleCollapse('phase4-content')">
-                <h2>四期需求 <span class="phase-tag phase-4">Phase 4</span> <span class="status-tag status-new">新增</span></h2>
+                <h2>四期需求 <span class="phase-tag phase-4">Phase 4</span> <span class="status-tag status-online">已上线</span></h2>
                 <div class="toggle-icon" id="phase4-toggle"></div>
             </div>
             <div class="collapsible-content" id="phase4-content">
@@ -341,6 +345,32 @@
                     <div class="doc-card">
                         <a href="UPI四期需求/强制充值_取消.html">强制充值/取消</a>
                         <p>查看强制充值和取消功能的设计和需求说明</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 五期需求可折叠面板 -->
+        <div class="collapsible-panel">
+            <div class="collapsible-header" onclick="toggleCollapse('phase5-content')">
+                <h2>五期需求 <span class="phase-tag phase-5">Phase 5</span> <span class="status-tag status-new">新增</span></h2>
+                <div class="toggle-icon" id="phase5-toggle"></div>
+            </div>
+            <div class="collapsible-content" id="phase5-content">
+                <div class="docs-list">
+                    <div class="doc-card">
+                        <a href="ARUPI五期需求/彩票端-提现页面.html">彩票端-提现页面</a>
+                        <p>查看彩票端提现页面的设计和功能说明</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="ARUPI五期需求/订单各情况展示样式.html">订单各情况展示样式</a>
+                        <p>查看不同状态下订单的展示样式说明</p>
+                    </div>
+                    
+                    <div class="doc-card">
+                        <a href="ARUPI五期需求/彩票提现订单状态对应逻辑.html">彩票提现订单状态对应逻辑</a>
+                        <p>查看彩票提现订单状态的对应逻辑说明</p>
                     </div>
                 </div>
             </div>
