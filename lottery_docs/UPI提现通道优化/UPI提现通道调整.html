@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI提现通道调整 - 需求文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f9fc;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #1e88e5;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        h2 {
+            color: #43a047;
+            margin: 25px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        h3 {
+            color: #5e35b1;
+            margin: 20px 0 10px 0;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .warning-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .image-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f5f5f5;
+            padding: 10px;
+            text-align: left;
+        }
+        td {
+            padding: 10px;
+        }
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../lottery_docs_index.html" class="back-link">← 返回需求文档导航</a>
+        
+        <h1>UPI提现通道调整</h1>
+        
+        <div class="info-box">
+            <p><strong>文档状态：</strong> 草稿</p>
+            <p><strong>最后更新：</strong> <span id="last-updated"></span></p>
+            <p><strong>负责人：</strong> 产品团队</p>
+        </div>
+        
+        <h2>1. 需求背景</h2>
+        <p>当前UPI提现通道在使用过程中存在一些效率和稳定性问题，需要对提现流程和通道策略进行优化，提高用户体验并降低运营成本。</p>
+        
+        <h2>2. 功能概述</h2>
+        <p>本需求旨在调整UPI提现通道的选择逻辑、处理流程和状态展示，主要包括：</p>
+        <ul>
+            <li>优化提现通道的选择算法，根据成功率、处理速度等指标动态分配通道</li>
+            <li>调整用户提现时的界面显示和交互逻辑</li>
+            <li>完善后台监控和处理机制</li>
+        </ul>
+        
+        <h2>3. 详细功能设计</h2>
+        
+        <h3>3.1 提现通道选择逻辑优化</h3>
+        <p>实现智能化的提现通道选择机制，通过以下维度进行优化：</p>
+        <ul>
+            <li><strong>成功率权重：</strong> 基于历史数据，分析各通道的成功率，优先选择成功率高的通道</li>
+            <li><strong>处理速度：</strong> 监控各通道的平均处理时间，优先分配到处理更快的通道</li>
+            <li><strong>通道容量平衡：</strong> 合理分配交易量，避免单一通道压力过大</li>
+            <li><strong>金额匹配：</strong> 根据不同金额范围选择适合的通道</li>
+        </ul>
+        
+        <h3>3.2 用户界面调整</h3>
+        <p>在用户提交提现请求时，优化界面展示：</p>
+        <ul>
+            <li>提现确认页面显示预估处理时间</li>
+            <li>显示通道健康状态，提前告知用户可能的等待时间</li>
+            <li>优化提现状态显示，增加更多中间状态的展示</li>
+        </ul>
+        
+        <div class="image-container">
+            <p><em>提现流程交互示意图（待补充）</em></p>
+        </div>
+        
+        <h3>3.3 后台监控与处理</h3>
+        <p>增强后台对提现通道的监控能力：</p>
+        <ul>
+            <li>建立实时监控面板，显示各通道的运行状态和处理效率</li>
+            <li>实现异常通道自动降级和恢复机制</li>
+            <li>添加通道间的故障转移能力</li>
+        </ul>
+        
+        <h2>4. 接口设计</h2>
+        <h3>4.1 通道选择接口</h3>
+        <code>GET /api/withdrawal/channel/select</code>
+        <p>根据用户提现请求信息选择最优通道</p>
+        <table>
+            <tr>
+                <th>参数</th>
+                <th>类型</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>amount</td>
+                <td>Number</td>
+                <td>提现金额</td>
+            </tr>
+            <tr>
+                <td>userId</td>
+                <td>String</td>
+                <td>用户ID</td>
+            </tr>
+            <tr>
+                <td>currency</td>
+                <td>String</td>
+                <td>币种</td>
+            </tr>
+        </table>
+        
+        <h3>4.2 通道状态查询接口</h3>
+        <code>GET /api/withdrawal/channel/status</code>
+        <p>获取当前所有通道的运行状态</p>
+        
+        <h2>5. 数据结构设计</h2>
+        <h3>5.1 通道配置表</h3>
+        <p>用于存储各个提现通道的配置信息：</p>
+        <ul>
+            <li>channelId: 通道唯一标识</li>
+            <li>name: 通道名称</li>
+            <li>priority: 默认优先级</li>
+            <li>minAmount/maxAmount: 金额范围</li>
+            <li>status: 通道状态(active/inactive/maintenance)</li>
+            <li>successRate: 成功率统计</li>
+            <li>avgProcessTime: 平均处理时间</li>
+        </ul>
+        
+        <h3>5.2 通道调度记录表</h3>
+        <p>记录系统的通道调度决策：</p>
+        <ul>
+            <li>requestId: 提现请求ID</li>
+            <li>selectedChannel: 选择的通道</li>
+            <li>selectionReason: 选择原因</li>
+            <li>timestamp: 时间戳</li>
+        </ul>
+        
+        <h2>6. 非功能性需求</h2>
+        <h3>6.1 性能要求</h3>
+        <ul>
+            <li>通道选择算法响应时间不超过200ms</li>
+            <li>系统需支持每日至少10万笔提现交易的处理能力</li>
+        </ul>
+        
+        <h3>6.2 安全要求</h3>
+        <ul>
+            <li>所有通道切换和状态变更需记录详细的操作日志</li>
+            <li>关键操作需要多级授权</li>
+        </ul>
+        
+        <h2>7. 未来规划</h2>
+        <p>在本期实现基础上，后续可考虑：</p>
+        <ul>
+            <li>引入机器学习模型预测通道成功率</li>
+            <li>基于用户历史交易记录个性化推荐提现通道</li>
+            <li>实现完全自动化的通道管理机制</li>
+        </ul>
+        
+        <script>
+            // 设置最后更新时间
+            document.getElementById('last-updated').textContent = new Date().toLocaleDateString('zh-CN');
+        </script>
+    </div>
+</body>
+</html> 
