@@ -1,0 +1,122 @@
+﻿body {
+  margin:0px;
+  background-image:none;
+  position:relative;
+  left:-38px;
+  width:825px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+}
+.form_sketch {
+  border-color:transparent;
+  background-color:transparent;
+}
+#base {
+  position:absolute;
+  z-index:0;
+}
+#u40 {
+  border-width:0px;
+  position:absolute;
+  left:41px;
+  top:133px;
+  width:822px;
+  height:703px;
+  display:flex;
+  transition:none;
+}
+#u40 .text {
+  position:absolute;
+  align-self:center;
+  padding:2px 2px 2px 2px;
+  box-sizing:border-box;
+  width:100%;
+}
+#u40_img {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:822px;
+  height:703px;
+}
+#u40_text {
+  border-width:0px;
+  word-wrap:break-word;
+  text-transform:none;
+  visibility:hidden;
+}
+#u41 {
+  border-width:0px;
+  position:absolute;
+  left:38px;
+  top:836px;
+  width:820px;
+  height:301px;
+  display:flex;
+  transition:none;
+}
+#u41 .text {
+  position:absolute;
+  align-self:center;
+  padding:2px 2px 2px 2px;
+  box-sizing:border-box;
+  width:100%;
+}
+#u41_img {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:820px;
+  height:301px;
+}
+#u41_text {
+  border-width:0px;
+  word-wrap:break-word;
+  text-transform:none;
+  visibility:hidden;
+}
+#u42_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:296px;
+  height:33px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border-radius:0px;
+  filter:drop-shadow(none);
+  transition:none;
+  font-family:"PingFangSC-Semibold", "PingFang SC Semibold", "PingFang SC", sans-serif;
+  font-weight:650;
+  font-style:normal;
+}
+#u42 {
+  border-width:0px;
+  position:absolute;
+  left:78px;
+  top:50px;
+  width:296px;
+  height:33px;
+  display:flex;
+  transition:none;
+  transform-origin:50% 50%;
+  font-family:"PingFangSC-Semibold", "PingFang SC Semibold", "PingFang SC", sans-serif;
+  font-weight:650;
+  font-style:normal;
+}
+#u42 .text {
+  position:absolute;
+  align-self:flex-start;
+  padding:0px 0px 0px 0px;
+  box-sizing:border-box;
+  width:100%;
+}
+#u42_text {
+  border-width:0px;
+  white-space:nowrap;
+  text-transform:none;
+}
