@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="55px" height="44px" xmlns="http://www.w3.org/2000/svg">
-  <g transform="matrix(1 0 0 1 -134 -1544 )">
-    <path d="M 134 1544  L 189 1544  L 189 1588  L 134 1588  L 134 1544  " fill-rule="nonzero" fill="rgba(204, 204, 204, 1)" stroke="none" class="fill" />
-    <path d="M 137 1547  L 186 1547  L 186 1585  L 137 1585  L 137 1547  " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
-    <path d="M 165.89999999999998 1557.1999999999998  C 164.052 1557.1999999999998  162.6 1555.7479999999998  162.6 1553.8999999999999  C 162.6 1552.052  164.052 1550.6  165.89999999999998 1550.6  C 167.748 1550.6  169.2 1552.052  169.2 1553.8999999999999  C 169.2 1555.7479999999998  167.748 1557.1999999999998  165.89999999999998 1557.1999999999998  " fill-rule="nonzero" fill="rgba(204, 204, 204, 1)" stroke="none" class="fill" />
-    <path d="M 138 1584  L 138 1564.2  L 149.75 1555.2  L 166.2 1566.72  L 175.6 1560.6  L 185 1566.72  L 185 1584  L 138 1584  " fill-rule="nonzero" fill="rgba(22, 155, 213, 1)" stroke="none" class="fill" />
+  <g transform="matrix(1 0 0 1 -134 -1634 )">
+    <path d="M 134 1634  L 189 1634  L 189 1678  L 134 1678  L 134 1634  " fill-rule="nonzero" fill="rgba(204, 204, 204, 1)" stroke="none" class="fill" />
+    <path d="M 137 1637  L 186 1637  L 186 1675  L 137 1675  L 137 1637  " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
+    <path d="M 165.89999999999998 1647.1999999999998  C 164.052 1647.1999999999998  162.6 1645.7479999999998  162.6 1643.8999999999999  C 162.6 1642.052  164.052 1640.6  165.89999999999998 1640.6  C 167.748 1640.6  169.2 1642.052  169.2 1643.8999999999999  C 169.2 1645.7479999999998  167.748 1647.1999999999998  165.89999999999998 1647.1999999999998  " fill-rule="nonzero" fill="rgba(204, 204, 204, 1)" stroke="none" class="fill" />
+    <path d="M 138 1674  L 138 1654.2  L 149.75 1645.2  L 166.2 1656.72  L 175.6 1650.6  L 185 1656.72  L 185 1674  L 138 1674  " fill-rule="nonzero" fill="rgba(22, 155, 213, 1)" stroke="none" class="fill" />
   </g>
 </svg>
