@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老平台需求数据 - 2025年度研发需求汇总</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .header-section p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .count-bar {
+            background: #f8f9fa;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #6c757d;
+            border-bottom: 1px solid #eee;
+        }
+        .list-container {
+            background: white;
+        }
+        .list-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+        .list-item:hover { background: #f8f9fa; }
+        .list-item:last-child { border-bottom: none; }
+        .item-no {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .item-content { flex: 1; }
+        .item-title { font-size: 14px; color: #495057; font-weight: 500; }
+        .item-desc { font-size: 12px; color: #888; margin-top: 4px; }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>老平台迭代需求</h1>
+        <p>2025年度共完成208项研发需求，涵盖ARUPI支付、ARB钱包、后台管理、前端优化等核心模块</p>
+    </div>
+    <div class="count-bar">共 208 条记录</div>
+    <div class="list-container">
+        <div class="list-item"><div class="item-no">1</div><div class="item-content"><div class="item-title">【前后端】DoveCash推广支持</div><div class="item-desc">对接DoveCash推广接口，支持多期活动配置和数据统计</div></div></div>
+        <div class="list-item"><div class="item-no">2</div><div class="item-content"><div class="item-title">【后端】TG机器人需求</div><div class="item-desc">实现TG机器人消息自动转发和广播功能</div></div></div>
+        <div class="list-item"><div class="item-no">3</div><div class="item-content"><div class="item-title">【后端】未领取的VIP月奖励在下个奖励周期直接失效</div><div class="item-desc">优化VIP奖励领取规则，过期自动失效</div></div></div>
+        <div class="list-item"><div class="item-no">4</div><div class="item-content"><div class="item-title">【后端】会员批量操作增加打码量操作</div><div class="item-desc">后台会员管理支持批量调整打码量</div></div></div>
+        <div class="list-item"><div class="item-no">5</div><div class="item-content"><div class="item-title">【后端】首存负盈利手动审核优化</div><div class="item-desc">优化首存负盈利活动的人工审核流程</div></div></div>
+        <div class="list-item"><div class="item-no">6</div><div class="item-content"><div class="item-title">【前后端】Arb激活流程调整</div><div class="item-desc">调整ARB钱包激活流程，优化用户体验</div></div></div>
+        <div class="list-item"><div class="item-no">7</div><div class="item-content"><div class="item-title">【前端】巴西站点翻译调整</div><div class="item-desc">更新巴西站点葡萄牙语翻译内容</div></div></div>
+        <div class="list-item"><div class="item-no">8</div><div class="item-content"><div class="item-title">【前后端】首存负盈利送彩金前端显示调整</div><div class="item-desc">优化首存负盈利彩金的前端展示效果</div></div></div>
+        <div class="list-item"><div class="item-no">9</div><div class="item-content"><div class="item-title">【后端】锦标赛查看排名增加导出功能</div><div class="item-desc">锦标赛排名数据支持导出Excel</div></div></div>
+        <div class="list-item"><div class="item-no">10</div><div class="item-content"><div class="item-title">【前后端】外链管理新增TG链接</div><div class="item-desc">外链配置支持添加Telegram链接类型</div></div></div>
+        <div class="list-item"><div class="item-no">11</div><div class="item-content"><div class="item-title">【前后端】弹窗公告消息改造</div><div class="item-desc">重构弹窗公告功能，优化展示逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">12</div><div class="item-content"><div class="item-title">【后端】会员详情处新增一个本次打码倍数</div><div class="item-desc">会员详情页增加当前打码倍数显示</div></div></div>
+        <div class="list-item"><div class="item-no">13</div><div class="item-content"><div class="item-title">【前端】AR045要求更新印尼语多语言</div><div class="item-desc">更新印尼站点多语言翻译文案</div></div></div>
+        <div class="list-item"><div class="item-no">14</div><div class="item-content"><div class="item-title">【后端】用户电子钱包Easypaisa和jazzcash编辑修复</div><div class="item-desc">修复电子钱包编辑功能问题</div></div></div>
+        <div class="list-item"><div class="item-no">15</div><div class="item-content"><div class="item-title">【前后端】首存负盈利手动申请调整</div><div class="item-desc">调整首存负盈利手动申请的交互流程</div></div></div>
+        <div class="list-item"><div class="item-no">16</div><div class="item-content"><div class="item-title">【后端】统一权限控制导出数据涉及会员账号字段</div><div class="item-desc">数据导出权限增加会员账号字段控制</div></div></div>
+        <div class="list-item"><div class="item-no">17</div><div class="item-content"><div class="item-title">【前后端】代理后台推广数据调整</div><div class="item-desc">优化代理后台推广数据统计展示</div></div></div>
+        <div class="list-item"><div class="item-no">18</div><div class="item-content"><div class="item-title">【后台】短信验证码查询限制调整</div><div class="item-desc">调整短信验证码查询的时间和次数限制</div></div></div>
+        <div class="list-item"><div class="item-no">19</div><div class="item-content"><div class="item-title">【前端】充值页面默认选中类型优化</div><div class="item-desc">优化充值页面通道默认选中逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">20</div><div class="item-content"><div class="item-title">【后端】首页排行榜数据返回真实头像昵称</div><div class="item-desc">排行榜展示用户真实头像和昵称</div></div></div>
+        <div class="list-item"><div class="item-no">21</div><div class="item-content"><div class="item-title">【后台】增加充值通道数据纸飞机推送功能</div><div class="item-desc">充值数据异常时推送到Telegram群</div></div></div>
+        <div class="list-item"><div class="item-no">22</div><div class="item-content"><div class="item-title">【前端】巴西站点访问增加弹窗</div><div class="item-desc">巴西站点首次访问增加引导弹窗</div></div></div>
+        <div class="list-item"><div class="item-no">23</div><div class="item-content"><div class="item-title">【后台】锦标赛配置增加按模板新增</div><div class="item-desc">锦标赛支持模板快速创建功能</div></div></div>
+        <div class="list-item"><div class="item-no">24</div><div class="item-content"><div class="item-title">【后台】代付通道列表新增字段"今日已提交金额"</div><div class="item-desc">代付通道增加当日提交金额统计</div></div></div>
+        <div class="list-item"><div class="item-no">25</div><div class="item-content"><div class="item-title">【前端】新增前端维护页面</div><div class="item-desc">新增系统维护状态展示页面</div></div></div>
+        <div class="list-item"><div class="item-no">26</div><div class="item-content"><div class="item-title">pwa优化</div><div class="item-desc">优化PWA安装和使用体验</div></div></div>
+        <div class="list-item"><div class="item-no">27</div><div class="item-content"><div class="item-title">【前端】翻译调整</div><div class="item-desc">调整多语言翻译内容</div></div></div>
+        <div class="list-item"><div class="item-no">28</div><div class="item-content"><div class="item-title">【前端】黑色电子版面加进前端新saas彩票主分支做换肤</div><div class="item-desc">新增黑色电子版面皮肤支持</div></div></div>
+        <div class="list-item"><div class="item-no">29</div><div class="item-content"><div class="item-title">【前端】arupipay收银台从外跳，修改为内嵌</div><div class="item-desc">ARUPI收银台改为iframe内嵌方式</div></div></div>
+        <div class="list-item"><div class="item-no">30</div><div class="item-content"><div class="item-title">【前端】葡语翻译调整3-4</div><div class="item-desc">更新葡萄牙语翻译文案</div></div></div>
+        <div class="list-item"><div class="item-no">31</div><div class="item-content"><div class="item-title">[ 前端 ]ARUPIpay优化成为彩票内置页面</div><div class="item-desc">ARUPI支付页面内置到彩票系统</div></div></div>
+        <div class="list-item"><div class="item-no">32</div><div class="item-content"><div class="item-title">[充值通道]ar upi pay前端需求优化</div><div class="item-desc">优化AR UPI Pay前端交互体验</div></div></div>
+        <div class="list-item"><div class="item-no">33</div><div class="item-content"><div class="item-title">【前后端】优化当前含有AR UPI 未完成的订单，各状态间的弹窗提示</div><div class="item-desc">优化未完成订单状态切换的弹窗提示</div></div></div>
+        <div class="list-item"><div class="item-no">34</div><div class="item-content"><div class="item-title">【前端】ARUPI充值通道从长条的修改为方块展现形式</div><div class="item-desc">充值通道展示改为九宫格样式</div></div></div>
+        <div class="list-item"><div class="item-no">35</div><div class="item-content"><div class="item-title">代理后台优化</div><div class="item-desc">代理后台功能优化调整</div></div></div>
+        <div class="list-item"><div class="item-no">36</div><div class="item-content"><div class="item-title">代理后台优化</div><div class="item-desc">代理后台功能优化调整</div></div></div>
+        <div class="list-item"><div class="item-no">37</div><div class="item-content"><div class="item-title">【后端+PHP】USDT增加支持三方补建订单（会员直接转账三方）</div><div class="item-desc">USDT支持三方直转补单功能</div></div></div>
+        <div class="list-item"><div class="item-no">38</div><div class="item-content"><div class="item-title">【域名管理后台】增加CF网站速度优化管理页面</div><div class="item-desc">新增Cloudflare速度优化配置页面</div></div></div>
+        <div class="list-item"><div class="item-no">39</div><div class="item-content"><div class="item-title">增加了下载pwa时的进度条</div><div class="item-desc">PWA下载增加进度条展示</div></div></div>
+        <div class="list-item"><div class="item-no">40</div><div class="item-content"><div class="item-title">【前后端】多语言新增"泰米尔语"和"泰卢固语"</div><div class="item-desc">多语言系统新增两种印度语言支持</div></div></div>
+        <div class="list-item"><div class="item-no">41</div><div class="item-content"><div class="item-title">【后台】彩票-摩托车后台内容</div><div class="item-desc">新增摩托车彩票后台管理功能</div></div></div>
+        <div class="list-item"><div class="item-no">42</div><div class="item-content"><div class="item-title">【前端】AR077的首页版面，新增余额模块</div><div class="item-desc">首页版面增加余额展示模块</div></div></div>
+        <div class="list-item"><div class="item-no">43</div><div class="item-content"><div class="item-title">【前后端】视频wingo辅助显示屏幕</div><div class="item-desc">视频WinGo增加辅助显示功能</div></div></div>
+        <div class="list-item"><div class="item-no">44</div><div class="item-content"><div class="item-title">【前端】ARUPI 收银台页面优化调整</div><div class="item-desc">优化ARUPI收银台界面布局</div></div></div>
+        <div class="list-item"><div class="item-no">45</div><div class="item-content"><div class="item-title">【前端】绑定钱包JAZZCASH时账号字段限定只能输入数字</div><div class="item-desc">JazzCash绑定限制账号只能输入数字</div></div></div>
+        <div class="list-item"><div class="item-no">46</div><div class="item-content"><div class="item-title">【后端】飞机推送充值数据优化</div><div class="item-desc">优化充值数据Telegram推送内容</div></div></div>
+        <div class="list-item"><div class="item-no">47</div><div class="item-content"><div class="item-title">[前端]raja新版面首页的导航条样式优化</div><div class="item-desc">优化Raja版面首页导航样式</div></div></div>
+        <div class="list-item"><div class="item-no">48</div><div class="item-content"><div class="item-title">[ ARB ] ARB提现引导奖励</div><div class="item-desc">ARB提现增加引导奖励功能</div></div></div>
+        <div class="list-item"><div class="item-no">49</div><div class="item-content"><div class="item-title">[前端]充值页面优化</div><div class="item-desc">优化充值页面交互体验</div></div></div>
+        <div class="list-item"><div class="item-no">50</div><div class="item-content"><div class="item-title">[ARB]API调整需求</div><div class="item-desc">调整ARB对接API接口</div></div></div>
+        <div class="list-item"><div class="item-no">51</div><div class="item-content"><div class="item-title">[后端]Game box 飞行员单一钱包对接</div><div class="item-desc">对接Game Box飞行员游戏单一钱包</div></div></div>
+        <div class="list-item"><div class="item-no">52</div><div class="item-content"><div class="item-title">【代理后台】彩票-摩托车后台内容</div><div class="item-desc">代理后台增加摩托车彩票管理</div></div></div>
+        <div class="list-item"><div class="item-no">53</div><div class="item-content"><div class="item-title">>>前台</div><div class="item-desc">前台相关优化需求</div></div></div>
+        <div class="list-item"><div class="item-no">54</div><div class="item-content"><div class="item-title">【前端】提現頁面ARB提現方式右上角增加彩金贈送的比例的角標</div><div class="item-desc">ARB提现入口增加奖励比例角标显示</div></div></div>
+        <div class="list-item"><div class="item-no">55</div><div class="item-content"><div class="item-title">【后端】飞机推送功能后台增加预警提示设置</div><div class="item-desc">Telegram推送增加预警阈值配置</div></div></div>
+        <div class="list-item"><div class="item-no">56</div><div class="item-content"><div class="item-title">【后端】协助钱包项目充值字段调整</div><div class="item-desc">调整钱包项目充值相关字段</div></div></div>
+        <div class="list-item"><div class="item-no">57</div><div class="item-content"><div class="item-title">【前端】ARB提现奖励弹窗优化</div><div class="item-desc">优化ARB提现奖励弹窗展示效果</div></div></div>
+        <div class="list-item"><div class="item-no">58</div><div class="item-content"><div class="item-title">【后台】阿里云oss改成 CF R2桶上传图片</div><div class="item-desc">图片存储从阿里云OSS迁移到CF R2</div></div></div>
+        <div class="list-item"><div class="item-no">59</div><div class="item-content"><div class="item-title">【后台】后台充值/提现预警纸飞机推送优化</div><div class="item-desc">优化充提预警Telegram推送逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">60</div><div class="item-content"><div class="item-title">【ARB优化】ARB提现优化增加ARB返奖比例</div><div class="item-desc">ARB提现增加返奖比例显示</div></div></div>
+        <div class="list-item"><div class="item-no">61</div><div class="item-content"><div class="item-title">【ARUPI】充值流程自动确认优化，申诉状态优化</div><div class="item-desc">优化充值自动确认和申诉处理流程</div></div></div>
+        <div class="list-item"><div class="item-no">62</div><div class="item-content"><div class="item-title">【ARUPI】ARUPI充值通道空单自动匹配其他通道</div><div class="item-desc">空单自动切换到其他可用通道</div></div></div>
+        <div class="list-item"><div class="item-no">63</div><div class="item-content"><div class="item-title">【后台】UPI提现优化,增加快捷提现金额</div><div class="item-desc">UPI提现增加快捷金额选项</div></div></div>
+        <div class="list-item"><div class="item-no">64</div><div class="item-content"><div class="item-title">【ARPAY】撮合失败订单流程优化</div><div class="item-desc">撮合失败直接跳转钱包自选列表</div></div></div>
+        <div class="list-item"><div class="item-no">65</div><div class="item-content"><div class="item-title">【前端】AR014增加GA统计区分邀请码效果</div><div class="item-desc">GA统计增加邀请码维度区分</div></div></div>
+        <div class="list-item"><div class="item-no">66</div><div class="item-content"><div class="item-title">【ARPAY】ARPAY 提现奖励比例优化</div><div class="item-desc">优化ARPAY提现奖励比例计算</div></div></div>
+        <div class="list-item"><div class="item-no">67</div><div class="item-content"><div class="item-title">【ARPAY】ARPAY充值/提现引导说明更换链接</div><div class="item-desc">更新充提引导页面链接地址</div></div></div>
+        <div class="list-item"><div class="item-no">68</div><div class="item-content"><div class="item-title">【后端】会员活动黑名单类型新增"新会员负盈利彩金"</div><div class="item-desc">黑名单新增新会员负盈利彩金类型</div></div></div>
+        <div class="list-item"><div class="item-no">69</div><div class="item-content"><div class="item-title">【ARUPI】充值空单切换通道改成后台配置</div><div class="item-desc">空单通道切换改为后台可配置</div></div></div>
+        <div class="list-item"><div class="item-no">70</div><div class="item-content"><div class="item-title">【ARUPI】ARUPI钱包订单待支付的场景下，再次下单新增取消原因和二次确认</div><div class="item-desc">待支付订单再下单增加取消原因选择</div></div></div>
+        <div class="list-item"><div class="item-no">71</div><div class="item-content"><div class="item-title">【活动管理】活动资讯-活动跳转方式拆分链接为"内链/外链"</div><div class="item-desc">活动跳转支持内链和外链两种方式</div></div></div>
+        <div class="list-item"><div class="item-no">72</div><div class="item-content"><div class="item-title">【ARPAY】ARPAY 充值交易规则跳转修改成内嵌</div><div class="item-desc">交易规则页面改为内嵌展示</div></div></div>
+        <div class="list-item"><div class="item-no">73</div><div class="item-content"><div class="item-title">【后端】增加Appsflyer服务器统计</div><div class="item-desc">对接Appsflyer服务端统计功能</div></div></div>
+        <div class="list-item"><div class="item-no">74</div><div class="item-content"><div class="item-title">【前端】前端项目内静态资源优化，优化图片加载速度</div><div class="item-desc">优化静态资源加载，提升页面性能</div></div></div>
+        <div class="list-item"><div class="item-no">75</div><div class="item-content"><div class="item-title">【后台】入款列表，转账凭证交互优化</div><div class="item-desc">优化入款列表凭证查看交互</div></div></div>
+        <div class="list-item"><div class="item-no">76</div><div class="item-content"><div class="item-title">【前后端】邀请转盘功能移植线上运营平台</div><div class="item-desc">邀请转盘活动移植到运营平台</div></div></div>
+        <div class="list-item"><div class="item-no">77</div><div class="item-content"><div class="item-title">【ARUPI】收银台未支付跳回弹窗优化</div><div class="item-desc">优化未支付订单返回时的弹窗提示</div></div></div>
+        <div class="list-item"><div class="item-no">78</div><div class="item-content"><div class="item-title">【添加银行卡】用户首次添加银行卡输入姓名，自动转换非常规字体为常规英文字母</div><div class="item-desc">银行卡姓名自动转换为标准英文字母</div></div></div>
+        <div class="list-item"><div class="item-no">79</div><div class="item-content"><div class="item-title">【ARUPI】ARUPI收银台页面做多语言印度语翻译</div><div class="item-desc">收银台增加印地语翻译支持</div></div></div>
+        <div class="list-item"><div class="item-no">80</div><div class="item-content"><div class="item-title">【ARUPI】增加ARUPI收银台取消UTR填写的开关</div><div class="item-desc">后台可配置是否需要填写UTR</div></div></div>
+        <div class="list-item"><div class="item-no">81</div><div class="item-content"><div class="item-title">【ARUPI】收银台前端文案优化</div><div class="item-desc">优化收银台界面文案内容</div></div></div>
+        <div class="list-item"><div class="item-no">82</div><div class="item-content"><div class="item-title">【后台】游戏管理增加厂商映射配置功能</div><div class="item-desc">游戏管理支持厂商映射配置</div></div></div>
+        <div class="list-item"><div class="item-no">83</div><div class="item-content"><div class="item-title">【后台】后台日志增加三方游戏 - 子游戏的开关日志记录</div><div class="item-desc">操作日志记录子游戏开关变更</div></div></div>
+        <div class="list-item"><div class="item-no">84</div><div class="item-content"><div class="item-title">【ARUPI】重新复制一个ARUPI一样的通道</div><div class="item-desc">新增ARUPI复制通道支持双入口</div></div></div>
+        <div class="list-item"><div class="item-no">85</div><div class="item-content"><div class="item-title">【后台】下级会员列表增加一个"备注"字段的筛选</div><div class="item-desc">会员列表支持按备注字段筛选</div></div></div>
+        <div class="list-item"><div class="item-no">86</div><div class="item-content"><div class="item-title">【后台】热门游戏管理优化（支持小游戏/彩票配置）</div><div class="item-desc">热门游戏支持小游戏和彩票类型</div></div></div>
+        <div class="list-item"><div class="item-no">87</div><div class="item-content"><div class="item-title">【ARUPI提现】AR UPI提现后台出款方式优化</div><div class="item-desc">优化AR UPI后台出款流程</div></div></div>
+        <div class="list-item"><div class="item-no">88</div><div class="item-content"><div class="item-title">【ARUPI 提现】前端ARUPI方式限制整百提现提示</div><div class="item-desc">非整百提现时显示限制提示</div></div></div>
+        <div class="list-item"><div class="item-no">89</div><div class="item-content"><div class="item-title">【ARUPI代付】前端发起UPI提款，走自动出款逻辑也分配到ARUPI代付10444通道</div><div class="item-desc">自动出款默认分配到ARUPI代付通道</div></div></div>
+        <div class="list-item"><div class="item-no">90</div><div class="item-content"><div class="item-title">【ARUPI】ARUPI 收银台，aritel通道字段优化</div><div class="item-desc">优化Airtel通道相关字段</div></div></div>
+        <div class="list-item"><div class="item-no">91</div><div class="item-content"><div class="item-title">【前后台】邀请转盘活动黑名单</div><div class="item-desc">邀请转盘增加黑名单功能</div></div></div>
+        <div class="list-item"><div class="item-no">92</div><div class="item-content"><div class="item-title">【轮播图管理优化】首页轮播图增加跳转子游戏链接</div><div class="item-desc">轮播图支持跳转到子游戏</div></div></div>
+        <div class="list-item"><div class="item-no">93</div><div class="item-content"><div class="item-title">【版面优化】daman版面优化</div><div class="item-desc">优化Daman版面样式和交互</div></div></div>
+        <div class="list-item"><div class="item-no">94</div><div class="item-content"><div class="item-title">【后台】下级代理线人数达到90层，推送预警到飞机群</div><div class="item-desc">代理层级超限时推送Telegram预警</div></div></div>
+        <div class="list-item"><div class="item-no">95</div><div class="item-content"><div class="item-title">【ARpay】电子钱包查询增加ARpay类型</div><div class="item-desc">电子钱包查询支持ARpay筛选</div></div></div>
+        <div class="list-item"><div class="item-no">96</div><div class="item-content"><div class="item-title">【后台】渠道管理列表新增赠送金额字段</div><div class="item-desc">渠道管理增加赠送金额统计</div></div></div>
+        <div class="list-item"><div class="item-no">97</div><div class="item-content"><div class="item-title">【后台】新增下载App并充值送彩金活动配置</div><div class="item-desc">新增下载APP充值送彩金活动</div></div></div>
+        <div class="list-item"><div class="item-no">98</div><div class="item-content"><div class="item-title">【后台】优化新增提现方式，目前只针对首次绑定短信校验，后续的绑定也需要短信验证</div><div class="item-desc">所有提现方式绑定都需短信验证</div></div></div>
+        <div class="list-item"><div class="item-no">99</div><div class="item-content"><div class="item-title">【下载APP活动】新增下载App充值送彩金活动</div><div class="item-desc">前端实现下载APP送彩金活动页面</div></div></div>
+        <div class="list-item"><div class="item-no">100</div><div class="item-content"><div class="item-title">【充值等级优化】增加充值等级赠送百分比</div><div class="item-desc">充值等级支持配置赠送百分比</div></div></div>
+        <div class="list-item"><div class="item-no">101</div><div class="item-content"><div class="item-title">【快捷提现】快捷提现新增UPI快捷大类</div><div class="item-desc">快捷提现支持UPI提现方式</div></div></div>
+        <div class="list-item"><div class="item-no">102</div><div class="item-content"><div class="item-title">【后台】facebook像素管理新增备注字段</div><div class="item-desc">Facebook像素配置增加备注功能</div></div></div>
+        <div class="list-item"><div class="item-no">103</div><div class="item-content"><div class="item-title">【后台】参数配置USDT/TRX比率新增从交易所获取方式</div><div class="item-desc">USDT/TRX汇率支持交易所自动获取</div></div></div>
+        <div class="list-item"><div class="item-no">104</div><div class="item-content"><div class="item-title">【后台】充提记录增加"次数"字段</div><div class="item-desc">充提记录显示累计次数</div></div></div>
+        <div class="list-item"><div class="item-no">105</div><div class="item-content"><div class="item-title">【后台】外链上传图片优化</div><div class="item-desc">优化外链图片上传功能</div></div></div>
+        <div class="list-item"><div class="item-no">106</div><div class="item-content"><div class="item-title">【后台】VIP等级新增赠送比例上限和开关</div><div class="item-desc">VIP赠送比例增加上限和开关配置</div></div></div>
+        <div class="list-item"><div class="item-no">107</div><div class="item-content"><div class="item-title">【前端】银行卡账号管理列表新增IFSC code字段显示</div><div class="item-desc">银行卡列表显示IFSC Code</div></div></div>
+        <div class="list-item"><div class="item-no">108</div><div class="item-content"><div class="item-title">【后台】优化轮播图跳转子游戏支持只跳转厂商二级页面</div><div class="item-desc">轮播图支持跳转厂商二级页面</div></div></div>
+        <div class="list-item"><div class="item-no">109</div><div class="item-content"><div class="item-title">【前端】电子版面增加客服悬窗</div><div class="item-desc">电子版面增加悬浮客服入口</div></div></div>
+        <div class="list-item"><div class="item-no">110</div><div class="item-content"><div class="item-title">把老后台新增的两个功能搬到代理后台</div><div class="item-desc">代理后台同步老后台新功能</div></div></div>
+        <div class="list-item"><div class="item-no">111</div><div class="item-content"><div class="item-title">【彩票后台】系统管理新增导出中心</div><div class="item-desc">后台新增数据导出中心功能</div></div></div>
+        <div class="list-item"><div class="item-no">112</div><div class="item-content"><div class="item-title">【前/后端】未充值用户能否进游戏开关逻辑优化</div><div class="item-desc">优化未充值用户进入游戏的限制逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">113</div><div class="item-content"><div class="item-title">【老彩票后台】登录报表增加渠道号字段</div><div class="item-desc">登录报表增加渠道来源字段</div></div></div>
+        <div class="list-item"><div class="item-no">114</div><div class="item-content"><div class="item-title">【老彩票后台】轮播图管理／活动资讯增加跳转客服选项</div><div class="item-desc">轮播图和活动支持跳转客服</div></div></div>
+        <div class="list-item"><div class="item-no">115</div><div class="item-content"><div class="item-title">【老彩票后台】ARB增加自动出款开关</div><div class="item-desc">ARB提现增加自动出款开关</div></div></div>
+        <div class="list-item"><div class="item-no">116</div><div class="item-content"><div class="item-title">【老彩票后台】会员列表导出字段新增</div><div class="item-desc">会员导出增加更多字段选项</div></div></div>
+        <div class="list-item"><div class="item-no">117</div><div class="item-content"><div class="item-title">【老彩票后台】投注订单－代理查询页面新增导出按钮</div><div class="item-desc">代理投注查询支持导出功能</div></div></div>
+        <div class="list-item"><div class="item-no">118</div><div class="item-content"><div class="item-title">【老彩票后台】开关配置新增转盘审核中订单，禁止再次发起提现</div><div class="item-desc">转盘审核中禁止重复发起提现</div></div></div>
+        <div class="list-item"><div class="item-no">119</div><div class="item-content"><div class="item-title">【老彩票后台】下载APP充值领金活动优化</div><div class="item-desc">优化下载APP活动规则和展示</div></div></div>
+        <div class="list-item"><div class="item-no">120</div><div class="item-content"><div class="item-title">【老彩票后台】充值通道-常用修改新增"优惠可用设备"</div><div class="item-desc">充值优惠支持按设备类型限制</div></div></div>
+        <div class="list-item"><div class="item-no">121</div><div class="item-content"><div class="item-title">【老彩票后台】锦标赛新增支持子游戏维度</div><div class="item-desc">锦标赛支持按子游戏维度配置</div></div></div>
+        <div class="list-item"><div class="item-no">122</div><div class="item-content"><div class="item-title">【老彩票需求】前台用户绑定银行卡页面，用户输入IFSC code自动识别银行归属</div><div class="item-desc">IFSC Code自动识别银行名称</div></div></div>
+        <div class="list-item"><div class="item-no">123</div><div class="item-content"><div class="item-title">【老彩票后台】报表管理-数据统计页面，新增4个分指标</div><div class="item-desc">数据统计新增4个细分指标</div></div></div>
+        <div class="list-item"><div class="item-no">124</div><div class="item-content"><div class="item-title">【老彩票后台】新增老会员回归奖励打码配置</div><div class="item-desc">老会员回归奖励支持打码配置</div></div></div>
+        <div class="list-item"><div class="item-no">125</div><div class="item-content"><div class="item-title">【老彩票后台】参数配置新增同IP短信下发数上限配置</div><div class="item-desc">同IP短信发送数量增加上限限制</div></div></div>
+        <div class="list-item"><div class="item-no">126</div><div class="item-content"><div class="item-title">【老彩票后台】APP下载地址新增隐私APP配置</div><div class="item-desc">APP下载支持隐私APP配置</div></div></div>
+        <div class="list-item"><div class="item-no">127</div><div class="item-content"><div class="item-title">【老彩票后台】前端页面滑动时悬窗隐藏优化</div><div class="item-desc">页面滚动时自动隐藏悬浮窗</div></div></div>
+        <div class="list-item"><div class="item-no">128</div><div class="item-content"><div class="item-title">【代理后台】红包发放新增一个类型</div><div class="item-desc">代理红包增加新的发放类型</div></div></div>
+        <div class="list-item"><div class="item-no">129</div><div class="item-content"><div class="item-title">【老彩票后台】会员详情新增语种字段</div><div class="item-desc">会员详情显示用户语言偏好</div></div></div>
+        <div class="list-item"><div class="item-no">130</div><div class="item-content"><div class="item-title">【老彩票后台】实时数据报表</div><div class="item-desc">新增实时数据统计报表</div></div></div>
+        <div class="list-item"><div class="item-no">131</div><div class="item-content"><div class="item-title">【老彩票后台】下载中心优化</div><div class="item-desc">优化下载中心功能和体验</div></div></div>
+        <div class="list-item"><div class="item-no">132</div><div class="item-content"><div class="item-title">【老彩票后台】奖励中心优化</div><div class="item-desc">优化奖励中心展示和领取流程</div></div></div>
+        <div class="list-item"><div class="item-no">133</div><div class="item-content"><div class="item-title">【老彩票后台】充值赠送优化</div><div class="item-desc">优化充值赠送活动配置</div></div></div>
+        <div class="list-item"><div class="item-no">134</div><div class="item-content"><div class="item-title">【老彩票后台】数据统计新增下载APP 并充值活动统计</div><div class="item-desc">数据统计增加下载APP活动维度</div></div></div>
+        <div class="list-item"><div class="item-no">135</div><div class="item-content"><div class="item-title">【老彩票后台】锦标赛增加子游戏，前端提示文案优化</div><div class="item-desc">锦标赛子游戏文案提示优化</div></div></div>
+        <div class="list-item"><div class="item-no">136</div><div class="item-content"><div class="item-title">【老彩票后台】后台增加是否限制渠道域名调用api</div><div class="item-desc">API增加渠道域名访问限制</div></div></div>
+        <div class="list-item"><div class="item-no">137</div><div class="item-content"><div class="item-title">【老彩票后台】对账提现单优化</div><div class="item-desc">优化提现对账功能</div></div></div>
+        <div class="list-item"><div class="item-no">138</div><div class="item-content"><div class="item-title">【老彩票后台】系统管理员的权限优化</div><div class="item-desc">优化管理员权限配置</div></div></div>
+        <div class="list-item"><div class="item-no">139</div><div class="item-content"><div class="item-title">【老彩票后台】推广域名过滤掉"www.localhost.com"</div><div class="item-desc">过滤无效的localhost推广域名</div></div></div>
+        <div class="list-item"><div class="item-no">140</div><div class="item-content"><div class="item-title">【老彩票后台】代付通道ID： 10505归属修改为UPI大类</div><div class="item-desc">10505通道迁移到UPI分类</div></div></div>
+        <div class="list-item"><div class="item-no">141</div><div class="item-content"><div class="item-title">【老彩票后台】下载APP领彩金优化同设备防刷机制优化</div><div class="item-desc">下载活动增加同设备防刷限制</div></div></div>
+        <div class="list-item"><div class="item-no">142</div><div class="item-content"><div class="item-title">【老彩票后台】充值页面充值通道增加VIP比例显示</div><div class="item-desc">充值页面显示VIP专属比例</div></div></div>
+        <div class="list-item"><div class="item-no">143</div><div class="item-content"><div class="item-title">【老彩票前台】黑金版面增加显示"welcome to "</div><div class="item-desc">黑金版面增加欢迎文案展示</div></div></div>
+        <div class="list-item"><div class="item-no">144</div><div class="item-content"><div class="item-title">后台对账优化</div><div class="item-desc">优化后台对账功能</div></div></div>
+        <div class="list-item"><div class="item-no">145</div><div class="item-content"><div class="item-title">【老彩票后台】提现锁定逻辑优化</div><div class="item-desc">优化提现锁定判断逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">146</div><div class="item-content"><div class="item-title">【老彩票后台】活动管理-活动资讯优化富文本方式无法上传图片</div><div class="item-desc">修复活动富文本图片上传问题</div></div></div>
+        <div class="list-item"><div class="item-no">147</div><div class="item-content"><div class="item-title">【老彩票后台】VIP等级列表增加"单日提款次数上限"</div><div class="item-desc">VIP等级增加每日提款次数限制</div></div></div>
+        <div class="list-item"><div class="item-no">148</div><div class="item-content"><div class="item-title">【老彩票后台】邀请转盘出款审核页面增加订单号查询功能</div><div class="item-desc">转盘审核支持订单号搜索</div></div></div>
+        <div class="list-item"><div class="item-no">149</div><div class="item-content"><div class="item-title">【老彩票后台】提现出款列表逻辑优化</div><div class="item-desc">优化出款列表查询和展示逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">150</div><div class="item-content"><div class="item-title">【老彩票后台】是否开启浏览器控制台调试开关</div><div class="item-desc">增加前端控制台调试开关配置</div></div></div>
+        <div class="list-item"><div class="item-no">151</div><div class="item-content"><div class="item-title">【老彩票后台】渠道注册送彩金增加前端弹窗，用户手动领取</div><div class="item-desc">渠道彩金改为弹窗手动领取方式</div></div></div>
+        <div class="list-item"><div class="item-no">152</div><div class="item-content"><div class="item-title">【老彩票后台】奖金中心的图标增加配置图片</div><div class="item-desc">奖金中心图标支持自定义配置</div></div></div>
+        <div class="list-item"><div class="item-no">153</div><div class="item-content"><div class="item-title">【老彩票后台】长龙图标/开关单独配置</div><div class="item-desc">长龙功能图标和开关独立配置</div></div></div>
+        <div class="list-item"><div class="item-no">154</div><div class="item-content"><div class="item-title">【老彩票后台】充值通道增加VIP领取配置</div><div class="item-desc">充值通道增加VIP奖励配置</div></div></div>
+        <div class="list-item"><div class="item-no">155</div><div class="item-content"><div class="item-title">【老彩票后台】数据统计新增VIP通道活动统计</div><div class="item-desc">数据统计增加VIP通道维度</div></div></div>
+        <div class="list-item"><div class="item-no">156</div><div class="item-content"><div class="item-title">【老彩票后台】提现流程增加详细三方操作详情</div><div class="item-desc">提现记录显示三方操作详情</div></div></div>
+        <div class="list-item"><div class="item-no">157</div><div class="item-content"><div class="item-title">【老彩票后台】网站管理-消息模板-语言新增"阿拉伯语"</div><div class="item-desc">消息模板新增阿拉伯语支持</div></div></div>
+        <div class="list-item"><div class="item-no">158</div><div class="item-content"><div class="item-title">【老彩票后台】会员管理-活动黑名单增加"VIP等级充值奖励"黑名单类型</div><div class="item-desc">黑名单新增VIP充值奖励类型</div></div></div>
+        <div class="list-item"><div class="item-no">159</div><div class="item-content"><div class="item-title">【老彩票后台】长龙各状态提示优化</div><div class="item-desc">优化长龙功能状态提示文案</div></div></div>
+        <div class="list-item"><div class="item-no">160</div><div class="item-content"><div class="item-title">【老彩票后台】下载APP 充值领金活动增加充值金额/同设备/同IP领取上限配置</div><div class="item-desc">下载活动增加多维度领取限制</div></div></div>
+        <div class="list-item"><div class="item-no">161</div><div class="item-content"><div class="item-title">【老彩票后台】活动资讯详情在线客服，增加活动图片配置</div><div class="item-desc">活动详情客服入口支持图片配置</div></div></div>
+        <div class="list-item"><div class="item-no">162</div><div class="item-content"><div class="item-title">【老彩票后台】系统管理-接口配置访问权限放开</div><div class="item-desc">开放接口配置的访问权限</div></div></div>
+        <div class="list-item"><div class="item-no">163</div><div class="item-content"><div class="item-title">后台优化调整</div><div class="item-desc">后台功能优化调整</div></div></div>
+        <div class="list-item"><div class="item-no">164</div><div class="item-content"><div class="item-title">【老彩票后台】老平台逻辑处理，后台厂商配置，前端注单展示</div><div class="item-desc">优化厂商配置和注单展示逻辑</div></div></div>
+        <div class="list-item"><div class="item-no">165</div><div class="item-content"><div class="item-title">【老彩票后台】数据报表合计字段文案优化</div><div class="item-desc">优化报表合计行文案显示</div></div></div>
+        <div class="list-item"><div class="item-no">166</div><div class="item-content"><div class="item-title">【老彩票后台】优化一个IFSCcode对应多个银行的前端交互</div><div class="item-desc">IFSC对应多银行时支持用户选择</div></div></div>
+        <div class="list-item"><div class="item-no">167</div><div class="item-content"><div class="item-title">【老彩票后台】入款记录增加VIP等级筛选条件</div><div class="item-desc">入款记录支持按VIP等级筛选</div></div></div>
+        <div class="list-item"><div class="item-no">168</div><div class="item-content"><div class="item-title">【老彩票后台】隐私APP下载增加开关配置</div><div class="item-desc">隐私APP下载支持开关控制</div></div></div>
+        <div class="list-item"><div class="item-no">169</div><div class="item-content"><div class="item-title">【老彩票后台】邀请转盘次日留存率公式优化</div><div class="item-desc">优化转盘活动留存率计算公式</div></div></div>
+        <div class="list-item"><div class="item-no">170</div><div class="item-content"><div class="item-title">【老彩票后台】UPI类型提款风险提示弹窗</div><div class="item-desc">UPI提款增加风险提示弹窗</div></div></div>
+        <div class="list-item"><div class="item-no">171</div><div class="item-content"><div class="item-title">【老彩票后台】每日每周任务的名称和描述多语言无延迟优化</div><div class="item-desc">优化每日任务多语言加载速度</div></div></div>
+        <div class="list-item"><div class="item-no">172</div><div class="item-content"><div class="item-title">【老彩票后台】自动出款电子钱包优化（KBZ/WAVE）</div><div class="item-desc">KBZ/WAVE钱包自动出款优化</div></div></div>
+        <div class="list-item"><div class="item-no">173</div><div class="item-content"><div class="item-title">【老彩票后台】自动出款打码倍数支持小数位</div><div class="item-desc">自动出款打码倍数支持小数配置</div></div></div>
+        <div class="list-item"><div class="item-no">174</div><div class="item-content"><div class="item-title">【紧急需求】会员列表增加备注查询条件/批量删除备注功能</div><div class="item-desc">会员列表支持备注搜索和批量删除</div></div></div>
+        <div class="list-item"><div class="item-no">175</div><div class="item-content"><div class="item-title">【老彩票后台】AR009-尼日利亚MTN前端增加下方脚本代码</div><div class="item-desc">尼日利亚站点增加MTN脚本</div></div></div>
+        <div class="list-item"><div class="item-no">176</div><div class="item-content"><div class="item-title">【老彩票后台】AR UPIPAY状态优化</div><div class="item-desc">优化AR UPIPAY订单状态处理</div></div></div>
+        <div class="list-item"><div class="item-no">177</div><div class="item-content"><div class="item-title">三方游戏状态由游戏Saas端同步给平台处理维护和禁用</div><div class="item-desc">游戏状态由SaaS端同步控制</div></div></div>
+        <div class="list-item"><div class="item-no">178</div><div class="item-content"><div class="item-title">【老彩票后台】后台-新增快捷KYC UPI提现大类</div><div class="item-desc">后台新增FAST UPI提现类型配置</div></div></div>
+        <div class="list-item"><div class="item-no">179</div><div class="item-content"><div class="item-title">【老彩票后台】前端-新增FAST UPI提现大类</div><div class="item-desc">前端新增FAST UPI提现入口</div></div></div>
+        <div class="list-item"><div class="item-no">180</div><div class="item-content"><div class="item-title">【老彩票后台】会员列表"首次登陆时间"优化</div><div class="item-desc">优化首次登录时间字段显示</div></div></div>
+        <div class="list-item"><div class="item-no">181</div><div class="item-content"><div class="item-title">【老彩票后台】每日每周活动优化</div><div class="item-desc">优化每日每周活动功能</div></div></div>
+        <div class="list-item"><div class="item-no">182</div><div class="item-content"><div class="item-title">【老彩票后台】后台自动打包功能</div><div class="item-desc">后台新增自动打包APP功能</div></div></div>
+        <div class="list-item"><div class="item-no">183</div><div class="item-content"><div class="item-title">【老彩票后台】会员活动黑名单优化</div><div class="item-desc">优化会员活动黑名单管理</div></div></div>
+        <div class="list-item"><div class="item-no">184</div><div class="item-content"><div class="item-title">【老彩票后台】同IP报表排序条件优化</div><div class="item-desc">优化同IP报表排序规则</div></div></div>
+        <div class="list-item"><div class="item-no">185</div><div class="item-content"><div class="item-title">【老彩票后台】提现记录页面增加提现倍数查询</div><div class="item-desc">提现记录支持按倍数筛选</div></div></div>
+        <div class="list-item"><div class="item-no">186</div><div class="item-content"><div class="item-title">【老彩票后台】添加锦标赛子游戏下拉框交互优化</div><div class="item-desc">优化锦标赛子游戏选择交互</div></div></div>
+        <div class="list-item"><div class="item-no">187</div><div class="item-content"><div class="item-title">【老彩票后台】Easypaisa/Jazzcash绑定规则优化</div><div class="item-desc">优化电子钱包绑定规则</div></div></div>
+        <div class="list-item"><div class="item-no">188</div><div class="item-content"><div class="item-title">【代理后台】红包派送增加接收范围优化</div><div class="item-desc">红包派送支持更多接收范围选项</div></div></div>
+        <div class="list-item"><div class="item-no">189</div><div class="item-content"><div class="item-title">【老彩票后台】提现通道常用修改增加支持出款类型</div><div class="item-desc">提现通道配置支持出款类型筛选</div></div></div>
+        <div class="list-item"><div class="item-no">190</div><div class="item-content"><div class="item-title">【老彩票后台】原生包/套壳包支持firebase推送</div><div class="item-desc">APP支持Firebase消息推送</div></div></div>
+        <div class="list-item"><div class="item-no">191</div><div class="item-content"><div class="item-title">【老彩票后台】出款详情增加自动出款类型的出款详情内容</div><div class="item-desc">出款详情显示自动出款相关信息</div></div></div>
+        <div class="list-item"><div class="item-no">192</div><div class="item-content"><div class="item-title">【老彩票后台】代付通道常用修改增加通道余额低于多少直接关闭该通道</div><div class="item-desc">代付通道余额不足时自动关闭</div></div></div>
+        <div class="list-item"><div class="item-no">193</div><div class="item-content"><div class="item-title">【老彩票后台】提现锁定总次数搜索条件优化</div><div class="item-desc">优化提现锁定次数搜索功能</div></div></div>
+        <div class="list-item"><div class="item-no">194</div><div class="item-content"><div class="item-title">【老彩票后台】自动出款配置增加币种限制/会员游戏非盈利状态自动出款</div><div class="item-desc">自动出款增加币种和盈利状态限制</div></div></div>
+        <div class="list-item"><div class="item-no">195</div><div class="item-content"><div class="item-title">【老彩票后台】单手机号绑定上限配置</div><div class="item-desc">单手机号绑定账户数量限制配置</div></div></div>
+        <div class="list-item"><div class="item-no">196</div><div class="item-content"><div class="item-title">【老彩票后台】提现记录同步增加同代理出款笔数字段</div><div class="item-desc">提现记录显示同代理出款笔数</div></div></div>
+        <div class="list-item"><div class="item-no">197</div><div class="item-content"><div class="item-title">【老彩票后台】报表管理-新增实时数据比对报表</div><div class="item-desc">新增实时数据比对功能</div></div></div>
+        <div class="list-item"><div class="item-no">198</div><div class="item-content"><div class="item-title">【老彩票后台】每日/每周配置奖励金额输入框校验优化</div><div class="item-desc">优化奖励金额输入校验规则</div></div></div>
+        <div class="list-item"><div class="item-no">199</div><div class="item-content"><div class="item-title">【老彩票后台】新增出款组别权限配置</div><div class="item-desc">新增出款组别权限管理功能</div></div></div>
+        <div class="list-item"><div class="item-no">200</div><div class="item-content"><div class="item-title">【邀请转盘】增加邀请转盘自动审核出款订单过滤配置</div><div class="item-desc">转盘自动审核增加订单过滤配置</div></div></div>
+        <div class="list-item"><div class="item-no">201</div><div class="item-content"><div class="item-title">【ARUPI】针对10444/10445两个通道进行非整百提现限制的开关配置</div><div class="item-desc">支持配置非整百提现限制开关</div></div></div>
+        <div class="list-item"><div class="item-no">202</div><div class="item-content"><div class="item-title">【老彩票后台】自动出款新增AR钱包bank出款开关</div><div class="item-desc">自动出款增加AR钱包银行开关</div></div></div>
+        <div class="list-item"><div class="item-no">203</div><div class="item-content"><div class="item-title">【老彩票后台】用户被拉黑后，无法发起提现操作</div><div class="item-desc">黑名单用户禁止发起提现</div></div></div>
+        <div class="list-item"><div class="item-no">204</div><div class="item-content"><div class="item-title">【老彩票后台】充值次数数据同步优化</div><div class="item-desc">优化充值次数数据同步机制</div></div></div>
+        <div class="list-item"><div class="item-no">205</div><div class="item-content"><div class="item-title">【老彩票后台】入款记录页面数据查询超时问题优化</div><div class="item-desc">优化入款记录查询性能</div></div></div>
+        <div class="list-item"><div class="item-no">206</div><div class="item-content"><div class="item-title">AR001-82bet-印度维护群12.6（后台增加总派彩和总投注的查询展示）</div><div class="item-desc">后台增加总派彩和总投注统计</div></div></div>
+        <div class="list-item"><div class="item-no">207</div><div class="item-content"><div class="item-title">【老彩票后台】提现锁定/提现记录页面表格查询数据优化</div><div class="item-desc">优化提现相关页面查询性能</div></div></div>
+        <div class="list-item"><div class="item-no">208</div><div class="item-content"><div class="item-title">【老彩票后台】自动出款负盈利优化调整</div><div class="item-desc">优化自动出款负盈利判断逻辑</div></div></div>
+    </div>
+</body>
+</html>

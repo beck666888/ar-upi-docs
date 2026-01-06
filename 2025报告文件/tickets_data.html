@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工单SaaS需求数据 - 2025年度迭代汇总</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .header-section p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .count-bar {
+            background: #f8f9fa;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #6c757d;
+            border-bottom: 1px solid #eee;
+        }
+        .list-container {
+            background: white;
+        }
+        .list-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+        .list-item:hover { background: #f8f9fa; }
+        .list-item:last-child { border-bottom: none; }
+        .item-no {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .item-content { flex: 1; }
+        .item-title { font-size: 14px; color: #495057; font-weight: 500; }
+        .item-desc { font-size: 12px; color: #888; margin-top: 4px; }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>工单SaaS迭代需求</h1>
+        <p>2025年度共完成34项工单系统功能迭代，涵盖自动转发、关键字匹配、日报统计、域名优化等</p>
+    </div>
+    <div class="count-bar">共 34 条记录</div>
+    <div class="list-container">
+        <div class="list-item">
+            <div class="item-no">1</div>
+            <div class="item-content">
+                <div class="item-title">【工单详情优化】工单详情新增AI chat history记录</div>
+                <div class="item-desc">记录用户在AI自助客服系统的聊天内容，显示在工单详情中</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">2</div>
+            <div class="item-content">
+                <div class="item-title">【工单后台】工单日报-工单员工统计增加字段</div>
+                <div class="item-desc">工单员工统计列表增加工单类型名称等字段项</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">3</div>
+            <div class="item-content">
+                <div class="item-title">各站点域名飞机机器人预警</div>
+                <div class="item-desc">域名访问数对比昨日下降超配置值时触发飞机群预警</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">4</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：自动转发三方信息，开关控制增加用户名</div>
+                <div class="item-desc">转发内容中增加用户名信息展示</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">5</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 工单系统：工单后台主动提单</div>
+                <div class="item-desc">支持后台人员主动创建工单功能</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">6</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：自定义转发消息需要记录到三方转发记录</div>
+                <div class="item-desc">自定义转发的消息记录到三方转发查询中</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">7</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：数据导出条数限制调整</div>
+                <div class="item-desc">导出数据上限从5千条增加到1万5条</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">8</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：工单详情弹窗布局优化</div>
+                <div class="item-desc">文字信息整合为两列，增加三方信息查询空间和刷新按钮</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">9</div>
+            <div class="item-content">
+                <div class="item-title">工单系统： 把有提供视频/PDF的订单都转到待处理（此功能需要开关）</div>
+                <div class="item-desc">视频/PDF附件订单自动转待处理，支持开关配置</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">10</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：存款未到账开启所有的国家自动化</div>
+                <div class="item-desc">所有国家存款未到账工单开启自动化处理</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">11</div>
+            <div class="item-content">
+                <div class="item-title">工单充值未到账，数据查询时间限制优化</div>
+                <div class="item-desc">取消历史订单查询时间限制，支持提交历史订单工单</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">12</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 工单 三方自定义信息功能</div>
+                <div class="item-desc">支持文字、图片、PDF和视频文件的自定义发送</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">13</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：新增工单类型"删除银行卡（全部取款方式）"</div>
+                <div class="item-desc">审核通过后同时删除用户银行卡和电子钱包</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">14</div>
+            <div class="item-content">
+                <div class="item-title">工单系统关键字匹配规则优化</div>
+                <div class="item-desc">完整关键字精确匹配工单类型，部分关键字展示多选项</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">15</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 工单系统关键字匹配记录</div>
+                <div class="item-desc">自动匹配回复的工单生成记录，新增"已匹配"状态类型</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">16</div>
+            <div class="item-content">
+                <div class="item-title">工单系统修改密码优化</div>
+                <div class="item-desc">人工核对后系统自动生成新密码并回复用户</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">17</div>
+            <div class="item-content">
+                <div class="item-title">工单系统，提现未到账自动转发优化</div>
+                <div class="item-desc">提高转发时效性，收到工单及时转发</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">18</div>
+            <div class="item-content">
+                <div class="item-title">工单系统  关键字库 10个国家数据导入</div>
+                <div class="item-desc">导入10个国家的关键字库数据</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">19</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 工单系统域名管理，增加内外链类型</div>
+                <div class="item-desc">域名管理支持区分内链和外链类型</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">20</div>
+            <div class="item-content">
+                <div class="item-title">[多人]  工单系统新功能开发</div>
+                <div class="item-desc">提现未到账自动转发飞机群 + 关键字匹配推送工单类型</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">21</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 老后台和工单系统 ，域名优化</div>
+                <div class="item-desc">前端直接读主站API域名，跳过中转解决报毒问题</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">22</div>
+            <div class="item-content">
+                <div class="item-title">客户端文件上传限制调整</div>
+                <div class="item-desc">上传文件限制从10M调整为50M</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">23</div>
+            <div class="item-content">
+                <div class="item-title">客户端文件上传限制调整</div>
+                <div class="item-desc">上传限制和触发提示文案同步调整</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">24</div>
+            <div class="item-content">
+                <div class="item-title">转发自动化-前端</div>
+                <div class="item-desc">存款未到账工单支持自动转发，站点自行配置开关</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">25</div>
+            <div class="item-content">
+                <div class="item-title">新增补单三方</div>
+                <div class="item-desc">对接umpay补单接口</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">26</div>
+            <div class="item-content">
+                <div class="item-title">工单后台的3个优化需求</div>
+                <div class="item-desc">工单附件、一对一工单提醒、图片有效性判断和自动转发</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">27</div>
+            <div class="item-content">
+                <div class="item-title">提现工单快捷入口</div>
+                <div class="item-desc">老彩票提现记录中增加提交工单快捷入口</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">28</div>
+            <div class="item-content">
+                <div class="item-title">一对一客服工单类型的评论数据下载</div>
+                <div class="item-desc">新增评论导出按钮，支持导出工单号和对话内容</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">29</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 自营支付通道存款单的特殊处理+所有工单备注内容可传图片</div>
+                <div class="item-desc">三方映射码小于10000的工单直接进入待处理，备注支持图片</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">30</div>
+            <div class="item-content">
+                <div class="item-title">三个优化需求</div>
+                <div class="item-desc">工单附件展示、一对一工单提醒、图片有效性判断优化</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">31</div>
+            <div class="item-content">
+                <div class="item-title">转发自动化</div>
+                <div class="item-desc">转发调整为自动化，支持站点自行配置</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">32</div>
+            <div class="item-content">
+                <div class="item-title">[多人] 一对一客服新增自动回复</div>
+                <div class="item-desc">站点配置匹配词汇，命中后自动完成工单并回复</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">33</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：批量创建日报权限账户</div>
+                <div class="item-desc">批量创建各站点日报查询权限账户</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">34</div>
+            <div class="item-content">
+                <div class="item-title">工单系统：移植新平台已完成的日报表 + 三方转发查询记录</div>
+                <div class="item-desc">移植日报表并增加三方转发查询功能</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

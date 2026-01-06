@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARPay需求数据 - 2025年度支付模块汇总</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .header-section p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .count-bar {
+            background: #f8f9fa;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #6c757d;
+            border-bottom: 1px solid #eee;
+        }
+        .list-container {
+            background: white;
+        }
+        .list-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+        .list-item:hover { background: #f8f9fa; }
+        .list-item:last-child { border-bottom: none; }
+        .item-no {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .item-content { flex: 1; }
+        .item-title { font-size: 14px; color: #495057; font-weight: 500; }
+        .item-desc { font-size: 12px; color: #888; margin-top: 4px; }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>ARPay/ARUPI 相关需求</h1>
+        <p>2025年度共完成40项支付相关需求，包括ARUPI收银台优化、ARB提现奖励、FAST UPI新功能等</p>
+    </div>
+    <div class="count-bar">共 40 条记录</div>
+    <div class="list-container">
+        <div class="list-item">
+            <div class="item-no">1</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】fastupi下的通道"26003/26004"这些通道的代付前台订单增加联系客服入口</div>
+                <div class="item-desc">为FASTUPI代付通道订单页面新增客服入口，方便用户咨询</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">2</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】FASTUPI增加3个新的银行</div>
+                <div class="item-desc">新增slice银行并支持pin码输入功能</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">3</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】自动出款新增AR钱包bank出款开关</div>
+                <div class="item-desc">后台增加AR钱包银行出款的自动化开关配置</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">4</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】针对10444/10445两个通道进行非整百提现限制的开关配置</div>
+                <div class="item-desc">支持后台配置是否限制非整百金额提现</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">5</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】前端-新增FAST UPI提现大类</div>
+                <div class="item-desc">将UPI和FAST UPI拆分为独立大类，新UPI走KYC流程</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">6</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】后台-新增快捷KYC UPI提现大类</div>
+                <div class="item-desc">配置管理、报表统计、电子钱包查询等模块新增FAST UPI支持</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">7</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】AR UPIPAY状态优化</div>
+                <div class="item-desc">钱包异常时彩票端订单保留并可正常查询</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">8</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】UPI类型提款风险提示弹窗</div>
+                <div class="item-desc">UPI提款时增加风险提示弹窗功能</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">9</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】代付通道ID： 10505归属修改为UPI大类</div>
+                <div class="item-desc">将10505通道从bank类型迁移到UPI出款类型</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">10</div>
+            <div class="item-content">
+                <div class="item-title">【老彩票后台】ARB增加自动出款开关</div>
+                <div class="item-desc">后台新增ARB自动出款功能开关</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">11</div>
+            <div class="item-content">
+                <div class="item-title">【快捷提现】快捷提现新增UPI快捷大类</div>
+                <div class="item-desc">支持UPI快捷提现功能</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">12</div>
+            <div class="item-content">
+                <div class="item-title">【ARpay】电子钱包查询增加ARpay类型</div>
+                <div class="item-desc">电子钱包查询筛选项新增ARpay选项</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">13</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】ARUPI 收银台，aritel通道字段优化</div>
+                <div class="item-desc">按钱包需求优化aritel通道相关字段</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">14</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI代付】前端发起UPI提款，走自动出款逻辑也分配到ARUPI代付10444通道</div>
+                <div class="item-desc">自动出款金额区间内默认分配到ARUPI代付通道</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">15</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI 提现】前端ARUPI方式限制整百提现提示</div>
+                <div class="item-desc">非整百金额提现时显示限制提示</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">16</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI提现】AR UPI提现后台出款方式优化</div>
+                <div class="item-desc">优化后台AR UPI出款流程</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">17</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】重新复制一个ARUPI一样的通道</div>
+                <div class="item-desc">前后台新增ARUPI复制通道，支持双入口同时开启</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">18</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】收银台前端文案优化</div>
+                <div class="item-desc">优化AR UPI收银台界面文案内容</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">19</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】增加ARUPI收银台取消UTR填写的开关</div>
+                <div class="item-desc">后台可配置是否隐藏UTR输入框</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">20</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】ARUPI收银台页面做多语言印度语翻译</div>
+                <div class="item-desc">收银台根据站点语种显示英语或印地语</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">21</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】收银台未支付跳回弹窗优化</div>
+                <div class="item-desc">优化取消弹窗文案，增加UTR跳转提示和单独输入界面</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">22</div>
+            <div class="item-content">
+                <div class="item-title">【ARPAY】ARPAY 充值交易规则跳转修改成内嵌</div>
+                <div class="item-desc">交易规则页面由外跳改为内嵌展示</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">23</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】ARUPI钱包订单待支付的场景下，再次下单新增取消原因和二次确认</div>
+                <div class="item-desc">收银台过期但钱包待支付时，新增取消原因选择</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">24</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】充值空单切换通道改成后台配置</div>
+                <div class="item-desc">空单通道切换改为按充值额度配置不同通道</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">25</div>
+            <div class="item-content">
+                <div class="item-title">【ARPAY】ARPAY充值/提现引导说明更换链接</div>
+                <div class="item-desc">更新充值提现引导页面链接地址</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">26</div>
+            <div class="item-content">
+                <div class="item-title">【ARPAY】ARPAY 提现奖励比例优化</div>
+                <div class="item-desc">奖励比例为0时不生成奖励记录</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">27</div>
+            <div class="item-content">
+                <div class="item-title">【ARPAY】撮合失败订单流程优化</div>
+                <div class="item-desc">撮合失败直接跳转钱包自选列表，不生成充值订单</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">28</div>
+            <div class="item-content">
+                <div class="item-title">【后台】UPI提现优化,增加快捷提现金额</div>
+                <div class="item-desc">增加UPI绑定二次确认和快捷提现金额配置</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">29</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】ARUPI充值通道空单自动匹配其他通道</div>
+                <div class="item-desc">空单自动切换至其他可用通道</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">30</div>
+            <div class="item-content">
+                <div class="item-title">【ARUPI】充值流程自动确认优化，申诉状态优化</div>
+                <div class="item-desc">金额不符时冻结处理，部分场景改为支持确认到账</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">31</div>
+            <div class="item-content">
+                <div class="item-title">【ARB优化】ARB提现优化增加ARB返奖比例</div>
+                <div class="item-desc">显示ARB返奖比例，提现页面文案支持后台配置</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">32</div>
+            <div class="item-content">
+                <div class="item-title">[ARB]API调整需求</div>
+                <div class="item-desc">新增selectAmountType参数和页面埋点事件接口</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">33</div>
+            <div class="item-content">
+                <div class="item-title">[ ARB ] ARB提现引导奖励</div>
+                <div class="item-desc">ARB提现增加引导奖励功能</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">34</div>
+            <div class="item-content">
+                <div class="item-title">【前端】ARUPI 收银台页面优化调整</div>
+                <div class="item-desc">UPI三期收银台界面优化</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">35</div>
+            <div class="item-content">
+                <div class="item-title">【前端】ARUPI充值通道从长条的修改为方块展现形式</div>
+                <div class="item-desc">充值通道展示由长条改为九宫格样式</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">36</div>
+            <div class="item-content">
+                <div class="item-title">【前后端】优化当前含有AR UPI 未完成的订单，各状态间的弹窗提示</div>
+                <div class="item-desc">优化未完成订单各状态下的弹窗交互</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">37</div>
+            <div class="item-content">
+                <div class="item-title">[充值通道]ar upi pay前端需求优化</div>
+                <div class="item-desc">AR UPI Pay前端交互和展示优化</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">38</div>
+            <div class="item-content">
+                <div class="item-title">[ 前端 ]ARUPIpay优化成为彩票内置页面</div>
+                <div class="item-desc">收银台和申诉页面内置到彩票系统</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">39</div>
+            <div class="item-content">
+                <div class="item-title">【前端】arupipay收银台从外跳，修改为内嵌</div>
+                <div class="item-desc">收银台页面由外跳改为内嵌方式</div>
+            </div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">40</div>
+            <div class="item-content">
+                <div class="item-title">【前后端】Arb激活流程调整</div>
+                <div class="item-desc">根据注册类型自动获取或引导绑定手机号传给ARB</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

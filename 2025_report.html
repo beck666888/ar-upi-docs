@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年度业务总结汇报</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.1)" stroke-width="2" fill="none"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 20px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .year-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Content Section */
+        .content {
+            padding: 50px 40px;
+        }
+
+        /* Stats Overview */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .stat-card .number {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-card .label {
+            font-size: 14px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Business Section */
+        .business-section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section-icon {
+            font-size: 36px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #2c3e50;
+        }
+
+        .section-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 32px;
+            font-weight: 900;
+            margin-right: 10px;
+        }
+
+        /* Subsection */
+        .subsection {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid #667eea;
+        }
+
+        .subsection-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #495057;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .subsection-title::before {
+            content: '▸';
+            color: #667eea;
+            font-size: 24px;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .metric-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .metric-item:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .metric-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 14px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        /* List Items */
+        .feature-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .feature-list li {
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-list li:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Game Platform Cards */
+        .game-platforms {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid #667eea;
+        }
+
+        .platform-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .platform-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #2c3e50;
+        }
+
+        .platform-status {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-online {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-testing {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-pending {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .platform-content {
+            color: #495057;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .team-title {
+            font-size: 32px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2c3e50;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .team-role {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .team-role::before {
+            content: '👥';
+            font-size: 24px;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .member-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6c757d;
+            font-size: 14px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .stats-overview {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Detail buttons */
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .detail-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .detail-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 26px rgba(102, 126, 234, 0.45);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 999;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 14px;
+            width: min(960px, 100%);
+            max-height: 90vh;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .modal-close-float {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            color: #fff;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.2s;
+        }
+
+        .modal-close-float:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .modal-body {
+            padding: 0;
+            overflow: auto;
+            border-radius: 14px;
+        }
+
+        .list-block ol {
+            padding-left: 22px;
+        }
+
+        .list-block li {
+            margin: 6px 0;
+            line-height: 1.5;
+            color: #374151;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #e5e7eb;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        .data-table thead {
+            background: #f3f4f6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 30px 0;
+            color: #6b7280;
+        }
+
+        .error {
+            color: #b91c1c;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 2025年度业务总结汇报</h1>
+            <p class="subtitle">全面回顾 · 数据驱动 · 持续成长</p>
+            <div class="year-badge">Year 2025</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Stats Overview -->
+            <div class="stats-overview animate">
+                <div class="stat-card">
+                    <div class="number">208</div>
+                    <div class="label">老平台需求</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="number">40</div>
+                    <div class="label">ARPay需求</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="number">10</div>
+                    <div class="label">GameSaas三方</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <div class="number">34</div>
+                    <div class="label">工单Saas需求</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <div class="number">213</div>
+                    <div class="label">Payment三方</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);">
+                    <div class="number">26</div>
+                    <div class="label">新站+换肤</div>
+                </div>
+            </div>
+
+            <!-- Highlights Section -->
+            <div class="business-section animate" style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 30px; border-radius: 15px; margin-bottom: 50px;">
+                <div class="section-header" style="border-bottom-color: #ffc107;">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #ffc107 0%, #ff8c00 100%);">⭐</div>
+                    <div>
+                        <span class="section-title">年度亮点摘要</span>
+                    </div>
+                </div>
+                <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="metric-item" style="border-left: 4px solid #667eea;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">Payment中台全面落地</div>
+                        <p style="color: #6c757d; font-size: 14px;">接入213家三方支付，所有站点100%上线，四大报表体系全部建成</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #f093fb;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">GameSaas多平台接入</div>
+                        <p style="color: #6c757d; font-size: 14px;">成功接入10家游戏三方，UP平台完成印度站点全覆盖，数据表现优于原厂</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #4facfe;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">工单SaaS持续迭代</div>
+                        <p style="color: #6c757d; font-size: 14px;">完成34项需求开发，AI自助客服系统与工单系统完成集成</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #43e97b;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">新站快速交付</div>
+                        <p style="color: #6c757d; font-size: 14px;">全年交付21个新站、5个换肤项目，支撑业务快速扩张</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #fa709a;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">ARPay支付体系完善</div>
+                        <p style="color: #6c757d; font-size: 14px;">完成40项需求开发，ARUPI/ARB充提全流程优化，快捷提现KYC与自动出款功能全面上线</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #667eea;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">老平台持续迭代</div>
+                        <p style="color: #6c757d; font-size: 14px;">完成208项需求开发，发布V301-V303共3个大版本，TG机器人、VIP奖励优化等核心功能上线</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #a18cd1;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">新彩种创新拓展</div>
+                        <p style="color: #6c757d; font-size: 14px;">新增4款彩种：摩托车彩票、视频WinGo、LuckyWinGo、策略跟投；上线对刷功能、多维度查询功能</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Line 1: Old Platform -->
+            <div class="business-section animate">
+                <div class="section-header">
+                    <div class="section-icon">🖥️</div>
+                    <div>
+                        <span class="section-number">01</span>
+                        <span class="section-title">老平台业务线</span>
+                    </div>
+                </div>
+
+                <!-- Version Iteration -->
+                <div class="subsection">
+                    <div class="subsection-title">版本迭代情况</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">208</div>
+                            <div class="metric-label">禅道需求总量</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">V301-V303</div>
+                            <div class="metric-label">大版本发布</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; color: #6c757d; font-size: 14px;">
+                        <strong>注：</strong>不包含之前更新的版本和未记录的多个小版本
+                    </p>
+                </div>
+
+                <!-- New Sites -->
+                <div class="subsection">
+                    <div class="subsection-title">新站开发与换肤服务</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">21</div>
+                            <div class="metric-label">新站上线</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">5</div>
+                            <div class="metric-label">调版换肤</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-actions">
+                    <button class="detail-btn" onclick="openDetail('oldPlatform')">查看老平台需求数据</button>
+                    <button class="detail-btn" onclick="openDetail('newSites')">查看新站+换肤数据</button>
+                </div>
+            </div>
+
+            <!-- Business Line 2: ARPay -->
+            <div class="business-section animate">
+                <div class="section-header">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">💳</div>
+                    <div>
+                        <span class="section-number">02</span>
+                        <span class="section-title">ARPay业务线</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">核心功能开发</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">40</div>
+                            <div class="metric-label">需求数量</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">主要功能模块</div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>ARB提现活动</li>
+                        <li>UPI/Bank快捷代付</li>
+                        <li>快捷提现KYC</li>
+                        <li>ARB Bank自动出款开关</li>
+                    </ul>
+                    <div class="detail-actions">
+                        <button class="detail-btn" onclick="openDetail('arpay')">查看 ARPay 需求数据</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Line 3: GameSaas -->
+            <div class="business-section animate">
+                <div class="section-header">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🎮</div>
+                    <div>
+                        <span class="section-number">03</span>
+                        <span class="section-title">GameSaas业务线</span>
+                    </div>
+                </div>
+
+                <!-- 汇总统计 -->
+                <div class="subsection">
+                    <div class="subsection-title">平台接入概览</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">10</div>
+                            <div class="metric-label">接入三方平台</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                            <p style="font-size: 12px; color: #6c757d; margin-top: 5px;">8家已上线 / 2家接入中</p>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">4</div>
+                            <div class="metric-label">新增彩种</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增彩种 -->
+                <div class="subsection">
+                    <div class="subsection-title">新增彩种</div>
+                    <ul class="feature-list">
+                        <li>摩托车彩票</li>
+                        <li>视频WinGo</li>
+                        <li>LuckyWinGo（测试中）</li>
+                        <li>策略跟投</li>
+                    </ul>
+                </div>
+
+                <div class="game-platforms" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+                    <!-- KB Platform -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">KB游戏平台</div>
+                            <div class="platform-status status-online">运营中</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>✓ 已上线 <span class="highlight">1个站点</span></p>
+                            <p>✓ 游戏数量：<span class="highlight">10款</span></p>
+                            <p>✓ 数据持续优化中</p>
+                        </div>
+                    </div>
+
+                    <!-- UP Platform -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">UP游戏平台</div>
+                            <div class="platform-status status-online">已上线</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>✓ <span class="highlight">所有印度站点</span>已完成切换</p>
+                            <p>✓ 上线游戏：<span class="highlight">39款</span>（其中5款双站测试）</p>
+                            <p>🎯 <strong>INOUT小鸡2：</strong>数据优于原厂，对比TB仍领先</p>
+                        </div>
+                    </div>
+
+                    <!-- ART Platform -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">ART游戏平台</div>
+                            <div class="platform-status status-pending">待接入</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>⏳ 暂未接入</p>
+                        </div>
+                    </div>
+
+                    <!-- Game Box -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">Game Box（小飞机）</div>
+                            <div class="platform-status status-online">运营中</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>✓ 已上线 <span class="highlight">11个站点</span></p>
+                            <p>✓ 数据暂优于TB高仿，未追平原厂，持续观察</p>
+                        </div>
+                    </div>
+
+                    <!-- Bo an Platform -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">Bo an游戏平台</div>
+                            <div class="platform-status status-online">已上线</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>✓ 已切入 <span class="highlight">6个站点</span></p>
+                            <p>✓ 数据与原厂一致（12月剩1笔注单未结算）</p>
+                        </div>
+                    </div>
+
+                    <!-- Hei bao Platform -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">Hei bao游戏平台</div>
+                            <div class="platform-status status-pending">待切入</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>⏳ 暂未切入</p>
+                        </div>
+                    </div>
+
+                    <!-- ARbet Platform -->
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <div class="platform-name">ARbet游戏平台</div>
+                            <div class="platform-status status-testing">接入中</div>
+                        </div>
+                        <div class="platform-content">
+                            <p>🔄 API接入进行中</p>
+                            <p>⏳ 完成时间暂未确定</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Line 4: Ticket Saas -->
+            <div class="business-section animate">
+                <div class="section-header">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">🎫</div>
+                    <div>
+                        <span class="section-number">04</span>
+                        <span class="section-title">工单Saas业务线</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">核心功能与进展</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">34</div>
+                            <div class="metric-label">禅道需求记录</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">AI接入</div>
+                            <div class="metric-label">自助客服联通工单</div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>AI自助客服已完成工单接入</li>
+                        <li>工单/AI自助客服维护需求持续进行中</li>
+                    </ul>
+                    <div class="detail-actions">
+                        <button class="detail-btn" onclick="openDetail('tickets')">查看工单SaaS需求数据</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Line 5: Payment -->
+            <div class="business-section animate">
+                <div class="section-header">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">💰</div>
+                    <div>
+                        <span class="section-number">05</span>
+                        <span class="section-title">Payment直连业务线</span>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <div class="subsection-title">三方接入与中台建设</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">213</div>
+                            <div class="metric-label">接入三方数量</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">站点上线率</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="feature-list">
+                        <li>接入213家三方，所有站点已全部上线</li>
+                        <li>通道报表已上线</li>
+                        <li>厂商报表已上线</li>
+                        <li>商户报表已上线</li>
+                        <li>成功率报表已上线</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2026 Outlook Section -->
+            <div class="business-section animate" style="background: linear-gradient(135deg, #11998e15 0%, #38ef7d15 100%); padding: 30px; border-radius: 15px; margin-bottom: 50px;">
+                <div class="section-header" style="border-bottom-color: #11998e;">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">🚀</div>
+                    <div>
+                        <span class="section-title">2026展望</span>
+                    </div>
+                </div>
+                <div class="metrics-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <div class="metric-item" style="border-left: 4px solid #11998e;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">GameSaas平台扩展</div>
+                        <p style="color: #6c757d; font-size: 14px;">完成ARbet、Hei bao等待接入平台的上线，持续优化游戏数据表现</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #38ef7d;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">Payment中台深化</div>
+                        <p style="color: #6c757d; font-size: 14px;">持续接入更多三方支付渠道，优化报表分析能力，提升资金效率</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #00b09b;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">AI能力增强</div>
+                        <p style="color: #6c757d; font-size: 14px;">深化AI客服智能化，探索更多AI应用场景，提升运营自动化水平</p>
+                    </div>
+                    <div class="metric-item" style="border-left: 4px solid #96c93d;">
+                        <div class="metric-label" style="font-size: 16px; font-weight: 600; color: #333; margin-bottom: 8px;">技术架构升级</div>
+                        <p style="color: #6c757d; font-size: 14px;">持续优化系统性能，提升稳定性，为业务增长提供坚实技术保障</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="team-section animate">
+                <div class="team-title">👥 老后台项目团队</div>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-role">后端开发</div>
+                        <div class="team-members">
+                            <span class="member-tag">nick</span>
+                            <span class="member-tag">aaron</span>
+                            <span class="member-tag">damon</span>
+                            <span class="member-tag">andy</span>
+                            <span class="member-tag">bill</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-role">前端开发</div>
+                        <div class="team-members">
+                            <span class="member-tag">peggy</span>
+                            <span class="member-tag">Justin</span>
+                            <span class="member-tag">dollar</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-role">测试团队</div>
+                        <div class="team-members">
+                            <span class="member-tag">luna</span>
+                            <span class="member-tag">figo</span>
+                            <span class="member-tag">dore</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-role">UI设计</div>
+                        <div class="team-members">
+                            <span class="member-tag">wade</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-role">运维团队</div>
+                        <div class="team-members">
+                            <span class="member-tag">xiaoer</span>
+                            <span class="member-tag">linke</span>
+                        </div>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-role">产品管理</div>
+                        <div class="team-members">
+                            <span class="member-tag">beck</span>
+                            <span class="member-tag">tiger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 年度业务总结汇报 | 数据统计截至2025年12月</p>
+            <p style="margin-top: 10px; font-size: 12px;">本报告由企业级汇报系统生成</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close-float" onclick="closeModal()">×</button>
+            <div class="modal-body" id="modalBody" style="padding: 0; height: 80vh;">
+                <iframe id="dataFrame" style="width: 100%; height: 100%; border: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 数据文件映射 - 使用预生成的静态HTML文件
+        const FILES = {
+            oldPlatform: {
+                title: '老平台需求数据',
+                path: '2025报告文件/old_platform_data.html'
+            },
+            newSites: {
+                title: '新站+换肤明细',
+                path: '2025报告文件/new_sites_data.html'
+            },
+            arpay: {
+                title: 'ARPay需求数据',
+                path: '2025报告文件/arpay_data.html'
+            },
+            tickets: {
+                title: '工单SaaS需求数据',
+                path: '2025报告文件/tickets_data.html'
+            }
+        };
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+            document.getElementById('dataFrame').src = '';
+        }
+
+        function openDetail(key) {
+            const cfg = FILES[key];
+            if (!cfg) return;
+            document.getElementById('dataFrame').src = cfg.path;
+            document.getElementById('modalOverlay').style.display = 'flex';
+        }
+
+        // 点击遮罩层关闭
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ESC关闭
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Animate progress bars
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+
+        // Print function
+        function printReport() {
+            window.print();
+        }
+
+        // Add print shortcut
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'p') {
+                e.preventDefault();
+                printReport();
+            }
+        });
+    </script>
+</body>
+</html>
+
