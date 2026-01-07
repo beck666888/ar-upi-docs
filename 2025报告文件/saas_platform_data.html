@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saas平台需求数据 - 2025年度研发需求汇总</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        .header-section h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .header-section p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .stats-bar {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff6b6b;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        .count-bar {
+            background: #fff;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #6c757d;
+            border-bottom: 1px solid #eee;
+        }
+        .list-container {
+            background: white;
+        }
+        .list-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+        .list-item:hover { background: #f8f9fa; }
+        .list-item:last-child { border-bottom: none; }
+        .item-no {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+            min-width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .item-content { flex: 1; }
+        .item-title { font-size: 14px; color: #495057; font-weight: 500; }
+        .item-desc { font-size: 12px; color: #888; margin-top: 4px; }
+        .item-status {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+        .status-published {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .status-skip {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-section">
+        <h1>Saas平台迭代需求</h1>
+        <p>2025年9月起共完成287项研发需求，涵盖活动中心、每日签到、红包雨、VIP系统等核心模块</p>
+    </div>
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">287</div>
+            <div class="stat-label">总需求</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">248</div>
+            <div class="stat-label">已发布</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">10</div>
+            <div class="stat-label">前端人员</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">11</div>
+            <div class="stat-label">后端人员</div>
+        </div>
+    </div>
+    <div class="count-bar">共 287 条记录</div>
+    <div class="list-container">
+        <div class="list-item">
+            <div class="item-no">1</div>
+            <div class="item-content">
+                <div class="item-title">落地页自动部署全流程</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 落地页自动化 | 前端: Sam | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">2</div>
+            <div class="item-content">
+                <div class="item-title">后台【消息管理】【站内信】需要新增个操作人</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 站内信优化 | 前端: Darrel | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">3</div>
+            <div class="item-content">
+                <div class="item-title">这个奖励图片要有显示金额，要求额外加一个按钮显示金额</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 分包转移 | 前端: Justin | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">4</div>
+            <div class="item-content">
+                <div class="item-title">&quot;会员列表需要增加首充时间字段，也要增加一个导出功能，有权限看到手机号的账号导出要带有手机号码，搜索栏要有一个手机号手机号搜索的功能</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 用户列表优化 | 前端: Sam | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">5</div>
+            <div class="item-content">
+                <div class="item-title">&quot;【充值订单】和【提现订单】这个字段搜索要增加一首充会员/首次提现的字段，并且提现要区分三个时间段，申请时间，提交时间，完成时间
+，充值的时间段分别为会员的注册...</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 提现-充值订单优化 | 前端: Darrel | 后端: harris</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">6</div>
+            <div class="item-content">
+                <div class="item-title">后台时间读取的是本地时间，印度时间还没到9号，页面的时间范围就显示为9号了。运营要求改成和印度时间一致</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Sam</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">7</div>
+            <div class="item-content">
+                <div class="item-title">卡号和iscf   需要权限可以开放查看全部</div>
+                <div class="item-desc">版本: 9.18版本 | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">8</div>
+            <div class="item-content">
+                <div class="item-title">站点反馈充值通道展示出来的数据，少了一些，要求 补充一下成功率加上10分钟、半小时、全天的数据</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 充值通道列表 | 前端: Erde | 后端: harris</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">9</div>
+            <div class="item-content">
+                <div class="item-title">工单列表这里要求加上导出功能</div>
+                <div class="item-desc">版本: 10.10版本 | 模块: 工单系统 | 前端: Justin | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">10</div>
+            <div class="item-content">
+                <div class="item-title">目前客户没绑定银行，前台提现页面的可提现余额是 0，运营要求改成：客户没绑定银行卡也要正常显示可提现的余额</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Sam</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">11</div>
+            <div class="item-content">
+                <div class="item-title">运营说在提现订单这里查询单号，查询出来的单号和搜索的不一致</div>
+                <div class="item-desc">前端: June</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">12</div>
+            <div class="item-content">
+                <div class="item-title">运营要求加个可以查看盘内用户总余额的功能</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 仪表盘 | 前端: Erde | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">13</div>
+            <div class="item-content">
+                <div class="item-title">&quot;需求问题：建议在后台新增“游戏返奖率统计”项目，方便查看和分析。</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 平台报表 | 前端: Erde | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">14</div>
+            <div class="item-content">
+                <div class="item-title">需求问题：活动账变报表增加导出功能</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Sam | 后端: harris</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">15</div>
+            <div class="item-content">
+                <div class="item-title">需求问题：邀请转盘=》转盘出款审核 增加导出功能</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Sam | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">16</div>
+            <div class="item-content">
+                <div class="item-title">需求问题：视频教程，增加进度条，方便会员操作回放</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">17</div>
+            <div class="item-content">
+                <div class="item-title">运营要求在用户详情增加查询按钮可以点击刷新最新的详情。</div>
+                <div class="item-desc">前端: Seven</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">18</div>
+            <div class="item-content">
+                <div class="item-title">RA9 渠道来源在会员列表可以看到在详情里面没有显示</div>
+                <div class="item-desc">版本: 9.18版本 | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">19</div>
+            <div class="item-content">
+                <div class="item-title">需求： RA9-运营要求当邀请转盘满足提现金额时，增加提现弹窗提醒</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">20</div>
+            <div class="item-content">
+                <div class="item-title">运营要求：在邀请转盘出款审核页面，添加点击会员id可以查看用户详情的功能，下级id也要添加</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 邀请转盘审核 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">21</div>
+            <div class="item-content">
+                <div class="item-title">运营要求在后台右上角消息提醒这里加一个转盘待审核笔数</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 邀请转盘审核 | 前端: Seven | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">22</div>
+            <div class="item-content">
+                <div class="item-title">需求：RA9-运营要求更改邀请转盘邀请成功率的计算方式</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 邀请转盘数据统计 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">23</div>
+            <div class="item-content">
+                <div class="item-title">运营要求在【会员列表】这里加上可以搜索设备类型的功能</div>
+                <div class="item-desc">前端: Darrel</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">24</div>
+            <div class="item-content">
+                <div class="item-title">运营要求在【邀请转盘审核面板】注册IP、 设备 、浏览器指纹  ，增加一下（N）展示同IP 、 同设备 、同浏览器指纹的会员id数量，可以点击查看详情</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Erde | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">25</div>
+            <div class="item-content">
+                <div class="item-title">邀请转盘审核面板的下级，对应的设备信息都不显示，需要技术排查处理</div>
+                <div class="item-desc">前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">26</div>
+            <div class="item-content">
+                <div class="item-title">消息管理中的定制化弹窗，这个弹窗，每天只弹一次的功能还是没有生效，运营要求加急让技术处理一下</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Justin | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">27</div>
+            <div class="item-content">
+                <div class="item-title">平台SaaS-RA9-平台净盈利与平台净入款数据完全一致，疑似存在统计错误</div>
+                <div class="item-desc">版本: 9.18版本</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">28</div>
+            <div class="item-content">
+                <div class="item-title">新增经济系统日报的功能，可以清楚的查看各项彩金的分布：字段可以根据一下表格字段进行，，每天一横的排列过去，然后参与的人数可以直接点击下载导出具体领取人的详情名单</div>
+                <div class="item-desc">版本: 9.25版本 | 模块: 新增功能 | 前端: Sam | 后端: harris</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">29</div>
+            <div class="item-content">
+                <div class="item-title">天数要增加1-2-3-4-5-6-7-10-15-20-25-30-60-90-120-180复充人数跟比例字段，并且要能多选汇总，这个之前需求会议有重点进行沟...</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 首充分析优化 | 前端: Sam | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">30</div>
+            <div class="item-content">
+                <div class="item-title">新增盘内总余额的数据字段跟新增充值转化率字段，（当日新增首充人数/当天新增注册会员）</div>
+                <div class="item-desc">版本: 9.25版本 | 模块: 平台报表每日汇总优化 | 前端: June | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">31</div>
+            <div class="item-content">
+                <div class="item-title">&quot;这个特邀彩金奖励图片要有显示金额，要求额外加一个按钮显示金额</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 特邀彩金优化 | 前端: Justin | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">32</div>
+            <div class="item-content">
+                <div class="item-title">增加一项提款人数的字段-加在提款金额前面</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 数据总览跟分包总览优化 | 前端: June | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">33</div>
+            <div class="item-content">
+                <div class="item-title">完成二、三充才生效充值转盘，二、三充各自一个开关。实际效果和原来首充逻辑一致</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 充值转盘设置 | 前端: Seven | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">34</div>
+            <div class="item-content">
+                <div class="item-title">需要增加标分组自动识别二充、三充的的会员，弹窗相对应标签分组的活动内容</div>
+                <div class="item-desc">版本: 9.25版本 | 模块: 一级、二级、弹窗、活动页面配置优化 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">35</div>
+            <div class="item-content">
+                <div class="item-title">所有基数全部都按照登录为基础，留存类别区分为:新增留存-活跃留存-投注留存-首充留存-老用户付费留存
+时间基数分为：次日留存(%)-3日留存(%)-5日留存(%...</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 留存率报表优化 | 前端: June | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">36</div>
+            <div class="item-content">
+                <div class="item-title">分别区分出每天唤醒-原生-扫码充值金额的占比，跟成功率，</div>
+                <div class="item-desc">版本: 10.23版本 | 模块: 充提通道报表优化 | 前端: June | 后端: nick</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">37</div>
+            <div class="item-content">
+                <div class="item-title">新增一个报表，可以直观看出每天总的充值金额分别由哪几个大类充值金额的，几个大类分别占总充值金额多
+大类区分为：官网-代理-转盘-FB落地-谷歌包</div>
+                <div class="item-desc">模块: 渠道充值分类报表 | 前端: June</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">38</div>
+            <div class="item-content">
+                <div class="item-title">站内信新增一个修改的功能，在还没有发送出去的时候可以在进行修改，修改没问题后再确认发送</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 站内信优化 | 前端: Darrel | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">39</div>
+            <div class="item-content">
+                <div class="item-title">接入ARUPI</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 钱包项目对接 | 前端: Justin | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">40</div>
+            <div class="item-content">
+                <div class="item-title">服务器事件更换，配合投流效果表格
+FB首充事件调整为：Subscribe
+Adjust首充事件调整为：Subscription Purchase</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 三方埋点 | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">41</div>
+            <div class="item-content">
+                <div class="item-title">通过IP，指纹，设备进行限制充值商品奖励只能获得一次</div>
+                <div class="item-desc">模块: 首充限制 | 前端: Justin | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">42</div>
+            <div class="item-content">
+                <div class="item-title">不同数值的邀请转盘，统计数据都要区分开。例如200、500、总和各一份。</div>
+                <div class="item-desc">模块: 邀请转盘数据统计</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">43</div>
+            <div class="item-content">
+                <div class="item-title">邀请转盘前端界面，中奖记录显示被邀请人，让会员心里清楚，由于邀请到了谁 给他加了钱。参考如图</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 邀请转盘 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">44</div>
+            <div class="item-content">
+                <div class="item-title">平台SaaS-RA9-用户流失分析导出数据与后台记录不一致</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Sam</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">45</div>
+            <div class="item-content">
+                <div class="item-title">平台SaaS-RA9-会员转盘轮次显示异常</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">46</div>
+            <div class="item-content">
+                <div class="item-title">162588 在2025/9/12 12:30:32 的时候已经拉黑到禁止提现黑名单了，但是9/12 13:50之后还在提现，要求排查一下原因</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">47</div>
+            <div class="item-content">
+                <div class="item-title">BUG:RA9后台提现订单导出的数据与后台显示的时间不一致</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">48</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈前台点击加载的反应速度慢，要求把特效全部去掉再试试看</div>
+                <div class="item-desc">前端: Erde</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">49</div>
+            <div class="item-content">
+                <div class="item-title">导出功能完整调整</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Sam | 后端: Owen, Damon, Hyman, Len, harris</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">50</div>
+            <div class="item-content">
+                <div class="item-title">右上角三方待入款通知移除</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">51</div>
+            <div class="item-content">
+                <div class="item-title">Firebase发送时间异常修复</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Darrel</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">52</div>
+            <div class="item-content">
+                <div class="item-title">反向优惠需要在界面上显示</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Justin | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">53</div>
+            <div class="item-content">
+                <div class="item-title">运营要求在仪表盘这个时间维度数据统计，新增一个充值人数的选项</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">54</div>
+            <div class="item-content">
+                <div class="item-title">RA9后台三级代理配置，配置了邀请下级充值100并投注100，上级获得50、下级获得10的奖励。但是ID upline : 158606  ID downlin...</div>
+                <div class="item-desc">版本: 9.18版本 | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">55</div>
+            <div class="item-content">
+                <div class="item-title">需求问题：取款手续费按整数扣除规则</div>
+                <div class="item-desc">版本: 9.25版本 | 模块: 提现功能</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">56</div>
+            <div class="item-content">
+                <div class="item-title">报表管理-（有效投注）游戏管理-（有效投注）投注金额与有效投注金额数据都对不上是以哪个数据为准。
+要以哪个页面的有效投注为准？</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">57</div>
+            <div class="item-content">
+                <div class="item-title">平台SaaS-6002-首页导航菜单点击后没有滑动到对应的游戏</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: BUG修复 | 前端: Sam</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">58</div>
+            <div class="item-content">
+                <div class="item-title">需求:RA9-运营希望将Telegram通道预警消息代收代付分别整合成一条不进行分页</div>
+                <div class="item-desc">版本: 9.18版本</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">59</div>
+            <div class="item-content">
+                <div class="item-title">需求:RA9-运营反馈前台绑定用户钱包信息的真实姓名可以帮忙改成纯英文字母吗？运营说需要和老平台一样的限制，帮忙看下</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">60</div>
+            <div class="item-content">
+                <div class="item-title">需求： 目前页面最大是50/页 运营要求增加最大500或1000</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">61</div>
+            <div class="item-content">
+                <div class="item-title">ra9 需求 充值订单和提款订单中所有功能的id都可以点击跳转到用户详情。</div>
+                <div class="item-desc">版本: 9.18版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">62</div>
+            <div class="item-content">
+                <div class="item-title">ra9 需求，运营要求提款审核页面的银行详情展示到列表中（目前是需要点击详情进入查看）</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Sam</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">63</div>
+            <div class="item-content">
+                <div class="item-title">邀请转盘增加隐藏设计，第一次邀请次数旋转的中奖概率按照配置值的1%生效</div>
+                <div class="item-desc">版本: 9.18版本 | 模块: 转盘调整需求 | 前端: Seven | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">64</div>
+            <div class="item-content">
+                <div class="item-title">facebook像素ID的Access Token内容缩略</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Darrel</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">65</div>
+            <div class="item-content">
+                <div class="item-title">后台增加多语言配置</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">66</div>
+            <div class="item-content">
+                <div class="item-title">机器人充值通道播报继续调整格式</div>
+                <div class="item-desc">版本: 9.25版本 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">67</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI调整</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Justin | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">68</div>
+            <div class="item-content">
+                <div class="item-title">充值礼包修复</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">69</div>
+            <div class="item-content">
+                <div class="item-title">提现和邀请转盘自动审核规则，要根据渠道设置不同的条件</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">70</div>
+            <div class="item-content">
+                <div class="item-title">后台上传PNG转WEBP</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">71</div>
+            <div class="item-content">
+                <div class="item-title">AR9需求问题：充值类型排序问题-PhonePe无法设置为第二位l</div>
+                <div class="item-desc">版本: 9.25版本 | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">72</div>
+            <div class="item-content">
+                <div class="item-title">目前谷歌推送不能稳定跳转到指定页面，要尽快解决
+推送页面需要加两栏数据：点击数量和点击率。</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: June | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">73</div>
+            <div class="item-content">
+                <div class="item-title">邀请转盘审核增加渠道来源查询条件</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: andy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">74</div>
+            <div class="item-content">
+                <div class="item-title">用户流失分析查询条件调整</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: atman | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">75</div>
+            <div class="item-content">
+                <div class="item-title">首充分析两个无复充的百分比添加以及下载</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Sam | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">76</div>
+            <div class="item-content">
+                <div class="item-title">新增一个未首存统计的功能，这个区分为两项，一项是当天注册当天未充值-未2充-未3充，一项是当天登录未首存-未2充-未3充，10分钟或者半小时更新一次，需要可直接...</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 新增功能 | 前端: atman | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">77</div>
+            <div class="item-content">
+                <div class="item-title">首二三充，首二三提，首充分析等带手机号码导出的数据需要增加渠道来源列，并且首充分析要的是手机号码，不是账号（要么就是非手机号的账号不要展示内容，留空）</div>
+                <div class="item-desc">版本: 9.25版本 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">78</div>
+            <div class="item-content">
+                <div class="item-title">运营要求把充值推送成功率里面的订单数、成功数、成功金额也改成10分钟的，现在是只有成功率才是十分钟的，导致显示的成功率看起来像不正确</div>
+                <div class="item-desc">版本: 9.25版本 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">79</div>
+            <div class="item-content">
+                <div class="item-title">Y1版面注册绑定国家区号需要调整为读取后台配置</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">80</div>
+            <div class="item-content">
+                <div class="item-title">返回按钮跳转调整</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">81</div>
+            <div class="item-content">
+                <div class="item-title">运营要求后台游戏名称搜索的功能加速优化，现在必须要大小写完全一致才能搜索，很不方便</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: atman | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">82</div>
+            <div class="item-content">
+                <div class="item-title">独立注册页面读取后台图片配置</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: atman | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">83</div>
+            <div class="item-content">
+                <div class="item-title">弹窗和侧边栏MENU弹出速度加快</div>
+                <div class="item-desc">版本: 9.25版本</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">84</div>
+            <div class="item-content">
+                <div class="item-title">前端KV获取数据更换为接口请求</div>
+                <div class="item-desc">版本: 9.25版本 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">85</div>
+            <div class="item-content">
+                <div class="item-title">提现发起金额和手续费字段进行汇总统计</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: atman | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">86</div>
+            <div class="item-content">
+                <div class="item-title">1. 首页增加小浮窗（可放代理、频道、优惠活动入口、VIP），参考EK7。</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 首页漂浮 | 前端: atman | 后端: andy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">87</div>
+            <div class="item-content">
+                <div class="item-title">改成简单的，放品牌RA9的LOGO+Loading...的图</div>
+                <div class="item-desc">模块: APP打开的加载页</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">88</div>
+            <div class="item-content">
+                <div class="item-title">自动出款按钮关闭时不隐藏下面的内容</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">89</div>
+            <div class="item-content">
+                <div class="item-title">原生包制作及纳入自动打包流程</div>
+                <div class="item-desc">版本: 10.2版本 | 模块: APK | 前端: June, Seven | 后端: Owen</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">90</div>
+            <div class="item-content">
+                <div class="item-title">原生包热更功能</div>
+                <div class="item-desc">版本: 10.2版本 | 模块: APK | 前端: June, Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">91</div>
+            <div class="item-content">
+                <div class="item-title">会员提现绑定-银行卡信息页面增加查询条件</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: andy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">92</div>
+            <div class="item-content">
+                <div class="item-title">游戏投注订单：导出需求含投注金额、投注类型和投注内容。</div>
+                <div class="item-desc">版本: 10.2版本 | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">93</div>
+            <div class="item-content">
+                <div class="item-title">需求：运营想要在游戏投注订单页面增加一个类型筛选</div>
+                <div class="item-desc">版本: 10.2版本 | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">94</div>
+            <div class="item-content">
+                <div class="item-title">充值礼包-回归礼包天数计算调整</div>
+                <div class="item-desc">版本: 10.2版本 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">95</div>
+            <div class="item-content">
+                <div class="item-title">ARupi需求调整下收银台UI</div>
+                <div class="item-desc">版本: 10.2版本 | 模块: ARPAY | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">96</div>
+            <div class="item-content">
+                <div class="item-title">充值通道-最后更新时间-需要日期和时间中间有间隔</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: andy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">97</div>
+            <div class="item-content">
+                <div class="item-title">需求：RA9 运营要求转盘已成功邀请轮数显示 实际的次数。</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">98</div>
+            <div class="item-content">
+                <div class="item-title">需求：运营要求调整充值/提现推送机器人</div>
+                <div class="item-desc">版本: 10.10版本 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">99</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈工单存款未到账自动化的订单超时卡在系统处理中，没有转到待处理</div>
+                <div class="item-desc">版本: 等日志定位到后修改 | 后端: Damon</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">100</div>
+            <div class="item-content">
+                <div class="item-title">需求：运营需要在后台添加一个批量关闭投注返佣的功能</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">101</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈前台登录点击忘记密码没有反应，麻烦帮忙看下</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">102</div>
+            <div class="item-content">
+                <div class="item-title">站点：6002-bdwin24-孟加拉对接群 
+站点要求在 会员列表--会员详情--钱包信息 中加入可以删除钱包的  删除功能</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">103</div>
+            <div class="item-content">
+                <div class="item-title">USDT设定绑定0，前端表现调整</div>
+                <div class="item-desc">版本: 10.10版本 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">104</div>
+            <div class="item-content">
+                <div class="item-title">运营在工单系统-首页配置列表里面上传图片，提示数据库异常，需要技术看下是什么原因</div>
+                <div class="item-desc">版本: 10.2版本 | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">105</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈每天都会掉线，这里的token过期时间不是调整到30天了吗</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">106</div>
+            <div class="item-content">
+                <div class="item-title">运营要求将工单输入框默认的文字改成：
+Enter error/bug details — more info = higher bonus (99–999 vi...</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">107</div>
+            <div class="item-content">
+                <div class="item-title">运营希望后台-通用消息-定制版面轮播图的跳转类型新增 跳转工单的指定页面</div>
+                <div class="item-desc">版本: 10.10版本 | 前端: atman | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">108</div>
+            <div class="item-content">
+                <div class="item-title">工单系统上传视频文件限制放开到50M</div>
+                <div class="item-desc">版本: 10.2版本 | 前端: Justin | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">109</div>
+            <div class="item-content">
+                <div class="item-title">需求：运营想要将“投注类型”和“投注内容”修改成老后台一样的显示,麻烦帮忙看下</div>
+                <div class="item-desc">版本: 10.10版本 | 前端: June</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">110</div>
+            <div class="item-content">
+                <div class="item-title">落地页推广增加PWA包及埋点</div>
+                <div class="item-desc">版本: 10.10版本 | 前端: Erde, atman | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">111</div>
+            <div class="item-content">
+                <div class="item-title">H5端登陆增加强制下载功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">112</div>
+            <div class="item-content">
+                <div class="item-title">下载按钮逻辑调整</div>
+                <div class="item-desc">版本: 10.10版本 | 前端: Erde, atman | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">113</div>
+            <div class="item-content">
+                <div class="item-title">游戏厂商管理及子游戏管理排序</div>
+                <div class="item-desc">版本: 10.10版本 | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">114</div>
+            <div class="item-content">
+                <div class="item-title">邀请成功奖金&amp;被邀请人奖金派发时增加账变记录的备注信息</div>
+                <div class="item-desc">版本: 10.10版本 | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">115</div>
+            <div class="item-content">
+                <div class="item-title">需求：运营想要在后台【风控管理】【黑名单会员】新增批量解冻会员的功能</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">116</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈 使用arupi支付 跳转app的时候会提示 访问过于频繁请稍后重试。  运营要求排查 是不是代码上有冲突导致的， 是不是我们这边的问题。</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">117</div>
+            <div class="item-content">
+                <div class="item-title">RA9首页新版面</div>
+                <div class="item-desc">版本: 10.10版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">118</div>
+            <div class="item-content">
+                <div class="item-title">充提设置增加充值页广告图配置</div>
+                <div class="item-desc">版本: 10.10版本 | 后端: Hyman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">119</div>
+            <div class="item-content">
+                <div class="item-title">商品模式下新增每次充值后默认快捷金额显示配置</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">120</div>
+            <div class="item-content">
+                <div class="item-title">【充值通道报表】新增【三方充提通道（小时级）】</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: alex | 后端: nick</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">121</div>
+            <div class="item-content">
+                <div class="item-title">新增【充提通道权重变更记录】</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: andy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">122</div>
+            <div class="item-content">
+                <div class="item-title">【财务管理】新增【财务数据统计】菜单，新增【充提订单统计】页面</div>
+                <div class="item-desc">版本: 10.23版本 | 后端: aaron</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">123</div>
+            <div class="item-content">
+                <div class="item-title">页面迁移【充提通道报表】</div>
+                <div class="item-desc">版本: 10.23版本 | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">124</div>
+            <div class="item-content">
+                <div class="item-title">新增会员活动黑名单功能</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">125</div>
+            <div class="item-content">
+                <div class="item-title">充提通道报表统计调整</div>
+                <div class="item-desc">版本: 10.23版本 | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">126</div>
+            <div class="item-content">
+                <div class="item-title">提现订单增加多次三方代付记录</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">127</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI的phonepe交互调整</div>
+                <div class="item-desc">版本: 紧急</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">128</div>
+            <div class="item-content">
+                <div class="item-title">下载按钮逻辑支持已安装PWA都要优先打开PWA</div>
+                <div class="item-desc">版本: 紧急</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">129</div>
+            <div class="item-content">
+                <div class="item-title">完整版新版面</div>
+                <div class="item-desc">后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">130</div>
+            <div class="item-content">
+                <div class="item-title">添加LTV数据统计，以首充用户和新增用户为基数分为2类，需要可以查看全盘数据或单渠道数据。</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: LTV统计报表 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">131</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈 使用arupi支付 跳转app的时候会提示 访问过于频繁请稍后重试。  运营要求排查 是不是代码上有冲突导致的， 是不是我们这边的问题。</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">132</div>
+            <div class="item-content">
+                <div class="item-title">会员id：297239
+会员说，当他们打开游戏时，游戏显示加载，但无法打开，并直接返回主页面。麻烦帮忙看下</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">133</div>
+            <div class="item-content">
+                <div class="item-title">需求：运营想要在后台充值转盘-【转盘奖励记录】【转盘次数发放记录】这两个页面添加导出功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">134</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈同样的环境，访问a45.com明显比ra9快很多，需要帮忙看下如何优化</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">135</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈：首充活动跟二充活动都是强制性参加的，但是领取活动奖励人数与实际人数相差过大</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">136</div>
+            <div class="item-content">
+                <div class="item-title">经济系统日报界面需要优化，内容比较多，空的地方太多了导致很难操作，滑条都看不到</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">137</div>
+            <div class="item-content">
+                <div class="item-title">后台多语言后端字典等枚举翻译支持</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">138</div>
+            <div class="item-content">
+                <div class="item-title">新增活动，亏损救援金，可以参考888i.fun的这个活动</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">139</div>
+            <div class="item-content">
+                <div class="item-title">TOM版本新套壳包</div>
+                <div class="item-desc">版本: 紧急</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">140</div>
+            <div class="item-content">
+                <div class="item-title">注册页面SEO图片替换</div>
+                <div class="item-desc">版本: 紧急</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">141</div>
+            <div class="item-content">
+                <div class="item-title">落地页管理预览及APP用落地页项目仿商城样式同步修改</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">142</div>
+            <div class="item-content">
+                <div class="item-title">落地页配置代投组等下拉增加搜索</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">143</div>
+            <div class="item-content">
+                <div class="item-title">落地页设置批量生成和配置</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">144</div>
+            <div class="item-content">
+                <div class="item-title">APK防报毒处理</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">145</div>
+            <div class="item-content">
+                <div class="item-title">给代投挑选样式的预览链接处理</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">146</div>
+            <div class="item-content">
+                <div class="item-title">三方埋点编辑后自动触发打包</div>
+                <div class="item-desc">版本: 快速迭代 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">147</div>
+            <div class="item-content">
+                <div class="item-title">FB广告数据问题调整修改备案</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">148</div>
+            <div class="item-content">
+                <div class="item-title">修复轮播图预览异常</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: Darrel</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">149</div>
+            <div class="item-content">
+                <div class="item-title">三级代理模式投注返佣比例增加游戏大类区分配置</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">150</div>
+            <div class="item-content">
+                <div class="item-title">会员排行榜，代理排行榜增加会员作弊添加流水</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">151</div>
+            <div class="item-content">
+                <div class="item-title">运营要求后台-消息管理-定制化弹窗 这里的弹窗频率“每次登陆”修改成“每次打开”时弹窗</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">152</div>
+            <div class="item-content">
+                <div class="item-title">新增AR钱包提现</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">153</div>
+            <div class="item-content">
+                <div class="item-title">修改移除arupi中Phonepe唤醒时候的倒计时弹窗</div>
+                <div class="item-desc">前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">154</div>
+            <div class="item-content">
+                <div class="item-title">洗码功能调整并增加到VIP功能中去调节</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">155</div>
+            <div class="item-content">
+                <div class="item-title">后台计算登陆的方式调整</div>
+                <div class="item-desc">后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">156</div>
+            <div class="item-content">
+                <div class="item-title">调整注册完成事件为服务端事件</div>
+                <div class="item-desc">版本: 紧急 | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">157</div>
+            <div class="item-content">
+                <div class="item-title">弹窗强弹的修改及部分调整（快速上线部分）</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">158</div>
+            <div class="item-content">
+                <div class="item-title">红包雨活动</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Alex, Seven | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">159</div>
+            <div class="item-content">
+                <div class="item-title">JILI游戏在H5&amp;PWA全屏的时候需要有返回</div>
+                <div class="item-desc">版本: 10.23版本</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">160</div>
+            <div class="item-content">
+                <div class="item-title">y1新版面首页的游戏区域应该是两栏布局，左边的滑动不能影响右边的，反之同理</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">161</div>
+            <div class="item-content">
+                <div class="item-title">Promotion&amp;工单首页的返回按钮作用调整为返回首页而不是上一个路由</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">162</div>
+            <div class="item-content">
+                <div class="item-title">累充转盘图标更换</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">163</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+提现锁定
+提现金额与总次数查询框内引导文字顺序反了，需要调换一下。</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">164</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+ 出款详情：帮忙加上 IFSC</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">165</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群  提现出款--添加一项（加下客户绑定的银行信息， 方便出款的时候核对检查 IFSC）</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">166</div>
+            <div class="item-content">
+                <div class="item-title">提现订单：是否首提， 如果 是的话 这个 &quot;是&quot; 能不能标红明显一些</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">167</div>
+            <div class="item-content">
+                <div class="item-title">提现锁定 :提现总次数 如果是 0的话 也麻烦帮忙标红 让明显一些</div>
+                <div class="item-desc">版本: 10.23版本 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">168</div>
+            <div class="item-content">
+                <div class="item-title">幸运加倍礼金活动</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin, Darrel | 后端: Gavin, vance, alan</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">169</div>
+            <div class="item-content">
+                <div class="item-title">提现超时赔付活动</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">170</div>
+            <div class="item-content">
+                <div class="item-title">进入厂商后的二级页面调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Alex</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">171</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度--需求：会员列表新增邀请码搜索功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">172</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群 运营需求活动报表，需要把每一个活动彩金细分出来统计,回归福利、回归礼包、惊喜礼包,所有每一项彩金，独立统计</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">173</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群 经济系统日报里面也是，每一项彩金都需要独立出来，比如这里的充值礼包是分为回归礼包和惊喜礼包2种的</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">174</div>
+            <div class="item-content">
+                <div class="item-title">礼包页面可新增“可领取彩金中心”模块</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">175</div>
+            <div class="item-content">
+                <div class="item-title">调整登陆时机变的更加符合用户实际场景</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">176</div>
+            <div class="item-content">
+                <div class="item-title">充值页面图片展示需要根据充值次数配置化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">177</div>
+            <div class="item-content">
+                <div class="item-title">修复游戏报表RTP小数点后两位异常都是.00</div>
+                <div class="item-desc">版本: 10.23版本 | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">178</div>
+            <div class="item-content">
+                <div class="item-title">充值礼包中礼包金额为0的前端表现调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">179</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI成功率提升支持-订单继续支付逻辑变更</div>
+                <div class="item-desc">版本: 10.23版本 | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">180</div>
+            <div class="item-content">
+                <div class="item-title">工单列表导出，导出工单提交项信息即可</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">181</div>
+            <div class="item-content">
+                <div class="item-title">平台SaaS-6001-报表管理-每日游戏报表查询条件异常</div>
+                <div class="item-desc">版本: 10.23版本</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">182</div>
+            <div class="item-content">
+                <div class="item-title">部分报表需要增加排序字段</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">183</div>
+            <div class="item-content">
+                <div class="item-title">RA9-需求前台注册提示</div>
+                <div class="item-desc">前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">184</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI收银台页面样式调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">185</div>
+            <div class="item-content">
+                <div class="item-title">数据分析/分包分析总览字段公式调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">186</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI已有订单弹窗逻辑调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">187</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+充值通道 - 充值大类（添加多选类型）</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">188</div>
+            <div class="item-content">
+                <div class="item-title">运营要求 工单替换文字内容： Submit bug reports
+Possibility to get  bonus</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">189</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-后台充值通道信息复制优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">190</div>
+            <div class="item-content">
+                <div class="item-title">运营要求:将所有的活动增加可配置 同IP限制 以及 同设备ID限制，当设备超出配置的次数则无法参与活动 , 提示 : 您的账号不符合领取奖金条件)</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">191</div>
+            <div class="item-content">
+                <div class="item-title">运营需求：提现锁定
+提现出款添加显示三方代付多次    每一次回调记录  都记录一下  可查询
+这样好溯源问题，提升效率</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">192</div>
+            <div class="item-content">
+                <div class="item-title">把Facebook像素归因、服务端埋点记录明细、渠道来源管理、落地页管理、应用打包管理，这五项整合起来形成一个新的功能，方便后续作业操作。</div>
+                <div class="item-desc">模块: 优化落地页配置流程</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">193</div>
+            <div class="item-content">
+                <div class="item-title">后台增加站点SEO配置</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">194</div>
+            <div class="item-content">
+                <div class="item-title">弹窗强弹及相关功能优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel, Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">195</div>
+            <div class="item-content">
+                <div class="item-title">充值页面没有更新余额问题修复</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">196</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+会员列表--需要添加：注册设备、注册IP</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: andy</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">197</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI充值接口更换数据加密以及部分接口调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">198</div>
+            <div class="item-content">
+                <div class="item-title">会员详情备注信息用红色加粗显示</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">199</div>
+            <div class="item-content">
+                <div class="item-title">充值大类下拉数据带上前台显示名称</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">200</div>
+            <div class="item-content">
+                <div class="item-title">关闭自动注册配套调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">201</div>
+            <div class="item-content">
+                <div class="item-title">轮播图&amp;定制化轮播图&amp;活动咨询&amp;定制化弹窗等位置处关于充值条件的目标合并</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">202</div>
+            <div class="item-content">
+                <div class="item-title">邀请转盘分享界面的修改&amp;活动</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin, Erde | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">203</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+运营要求把注册页面的OTP Login的颜色改成和右侧的忘记密码一样的颜色和字体。底部的一条竖线需要处理</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">204</div>
+            <div class="item-content">
+                <div class="item-title">关闭自动注册对应处理运营需求整合版</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman, Seven | 后端: Len, Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">205</div>
+            <div class="item-content">
+                <div class="item-title">数据分析总览底部增加均值和总计</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">206</div>
+            <div class="item-content">
+                <div class="item-title">在PWA&amp;APP中所有三方游戏厂商进行游戏的需要保持顶部栏</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman, June</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">207</div>
+            <div class="item-content">
+                <div class="item-title">通用消息-定制化弹窗增加查询条件</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">208</div>
+            <div class="item-content">
+                <div class="item-title">优化显示内容（要求一个单词不要分两行进行显示，例如：already前台显示就分了两行）</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">209</div>
+            <div class="item-content">
+                <div class="item-title">去除前台（访客登录未启用）提示语</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">210</div>
+            <div class="item-content">
+                <div class="item-title">增加一个未登录用户的弹窗</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">211</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈：前台提交工单需要上传图片的位置，三个上传图片的位置点击均没有反应，麻烦处理一下</div>
+                <div class="item-desc">状态: 已发布</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">212</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+运营要求把前台站内信彩金消息里面的Money改成Cash</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">213</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI收银台调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">214</div>
+            <div class="item-content">
+                <div class="item-title">优化修复token过期后导致余额等不能正常显示的问题</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">215</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+运营反馈未登录前 转盘整体画质模糊，需要进行优化（如下对比图）
+优化转盘清晰度</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">216</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+APK包的封面图需要换一版更有质感的，符合版面风格的。</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">217</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+运营需求菜单栏里VIP的黄色框这块需要UI优化一下，需要设计得更加精美尊贵感，目前的没有VIP的感觉，显示VIP等级的图标也要美...</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">218</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+APK包，32和64位的，去掉需要手动登录提示框</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">219</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+登陆注册调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman, Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">220</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+推送通知的权限允许---无论是否有登录 ----需求刚打开APP就弹出来</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">221</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+APK包侧边滑动条优化（右侧有一条缝隙，需要去除）
+测试使用机型;三星S21</div>
+                <div class="item-desc">前端: June</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">222</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈后台“充值订单”页面的列间距不能缩小，运营希望能够自由调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">223</div>
+            <div class="item-content">
+                <div class="item-title">6001-RA9-印度 维护群
+前台显示优化（首页游戏分类上下滑有一条黑线，需要去掉）
+测试使用机型：iPhone 12</div>
+                <div class="item-desc">前端: June</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">224</div>
+            <div class="item-content">
+                <div class="item-title">首页浮窗设置，列表增加生效时间、跳转类型</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">225</div>
+            <div class="item-content">
+                <div class="item-title">前台首页 充值按钮增加 充值赠送彩金 金额提示</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Damon</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">226</div>
+            <div class="item-content">
+                <div class="item-title">三方游戏统一上维护&amp;厂商及游戏维护状态显示</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">227</div>
+            <div class="item-content">
+                <div class="item-title">运营反馈有时候PWA包上方会显现域名，运营希望将域名给隐藏</div>
+                <div class="item-desc">状态: 暂不处理</div>
+            </div>
+            <div class="item-status status-skip">暂不处理</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">228</div>
+            <div class="item-content">
+                <div class="item-title">前台-首页-充值，充值按钮增加 首充、次充、三充赠送彩金提示（Max修改成 Bonus）</div>
+                <div class="item-desc">版本: 快速迭代</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">229</div>
+            <div class="item-content">
+                <div class="item-title">前台-首页-浮窗（浮窗现在是登陆才看得到，未登录看不到，改成不管有没有登陆都看得到）</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">230</div>
+            <div class="item-content">
+                <div class="item-title">后台-首页浮窗配置，去掉图片尺寸大小限制，只保留1:1的比例和3M的限制（后台文案要改）</div>
+                <div class="item-desc">版本: 快速迭代</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">231</div>
+            <div class="item-content">
+                <div class="item-title">首页加载黑屏问题优化</div>
+                <div class="item-desc">版本: 快速迭代</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">232</div>
+            <div class="item-content">
+                <div class="item-title">调整未注册用户点击Home回到首页</div>
+                <div class="item-desc">版本: 快速迭代</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">233</div>
+            <div class="item-content">
+                <div class="item-title">代理返佣配置是否自动领取</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">234</div>
+            <div class="item-content">
+                <div class="item-title">FIREBASE统计增加基础字段</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">235</div>
+            <div class="item-content">
+                <div class="item-title">手动领取模式下代理佣金领取强引导</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">236</div>
+            <div class="item-content">
+                <div class="item-title">后台操作ARgame余额可回收到平台</div>
+                <div class="item-desc">版本: 快速迭代 | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">237</div>
+            <div class="item-content">
+                <div class="item-title">SAAS后台部分报表样式优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">238</div>
+            <div class="item-content">
+                <div class="item-title">游客退出逻辑调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">239</div>
+            <div class="item-content">
+                <div class="item-title">游戏厂商管理及子游戏管理分类配置优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">240</div>
+            <div class="item-content">
+                <div class="item-title">热门游戏配置内容调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">241</div>
+            <div class="item-content">
+                <div class="item-title">saas后台部分查询条件优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: atman | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">242</div>
+            <div class="item-content">
+                <div class="item-title">新活动【每日签到】</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理 | 前端: atman | 后端: vance</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">243</div>
+            <div class="item-content">
+                <div class="item-title">【活动中心】改造</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理 | 前端: Erde, Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">244</div>
+            <div class="item-content">
+                <div class="item-title">新活动（每日每周任务）</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理 | 前端: Justin, Erde | 后端: Owen, alan</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">245</div>
+            <div class="item-content">
+                <div class="item-title">商户后台新账号二维码扫描信息调整</div>
+                <div class="item-desc">前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">246</div>
+            <div class="item-content">
+                <div class="item-title">极光推送对接</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">247</div>
+            <div class="item-content">
+                <div class="item-title">优惠券功能调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">248</div>
+            <div class="item-content">
+                <div class="item-title">游戏排序功能调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">249</div>
+            <div class="item-content">
+                <div class="item-title">后台消息管理，部分页面列表字段调整</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 运营管理 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">250</div>
+            <div class="item-content">
+                <div class="item-title">新版面洗码功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">251</div>
+            <div class="item-content">
+                <div class="item-title">新版面超级大奖界面</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">252</div>
+            <div class="item-content">
+                <div class="item-title">周月卡功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Len, alan</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">253</div>
+            <div class="item-content">
+                <div class="item-title">新版面锦标赛界面</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Alex</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">254</div>
+            <div class="item-content">
+                <div class="item-title">新增两张报表（每日用户数据、多日用户数据）</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 报表管理 | 前端: Darrel | 后端: vance</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">255</div>
+            <div class="item-content">
+                <div class="item-title">活动资讯，新增富文本（不跳转）类型</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">256</div>
+            <div class="item-content">
+                <div class="item-title">增加游戏厂商及子游戏映射功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">257</div>
+            <div class="item-content">
+                <div class="item-title">ARUPI支付加入对方返回得快捷金额处理</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">258</div>
+            <div class="item-content">
+                <div class="item-title">充提通道新增方式调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">259</div>
+            <div class="item-content">
+                <div class="item-title">经典充值模式首二三充专属优惠配置</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June | 后端: Owen, Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">260</div>
+            <div class="item-content">
+                <div class="item-title">富文本不跳转 支持图片自适应</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">261</div>
+            <div class="item-content">
+                <div class="item-title">增加任务完成数量的角标展示</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">262</div>
+            <div class="item-content">
+                <div class="item-title">活动中心改造  二期</div>
+                <div class="item-desc">模块: 活动管理 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">263</div>
+            <div class="item-content">
+                <div class="item-title">会员组合标签</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: June | 后端: vance</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">264</div>
+            <div class="item-content">
+                <div class="item-title">前端两项内容调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">265</div>
+            <div class="item-content">
+                <div class="item-title">游戏映射相关调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven, Peggy | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">266</div>
+            <div class="item-content">
+                <div class="item-title">92版面Saas化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Gavin</div>
+            </div>
+            <div class="item-status status-pending">-</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">267</div>
+            <div class="item-content">
+                <div class="item-title">VIP配置处洗码需要支持设置小数点后两位</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">268</div>
+            <div class="item-content">
+                <div class="item-title">6003-AR777 需求：注册方式与短信配置逻辑优化</div>
+                <div class="item-desc">前端: Erde, Seven | 后端: Owen</div>
+            </div>
+            <div class="item-status status-pending">进行中</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">269</div>
+            <div class="item-content">
+                <div class="item-title">充值转盘显示方式和RA9保持一致</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">270</div>
+            <div class="item-content">
+                <div class="item-title">亏损救援金-活动标题展示优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">271</div>
+            <div class="item-content">
+                <div class="item-title">首页浮窗增加  弱打扰功能</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">272</div>
+            <div class="item-content">
+                <div class="item-title">经典模式充值ARUPI快捷金额使用调整</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Peggy | 后端: Len</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">273</div>
+            <div class="item-content">
+                <div class="item-title">邀请转盘满足提现时的弹窗逻辑优化</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Seven</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">274</div>
+            <div class="item-content">
+                <div class="item-title">VIP界面0的显示处理</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">275</div>
+            <div class="item-content">
+                <div class="item-title">运营要求VIP需要展示出提现手续费率</div>
+                <div class="item-desc">版本: 快速迭代 | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">276</div>
+            <div class="item-content">
+                <div class="item-title">提现页面调整明确展示提现手续费</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">277</div>
+            <div class="item-content">
+                <div class="item-title">每日每周优化需求</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">278</div>
+            <div class="item-content">
+                <div class="item-title">充值教程视频展示增加判断</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">279</div>
+            <div class="item-content">
+                <div class="item-title">亏损救援金-活动配置-选择子游戏增加全部选项</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理-亏损救援金 | 前端: Justin</div>
+            </div>
+            <div class="item-status status-published">已发布</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">280</div>
+            <div class="item-content">
+                <div class="item-title">前台-活动中心 改造 三期</div>
+                <div class="item-desc">模块: 前台-活动中心 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-pending">SIT已更新</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">281</div>
+            <div class="item-content">
+                <div class="item-title">充值礼包新增目标用户</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Erde | 后端: Owen</div>
+            </div>
+            <div class="item-status status-pending">进行中</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">282</div>
+            <div class="item-content">
+                <div class="item-title">亏损救援金-前端代码优化+二期优化</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理-亏损救援金 | 前端: Alex, Erde</div>
+            </div>
+            <div class="item-status status-pending">SIT已更新</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">283</div>
+            <div class="item-content">
+                <div class="item-title">每日签到-前端代码优化</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动管理-每日签到 | 前端: Alex</div>
+            </div>
+            <div class="item-status status-pending">进行中</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">284</div>
+            <div class="item-content">
+                <div class="item-title">活动中心增加 开启消息推送 引导功能</div>
+                <div class="item-desc">版本: 快速迭代 | 模块: 活动中心 | 前端: Justin | 后端: Owen</div>
+            </div>
+            <div class="item-status status-pending">SIT已更新</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">285</div>
+            <div class="item-content">
+                <div class="item-title">优惠券前端代码优化+BUG修复</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Alex</div>
+            </div>
+            <div class="item-status status-pending">进行中</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">286</div>
+            <div class="item-content">
+                <div class="item-title">新版CF功能改造</div>
+                <div class="item-desc">版本: 快速迭代 | 前端: Darrel | 后端: vance, alan</div>
+            </div>
+            <div class="item-status status-pending">进行中</div>
+        </div>
+        <div class="list-item">
+            <div class="item-no">287</div>
+            <div class="item-content">
+                <div class="item-title">前台-活动中心 入口排序优化</div>
+                <div class="item-desc">模块: 活动中心</div>
+            </div>
+            <div class="item-status status-pending">进行中</div>
+        </div>
+    </div>
+</body>
+</html>
