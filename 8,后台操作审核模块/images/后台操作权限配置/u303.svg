@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="2630 1342 13 13" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 2630 1342  L 2643 1342  L 2643 1355  L 2630 1355  L 2630 1342  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
-  <path d="M 2630.5 1342.5  L 2642.5 1342.5  L 2642.5 1354.5  L 2630.5 1354.5  L 2630.5 1342.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
-  <path d="M 2632.785714285714 1348.5  L 2635.5714285714284 1351.2857142857144  L 2640.214285714286 1344.7857142857142  " stroke-width="2.7857142857142856" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke btn_check" />
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="2630 1370 13 13" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 2630 1370  L 2643 1370  L 2643 1383  L 2630 1383  L 2630 1370  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
+  <path d="M 2630.5 1370.5  L 2642.5 1370.5  L 2642.5 1382.5  L 2630.5 1382.5  L 2630.5 1370.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
+  <path d="M 2632.785714285714 1376.5  L 2635.5714285714284 1379.2857142857144  L 2640.214285714286 1372.7857142857142  " stroke-width="2.7857142857142856" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke btn_check" />
 </svg>
