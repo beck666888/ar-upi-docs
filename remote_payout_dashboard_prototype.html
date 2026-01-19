@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>远程出款数据管理看板 - 低保真原型</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --sub: #6b7280;
+            --primary: #4f46e5;
+            --danger: #ef4444;
+            --warn: #f59e0b;
+            --success: #10b981;
+            --border: #e5e7eb;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        h1 { font-size: 26px; margin-bottom: 8px; }
+        .sub { color: var(--sub); margin-bottom: 20px; }
+        .grid {
+            display: grid;
+            gap: 16px;
+        }
+        .kpi-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .kpi-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .kpi-value { font-size: 28px; font-weight: 800; }
+        .kpi-label { color: var(--sub); font-size: 13px; margin-top: 6px; }
+        .kpi-dot {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .table thead { background: #f3f4f6; }
+        .table th, .table td {
+            border: 1px solid var(--border);
+            padding: 8px 10px;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #fff;
+        }
+        .s-online { background: var(--success); }
+        .s-pause { background: var(--warn); }
+        .s-alert { background: var(--danger); }
+        .flex-2col {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 16px;
+        }
+        .flex-2col-bottom {
+            display: grid;
+            grid-template-columns: 1.5fr 1.5fr;
+            gap: 16px;
+        }
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 10px;
+            background: #eef2ff;
+            color: #3730a3;
+            font-size: 12px;
+            margin-left: 6px;
+        }
+        .list {
+            display: grid;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .list-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            background: #f9fafb;
+        }
+        .trend {
+            margin-top: 10px;
+        }
+        .trend-toggle {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0;
+        }
+        .pill {
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #111827;
+            border: 1px solid var(--border);
+            background: #fff;
+        }
+        .actions a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .actions a:hover { text-decoration: underline; }
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            width: 320px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+            padding: 16px;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 10;
+        }
+        .sidebar h3 { margin: 0; }
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--sub);
+            align-self: flex-end;
+        }
+        @media (max-width: 1024px) {
+            .flex-2col, .flex-2col-bottom { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <h1>远程出款数据管理看板（低保真原型）</h1>
+    <p class="sub">5 秒看全局 · 30 秒定位问题 · 1 分钟能下决策</p>
+
+    <!-- 顶部 KPI -->
+    <div class="kpi-grid">
+        <div class="card kpi-card" onclick="scrollToSection('staff')">
+            <div class="kpi-dot" style="background:#10b981;"></div>
+            <div class="kpi-value">12</div>
+            <div class="kpi-label">在线出款人数</div>
+        </div>
+        <div class="card kpi-card" onclick="scrollToSection('orders')">
+            <div class="kpi-dot" style="background:#f59e0b;"></div>
+            <div class="kpi-value">8</div>
+            <div class="kpi-label">待处理出款单</div>
+        </div>
+        <div class="card kpi-card">
+            <div class="kpi-dot" style="background:#f59e0b;"></div>
+            <div class="kpi-value">58s</div>
+            <div class="kpi-label">平均处理时长</div>
+        </div>
+        <div class="card kpi-card" onclick="scrollToSection('orders')">
+            <div class="kpi-dot" style="background:#ef4444;"></div>
+            <div class="kpi-value">2</div>
+            <div class="kpi-label">超时订单</div>
+        </div>
+        <div class="card kpi-card" onclick="scrollToSection('staff')">
+            <div class="kpi-dot" style="background:#f59e0b;"></div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-label">暂停中人数</div>
+        </div>
+        <div class="card kpi-card">
+            <div class="kpi-dot" style="background:#10b981;"></div>
+            <div class="kpi-value">326</div>
+            <div class="kpi-label">今日完成出款</div>
+        </div>
+    </div>
+
+    <div class="grid" style="margin-top:16px;">
+        <!-- 上半部分：人员 & 订单 -->
+        <div class="flex-2col">
+            <div class="card" id="staff">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <h2>人员实时状态</h2>
+                    <span class="pill">点击行查看详情</span>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>员工</th>
+                            <th>角色</th>
+                            <th>状态</th>
+                            <th>已处理</th>
+                            <th>处理中</th>
+                            <th>平均耗时</th>
+                            <th>暂停</th>
+                            <th>异常</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="openSidebar('张三', '员工', '上班中')">
+                            <td>张三</td>
+                            <td>员工</td>
+                            <td><span class="status s-online">上班中</span></td>
+                            <td>32</td>
+                            <td>1</td>
+                            <td>48s</td>
+                            <td>1</td>
+                            <td>—</td>
+                        </tr>
+                        <tr onclick="openSidebar('李四', '小组长', '暂停中')">
+                            <td>李四</td>
+                            <td>小组长</td>
+                            <td><span class="status s-pause">暂停中</span></td>
+                            <td>18</td>
+                            <td>0</td>
+                            <td>55s</td>
+                            <td>4</td>
+                            <td>🔴</td>
+                        </tr>
+                        <tr onclick="openSidebar('王五', '员工', '异常')">
+                            <td>王五</td>
+                            <td>员工</td>
+                            <td><span class="status s-alert">异常</span></td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td>2m30s</td>
+                            <td>2</td>
+                            <td>⚠️</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card" id="orders">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <h2>出款订单实时流</h2>
+                    <span class="pill">超时高亮 · 可接管</span>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>金额</th>
+                            <th>商户</th>
+                            <th>状态</th>
+                            <th>处理人</th>
+                            <th>已耗时</th>
+                            <th>风险</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>W123</td>
+                            <td>8,000</td>
+                            <td>商户A</td>
+                            <td>处理中</td>
+                            <td>张三</td>
+                            <td>3:20</td>
+                            <td>高</td>
+                            <td class="actions"><a href="#">接管</a><a href="#">转派</a></td>
+                        </tr>
+                        <tr style="background:#fff7ed;">
+                            <td>W125</td>
+                            <td>12,000</td>
+                            <td>商户A</td>
+                            <td style="color:var(--danger);">超时</td>
+                            <td>李四</td>
+                            <td>6:40</td>
+                            <td>高</td>
+                            <td class="actions"><a href="#">接管</a><a href="#">催办</a></td>
+                        </tr>
+                        <tr>
+                            <td>W124</td>
+                            <td>3,000</td>
+                            <td>商户B</td>
+                            <td>待派发</td>
+                            <td>—</td>
+                            <td>1:10</td>
+                            <td>中</td>
+                            <td class="actions"><a href="#">派发</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 下半部分：排行 & 预警 -->
+        <div class="flex-2col-bottom">
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <h2>员工效率排行</h2>
+                    <span class="pill">今日 · 处理量</span>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>员工</th>
+                            <th>已处理</th>
+                            <th>平均耗时</th>
+                            <th>超时率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td><td>王五</td><td>45</td><td>41s</td><td>0%</td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td>张三</td><td>32</td><td>48s</td><td>2%</td>
+                        </tr>
+                        <tr>
+                            <td>8</td><td>李四</td><td>12</td><td>2m30s</td><td>18%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <h2>异常 & 风控预警</h2>
+                    <span class="pill">红色必须处理</span>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>类型</th>
+                            <th>员工</th>
+                            <th>描述</th>
+                            <th>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10:21</td>
+                            <td>行为</td>
+                            <td>李四</td>
+                            <td>暂停超时 12 分钟</td>
+                            <td style="color:var(--danger);">未处理</td>
+                        </tr>
+                        <tr>
+                            <td>10:25</td>
+                            <td>订单</td>
+                            <td>张三</td>
+                            <td>高额单超时</td>
+                            <td style="color:var(--warn);">已接管</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 趋势分析（折叠） -->
+        <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <h2>趋势分析</h2>
+                <button class="trend-toggle" onclick="toggleTrend()">▼ 展开 / 折叠</button>
+            </div>
+            <div class="trend" id="trend" style="display:none;">
+                <div class="list">
+                    <div class="list-item">
+                        <div>
+                            <strong>在线人数 vs 待处理单</strong>
+                            <div class="sub">趋势占位：折线图</div>
+                        </div>
+                        <span class="tag">实时</span>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <strong>平均处理时长趋势</strong>
+                            <div class="sub">趋势占位：折线图</div>
+                        </div>
+                        <span class="tag">今日</span>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <strong>超时订单数量趋势</strong>
+                            <div class="sub">趋势占位：柱状图</div>
+                        </div>
+                        <span class="tag">按小时</span>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <strong>暂停总时长趋势</strong>
+                            <div class="sub">趋势占位：折线图</div>
+                        </div>
+                        <span class="tag">按小时</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 员工侧边栏 -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="closeSidebar()">×</button>
+        <h3 id="sb-name">员工</h3>
+        <p id="sb-role" class="sub">角色：—</p>
+        <div class="list">
+            <div class="list-item">
+                <div>
+                    <strong>今日状态时间轴</strong>
+                    <div class="sub" id="sb-timeline">09:00 上班 · 10:15 暂停 5m · 11:20 处理中(W123)</div>
+                </div>
+            </div>
+            <div class="list-item">
+                <div>
+                    <strong>当前限制</strong>
+                    <div class="sub">暂停上限 10 分钟 · 无未完成单可下班</div>
+                </div>
+            </div>
+            <div class="list-item">
+                <div>
+                    <strong>快速操作</strong>
+                </div>
+                <div>
+                    <a href="#">暂停派单</a>
+                    <a href="#">强制下线</a>
+                    <a href="#">查看订单</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTrend() {
+            const el = document.getElementById('trend');
+            el.style.display = el.style.display === 'none' ? 'block' : 'none';
+        }
+        function openSidebar(name, role, status) {
+            document.getElementById('sb-name').textContent = name + '（' + status + '）';
+            document.getElementById('sb-role').textContent = '角色：' + role;
+            document.getElementById('sidebar').style.display = 'flex';
+        }
+        function closeSidebar() {
+            document.getElementById('sidebar').style.display = 'none';
+        }
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>员工审核界面 - 低保真原型</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --sub: #6b7280;
+            --primary: #4f46e5;
+            --border: #e5e7eb;
+            --danger: #ef4444;
+            --warn: #f59e0b;
+            --success: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        h1 { font-size: 24px; margin-bottom: 6px; }
+        .sub { color: var(--sub); margin-bottom: 18px; }
+        .grid { display: grid; gap: 16px; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .pill {
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #111827;
+            border: 1px solid var(--border);
+            background: #fff;
+        }
+        .flex-2col {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 2fr 1.2fr;
+        }
+        @media (max-width: 1024px) { .flex-2col { grid-template-columns: 1fr; } }
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .btn-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; }
+        .btn-warn { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+        .btn-ghost { background: #fff; border: 1px solid var(--border); color: var(--text); }
+        .table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+        .table th, .table td {
+            border: 1px solid var(--border);
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .table thead { background: #f3f4f6; }
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #fff;
+        }
+        .s-processing { background: var(--primary); }
+        .s-wait { background: var(--warn); }
+        .s-risk { background: var(--danger); }
+        .list { display: grid; gap: 10px; margin-top: 10px; }
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border: 1px dashed var(--border);
+            border-radius: 10px;
+            background: #f9fafb;
+        }
+        .countdown { font-weight: 700; color: var(--danger); }
+        .hint { color: var(--sub); font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>员工审核界面（远程出款）</h1>
+    <p class="sub">聚焦“上班/暂停/下班”与“高效处理派发订单、超时提醒、升级/转派”</p>
+
+    <div class="grid">
+        <!-- 顶部：个人状态 & 打卡 -->
+        <div class="card">
+            <div class="section-title">
+                <h2>个人状态与打卡</h2>
+                <span class="pill">防假在线 · 可计时</span>
+            </div>
+            <div class="actions">
+                <button class="btn-primary">开始上班</button>
+                <button class="btn-ghost">暂停</button>
+                <button class="btn-ghost">恢复</button>
+                <button class="btn-warn">下班</button>
+            </div>
+            <div class="list">
+                <div class="list-item">
+                    <div>
+                        <strong>当前状态：</strong>上班中（可接单）
+                        <div class="hint">无操作超时 5 分钟预警；暂停上限 10 分钟。</div>
+                    </div>
+                    <div>
+                        今日工作时长：<strong>3h 25m</strong> ｜ 暂停累计：<strong>8m</strong>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div>
+                        <strong>规则提示</strong>
+                        <div class="hint">下班前需无处理中订单；否则自动转交组长。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中部：订单处理 + 侧栏 -->
+        <div class="flex-2col">
+            <div class="card">
+                <div class="section-title">
+                    <h2>我的派发订单</h2>
+                    <span class="pill">超时高亮 · 可升级</span>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>订单号</th>
+                            <th>金额</th>
+                            <th>商户</th>
+                            <th>状态</th>
+                            <th>剩余时长</th>
+                            <th>风险</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>W123</td>
+                            <td>8,000</td>
+                            <td>商户A</td>
+                            <td><span class="status s-processing">处理中</span></td>
+                            <td><span class="countdown">02:40</span></td>
+                            <td>高</td>
+                            <td>
+                                <div class="actions">
+                                    <button class="btn-primary" style="padding:6px 10px;">通过</button>
+                                    <button class="btn-ghost" style="padding:6px 10px;">驳回</button>
+                                    <button class="btn-ghost" style="padding:6px 10px;">升级组长</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>W124</td>
+                            <td>3,000</td>
+                            <td>商户B</td>
+                            <td><span class="status s-wait">待处理</span></td>
+                            <td>—</td>
+                            <td>中</td>
+                            <td>
+                                <div class="actions">
+                                    <button class="btn-primary" style="padding:6px 10px;">开始</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="background:#fff7ed;">
+                            <td>W125</td>
+                            <td>12,000</td>
+                            <td>商户A</td>
+                            <td><span class="status s-risk">超时</span></td>
+                            <td><span class="countdown">-01:10</span></td>
+                            <td>高</td>
+                            <td>
+                                <div class="actions">
+                                    <button class="btn-primary" style="padding:6px 10px;">继续处理</button>
+                                    <button class="btn-ghost" style="padding:6px 10px;">升级组长</button>
+                                    <button class="btn-ghost" style="padding:6px 10px;">转派</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="hint" style="margin-top:8px;">倒计时基于派发/处理开始时间；超时进入预警，并计入绩效。</div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    <h2>提醒 / 规则速览</h2>
+                    <span class="pill">避免踩坑</span>
+                </div>
+                <div class="list">
+                    <div class="list-item">
+                        <div>
+                            <strong>超时提醒</strong>
+                            <div class="hint">一级 3 分钟提醒我；二级 5 分钟组长知会；三级 10 分钟管理接管。</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <strong>暂停规则</strong>
+                            <div class="hint">暂停不派新单；暂停计时，超 10 分钟自动下线。</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <strong>打卡要求</strong>
+                            <div class="hint">下班需无处理中订单，否则系统转交组长后才可下班。</div>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <div>
+                            <strong>风控提示</strong>
+                            <div class="hint">高额/高风险订单请优先处理；必要时先升级组长。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部：操作日志 & 历史 -->
+        <div class="card">
+            <div class="section-title">
+                <h2>我的操作日志</h2>
+                <span class="pill">可追责 · 可稽核</span>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>动作</th>
+                        <th>订单</th>
+                        <th>说明</th>
+                    </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td>10:12:01</td>
+                    <td>开始处理</td>
+                    <td>W123</td>
+                    <td>高额单，风控提示已确认</td>
+                </tr>
+                <tr>
+                    <td>10:15:44</td>
+                    <td>暂停</td>
+                    <td>—</td>
+                    <td>洗手间 5 分钟</td>
+                </tr>
+                <tr>
+                    <td>10:22:10</td>
+                    <td>升级组长</td>
+                    <td>W125</td>
+                    <td>已超时，金额 12000</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+

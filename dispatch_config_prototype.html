@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出款派单配置 - 低保真原型</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --sub: #6b7280;
+            --primary: #4f46e5;
+            --border: #e5e7eb;
+            --danger: #ef4444;
+            --warn: #f59e0b;
+            --success: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        h1 { font-size: 24px; margin-bottom: 6px; }
+        .sub { color: var(--sub); margin-bottom: 18px; }
+        .grid { display: grid; gap: 16px; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .pill {
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #111827;
+            border: 1px solid var(--border);
+            background: #fff;
+        }
+        .form-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        label { font-weight: 600; }
+        input, select, textarea {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+        textarea { min-height: 80px; resize: vertical; }
+        .hint { color: var(--sub); font-size: 12px; }
+        .table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+        .table th, .table td {
+            border: 1px solid var(--border);
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .table thead { background: #f3f4f6; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+        .tag {
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
+        }
+        button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .btn-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; }
+        .btn-ghost { background: #fff; border: 1px solid var(--border); color: var(--text); }
+        .two-col {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1.2fr 1fr;
+        }
+        @media (max-width: 1024px) { .two-col { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <h1>出款派单配置（远程办公场景）</h1>
+    <p class="sub">聚焦“谁来派、派给谁、多久派、何时停、异常怎么处理”。</p>
+
+    <div class="grid">
+        <div class="card">
+            <div class="section-title">
+                <h2>基础参数</h2>
+                <span class="pill">全局生效</span>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label>派发模式</label>
+                    <select>
+                        <option>轮询派发（平均分配）</option>
+                        <option>权重派发（熟手多派）</option>
+                        <option>优先空闲（谁空谁接）</option>
+                    </select>
+                    <div class="hint">支持实时切换；可与员工权重组合。</div>
+                </div>
+                <div class="field">
+                    <label>派发频率</label>
+                    <select>
+                        <option>实时派发</option>
+                        <option>每 30 秒批量派发</option>
+                        <option>每 60 秒批量派发</option>
+                    </select>
+                    <div class="hint">实时推荐；批量适合大批量低金额。</div>
+                </div>
+                <div class="field">
+                    <label>单人同时处理上限</label>
+                    <input type="number" placeholder="例如：2">
+                    <div class="hint">达到上限后停止派新单。</div>
+                </div>
+                <div class="field">
+                    <label>暂停拦截派单</label>
+                    <select>
+                        <option>暂停时不派单（推荐）</option>
+                        <option>暂停时可派单</option>
+                    </select>
+                    <div class="hint">防假在线，默认不派。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="card">
+                <div class="section-title">
+                    <h2>超时规则（三级）</h2>
+                    <span class="pill">影响预警 & 绩效</span>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>级别</th>
+                            <th>超时时间</th>
+                            <th>通知对象</th>
+                            <th>动作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>一级</td>
+                            <td><input type="text" value="3 分钟" style="width:90px;"></td>
+                            <td>员工</td>
+                            <td>提醒</td>
+                        </tr>
+                        <tr>
+                            <td>二级</td>
+                            <td><input type="text" value="5 分钟" style="width:90px;"></td>
+                            <td>小组长</td>
+                            <td>通知 / 可接管</td>
+                        </tr>
+                            <td>三级</td>
+                            <td><input type="text" value="10 分钟" style="width:90px;"></td>
+                            <td>管理</td>
+                            <td>强制接管 / 停派</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="hint" style="margin-top:8px;">超时计入绩效；不可手动抹除。</div>
+            </div>
+
+            <div class="card">
+                <div class="section-title">
+                    <h2>员工状态规则</h2>
+                    <span class="pill">防假在线</span>
+                </div>
+                <div class="form-grid">
+                    <div class="field">
+                        <label>暂停最长时长</label>
+                        <input type="text" value="10 分钟">
+                        <div class="hint">超时自动下线；频繁暂停标记风控。</div>
+                    </div>
+                    <div class="field">
+                        <label>无操作超时</label>
+                        <input type="text" value="5 分钟">
+                        <div class="hint">无操作即异常预警；可自动下线。</div>
+                    </div>
+                    <div class="field">
+                        <label>下班条件</label>
+                        <textarea>需无处理中订单；否则强制转交组长</textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <h2>派单策略明细</h2>
+                <span class="pill">可权重/黑白名单</span>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>员工</th>
+                        <th>角色</th>
+                        <th>权重</th>
+                        <th>最大并发</th>
+                        <th>状态</th>
+                        <th>限制</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>张三</td>
+                        <td>员工</td>
+                        <td><input type="number" value="1.2" style="width:70px;"></td>
+                        <td><input type="number" value="2" style="width:70px;"></td>
+                        <td>🟢 可派</td>
+                        <td>
+                            <div class="tags">
+                                <span class="tag">大额需组长复核</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>李四</td>
+                        <td>小组长</td>
+                        <td><input type="number" value="1.0" style="width:70px;"></td>
+                        <td><input type="number" value="3" style="width:70px;"></td>
+                        <td>🟡 暂停</td>
+                        <td>
+                            <div class="tags">
+                                <span class="tag">暂停时不派</span>
+                                <span class="tag">可接管超时单</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>王五</td>
+                        <td>员工</td>
+                        <td><input type="number" value="0.8" style="width:70px;"></td>
+                        <td><input type="number" value="1" style="width:70px;"></td>
+                        <td>🔴 停派</td>
+                        <td>
+                            <div class="tags">
+                                <span class="tag">超时率高</span>
+                                <span class="tag">需培训</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="actions">
+                <button class="btn-primary">保存配置</button>
+                <button class="btn-ghost">重置</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-title">
+                <h2>预警策略</h2>
+                <span class="pill">短信/IM/站内信</span>
+            </div>
+            <div class="form-grid">
+                <div class="field">
+                    <label>订单未派发预警</label>
+                    <input type="text" value="待派发 > 10 单 或 最老等待 > 3 分钟">
+                    <div class="hint">触发后提醒组长 & 管理。</div>
+                </div>
+                <div class="field">
+                    <label>暂停超时预警</label>
+                    <input type="text" value="单人暂停 > 10 分钟 或 当日累计 > 30 分钟">
+                    <div class="hint">防假在线；可自动下线。</div>
+                </div>
+                <div class="field">
+                    <label>在线人数不足</label>
+                    <input type="text" value="在线 < 配置阈值（如 8 人）">
+                    <div class="hint">提醒管理补班或切人工派发。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
