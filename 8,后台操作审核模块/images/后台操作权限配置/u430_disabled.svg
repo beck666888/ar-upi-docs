@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="1008 660 13 13" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 1014.5 660  C 1018.14 660  1021 662.86  1021 666.5  C 1021 670.14  1018.14 673  1014.5 673  C 1010.86 673  1008 670.14  1008 666.5  C 1008 662.86  1010.86 660  1014.5 660  Z " fill-rule="nonzero" fill="rgba(240, 240, 240, 1)" stroke="none" class="fill" />
-  <path d="M 1014.5 660.5  C 1017.86 660.5  1020.5 663.14  1020.5 666.5  C 1020.5 669.86  1017.86 672.5  1014.5 672.5  C 1011.14 672.5  1008.5 669.86  1008.5 666.5  C 1008.5 663.14  1011.14 660.5  1014.5 660.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="326 722 13 13" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 326 722  L 339 722  L 339 735  L 326 735  L 326 722  Z " fill-rule="nonzero" fill="rgba(240, 240, 240, 1)" stroke="none" class="fill" />
+  <path d="M 326.5 722.5  L 338.5 722.5  L 338.5 734.5  L 326.5 734.5  L 326.5 722.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
 </svg>

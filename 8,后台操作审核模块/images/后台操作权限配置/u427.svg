@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="456 721 13 13" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 456 721  L 469 721  L 469 734  L 456 734  L 456 721  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
-  <path d="M 456.5 721.5  L 468.5 721.5  L 468.5 733.5  L 456.5 733.5  L 456.5 721.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
-  <path d="M 458.7857142857143 727.5  L 461.57142857142856 730.2857142857142  L 466.2142857142857 723.7857142857143  " stroke-width="2.7857142857142856" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke btn_check" />
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="369 660 13 13" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 375.5 660  C 379.14 660  382 662.86  382 666.5  C 382 670.14  379.14 673  375.5 673  C 371.86 673  369 670.14  369 666.5  C 369 662.86  371.86 660  375.5 660  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
+  <path d="M 375.5 660.5  C 378.86 660.5  381.5 663.14  381.5 666.5  C 381.5 669.86  378.86 672.5  375.5 672.5  C 372.14 672.5  369.5 669.86  369.5 666.5  C 369.5 663.14  372.14 660.5  375.5 660.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
+  <path d="M 375.5 669.75  C 373.68 669.75  372.25 668.32  372.25 666.5  C 372.25 664.68  373.68 663.25  375.5 663.25  C 377.32 663.25  378.75 664.68  378.75 666.5  C 378.75 668.32  377.32 669.75  375.5 669.75  " fill-rule="nonzero" fill="rgba(121, 121, 121, 1)" stroke="none" class="stroke btn_check" />
 </svg>

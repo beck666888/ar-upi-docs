@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="2081 743 13 13" xmlns="http://www.w3.org/2000/svg">
-  <path d="M 2081 743  L 2094 743  L 2094 756  L 2081 756  L 2081 743  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
-  <path d="M 2081.5 743.5  L 2093.5 743.5  L 2093.5 755.5  L 2081.5 755.5  L 2081.5 743.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
-  <path d="M 2083.785714285714 749.5  L 2086.5714285714284 752.2857142857142  L 2091.214285714286 745.7857142857143  " stroke-width="2.7857142857142856" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke btn_check" />
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="13px" height="13px" viewBox="1969 648 13 13" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 1975.5 648  C 1979.14 648  1982 650.86  1982 654.5  C 1982 658.14  1979.14 661  1975.5 661  C 1971.86 661  1969 658.14  1969 654.5  C 1969 650.86  1971.86 648  1975.5 648  Z " fill-rule="nonzero" fill="rgba(255, 255, 255, 1)" stroke="none" class="fill" />
+  <path d="M 1975.5 648.5  C 1978.86 648.5  1981.5 651.14  1981.5 654.5  C 1981.5 657.86  1978.86 660.5  1975.5 660.5  C 1972.14 660.5  1969.5 657.86  1969.5 654.5  C 1969.5 651.14  1972.14 648.5  1975.5 648.5  Z " stroke-width="1" stroke-dasharray="0" stroke="rgba(121, 121, 121, 1)" fill="none" class="stroke" stroke-dashoffset="0.5" />
+  <path d="M 1975.5 657.75  C 1973.68 657.75  1972.25 656.32  1972.25 654.5  C 1972.25 652.68  1973.68 651.25  1975.5 651.25  C 1977.32 651.25  1978.75 652.68  1978.75 654.5  C 1978.75 656.32  1977.32 657.75  1975.5 657.75  " fill-rule="nonzero" fill="rgba(121, 121, 121, 1)" stroke="none" class="stroke btn_check" />
 </svg>
