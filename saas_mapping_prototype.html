@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS 游戏映射配置 - 低保真原型</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #1f2937;
+            --sub: #6b7280;
+            --primary: #4f46e5;
+            --border: #e5e7eb;
+            --danger: #ef4444;
+            --warn: #f59e0b;
+            --success: #10b981;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 24px;
+        }
+        h1 { font-size: 24px; margin-bottom: 6px; }
+        .sub { color: var(--sub); margin-bottom: 18px; }
+        .grid { display: grid; gap: 16px; }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .pill {
+            padding: 2px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: #111827;
+            border: 1px solid var(--border);
+            background: #fff;
+        }
+        .form-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        label { font-weight: 600; }
+        select, input {
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+        }
+        .table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+        .table th, .table td {
+            border: 1px solid var(--border);
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .table thead { background: #f3f4f6; }
+        .tag {
+            display: inline-block;
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+        .btn-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; }
+        .btn-ghost { background: #fff; border: 1px solid var(--border); color: var(--text); }
+        .btn-warn { background: #fff7ed; border: 1px solid #fed7aa; color: #c2410c; }
+        .toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+        .toggle input { cursor: pointer; }
+        .flex-2col {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1.6fr 1fr;
+        }
+        @media (max-width: 1024px) { .flex-2col { grid-template-columns: 1fr; } }
+        .site-dropdown { position: relative; }
+        .site-panel {
+            position: absolute;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            max-height: 260px;
+            overflow: auto;
+            display: none;
+            z-index: 10;
+            padding: 10px;
+            background: #fafbff;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 8px;
+        }
+        .site-panel.show { display: grid; }
+        .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+        .chip {
+            background: #eef2ff;
+            color: #3730a3;
+            border-radius: 999px;
+            padding: 4px 10px;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chip button {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            color: #6b7280;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1>SaaS 游戏映射配置（站点优先 · 批量映射）</h1>
+    <p class="sub">流程：选择站点 → 选择源厂/子游戏 → 选择映射厂商/子游戏 → 批量落地映射到所选站点。</p>
+
+    <div class="grid">
+        <!-- 过滤器（站点优先） -->
+        <div class="card">
+            <div class="section-title">
+                <h2>站点优先配置 / 批量映射</h2>
+                <span class="pill">先选站点，再选源/映射</span>
+            </div>
+            <div class="form-grid">
+                <div class="field site-dropdown">
+                    <label>选择商户站点（可多选，下拉搜索）</label>
+                    <input id="siteSearch" type="text" placeholder="搜索站点" onfocus="openSiteDropdown()" oninput="renderSiteCheckboxes()">
+                    <div class="actions" style="margin:8px 0;">
+                        <button class="btn-ghost" onclick="selectAllFiltered()">全选当前筛选</button>
+                        <button class="btn-ghost" onclick="clearAllSites()">清空选择</button>
+                        <button class="btn-ghost" onclick="toggleSiteDropdown()">展开/收起</button>
+                    </div>
+                    <div id="sitePanelList" class="site-panel"></div>
+                    <div class="chips" id="siteSelectedChips"></div>
+                    <div class="hint">支持搜索 + 全选；已选以标签展示，可单独移除</div>
+                </div>
+                <div class="field">
+                    <label>源厂商</label>
+                    <select id="srcVendor" onchange="renderSourceGames()"></select>
+                    <div class="hint">源厂子游戏默认全站点可用</div>
+                </div>
+                <div class="field">
+                    <label>映射厂商（高仿）</label>
+                    <select id="cloneVendor" onchange="renderCloneGames()"></select>
+                </div>
+                <div class="field">
+                    <label>映射子游戏（批量多选）</label>
+                    <div id="cloneGameCheckboxes" class="list"></div>
+                    <div class="hint">支持批量，默认按“源子游戏 × 映射子游戏”全组合映射</div>
+                </div>
+            </div>
+            <div class="actions" style="margin-top:10px; flex-wrap:wrap;">
+                <button class="btn-primary" onclick="batchMap()">批量映射到选中站点</button>
+                <button class="btn-ghost" onclick="resetSelections()">重置选择</button>
+            </div>
+        </div>
+
+        <!-- 映射表 + 站点配置 -->
+        <div class="flex-2col">
+            <div class="card">
+                <div class="section-title">
+                    <h2>映射关系列表（按站点）</h2>
+                    <span class="pill">点击行选中，右侧可调启用</span>
+                </div>
+                <table class="table" id="mapTable">
+                    <thead>
+                        <tr>
+                            <th>站点</th>
+                            <th>源厂商</th>
+                            <th>源厂子游戏</th>
+                            <th>高仿厂商</th>
+                            <th>高仿子游戏</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <div class="card" id="sitePanel">
+                <div class="section-title">
+                    <h2>站点启用切换</h2>
+                    <span class="pill">为选中映射切源/高仿</span>
+                </div>
+                <div id="currentMapping" class="sub">未选择映射</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>站点</th>
+                            <th>启用源厂子游戏</th>
+                            <th>启用高仿子游戏</th>
+                        </tr>
+                    </thead>
+                    <tbody id="siteTable"></tbody>
+                </table>
+                <div class="actions" style="margin-top:10px;">
+                    <button class="btn-primary" onclick="applyAll('source')">批量启用源厂</button>
+                    <button class="btn-primary" onclick="applyAll('clone')">批量启用高仿</button>
+                    <button class="btn-ghost" onclick="saveConfig()">保存配置</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const vendors = {
+            source: {
+                A: ['捕鱼王', '德州扑克', '老虎机X'],
+                B: ['连连看', '炸金花', '高额百家乐']
+            },
+            clone: {
+                H1: ['HF-捕鱼王', 'HF-扑克', 'HF-老虎机'],
+                H2: ['HF-连连看', 'HF-炸金花', 'HF-百家乐']
+            }
+        };
+
+        const sites = ['站点-Alpha', '站点-Beta', '站点-Gamma', '站点-Delta'];
+
+        let mappings = [
+            { id: 1, site: '站点-Alpha', srcVendor: 'A', srcGame: '捕鱼王', cloneVendor: 'H1', cloneGame: 'HF-捕鱼王' },
+            { id: 2, site: '站点-Beta',  srcVendor: 'A', srcGame: '德州扑克', cloneVendor: 'H1', cloneGame: 'HF-扑克' },
+            { id: 3, site: '站点-Delta', srcVendor: 'B', srcGame: '连连看',  cloneVendor: 'H2', cloneGame: 'HF-连连看' }
+        ];
+
+        // per mapping id: { site: 'source' | 'clone' } 实际仅当前站点，但保留切换能力
+        const siteConfig = {
+            1: { '站点-Alpha': 'clone' },
+            2: { '站点-Beta': 'source' },
+            3: { '站点-Delta': 'source' }
+        };
+
+        let activeId = null;
+
+        function initForm() {
+            fillSelect('srcVendor', Object.keys(vendors.source));
+            fillSelect('cloneVendor', Object.keys(vendors.clone));
+            renderCloneGames();
+            renderSiteCheckboxes();
+            renderTable();
+            renderSites();
+        }
+
+        function fillSelect(id, arr) {
+            const sel = document.getElementById(id);
+            sel.innerHTML = arr.map(o => `<option value="${o}">${o}</option>`).join('');
+        }
+
+        let selectedSites = new Set();
+        let siteDropdownOpen = false;
+
+        function renderSiteCheckboxes() {
+            const keyword = (document.getElementById('siteSearch').value || '').trim().toLowerCase();
+            const box = document.getElementById('sitePanelList');
+            box.innerHTML = sites
+                .filter(s => !keyword || s.toLowerCase().includes(keyword))
+                .map(s => `
+                    <label class="toggle" style="display:block;">
+                        <input type="checkbox" value="${s}" ${selectedSites.has(s)?'checked':''} onchange="toggleSite('${s}', this.checked)">
+                        ${s}
+                    </label>
+                `).join('') || '<span class="hint">无匹配站点</span>';
+            renderSiteChips();
+        }
+
+        function toggleSite(site, checked) {
+            if (checked) selectedSites.add(site); else selectedSites.delete(site);
+            renderSiteChips();
+        }
+
+        function renderSiteChips() {
+            const wrap = document.getElementById('siteSelectedChips');
+            const arr = Array.from(selectedSites);
+            wrap.innerHTML = arr.slice(0, 12).map(s => `
+                <span class="chip">${s}<button onclick="removeSite('${s}')">×</button></span>
+            `).join('');
+            const more = arr.length - 12;
+            if (more > 0) {
+                wrap.innerHTML += `<span class="chip">+${more} 更多</span>`;
+            }
+        }
+
+        function removeSite(site) {
+            selectedSites.delete(site);
+            renderSiteCheckboxes();
+        }
+
+        function selectAllFiltered() {
+            const keyword = (document.getElementById('siteSearch').value || '').trim().toLowerCase();
+            sites
+                .filter(s => !keyword || s.toLowerCase().includes(keyword))
+                .forEach(s => selectedSites.add(s));
+            renderSiteCheckboxes();
+        }
+
+        function clearAllSites() {
+            selectedSites.clear();
+            renderSiteCheckboxes();
+        }
+
+        function openSiteDropdown() {
+            siteDropdownOpen = true;
+            document.getElementById('sitePanelList').classList.add('show');
+        }
+
+        function closeSiteDropdown() {
+            siteDropdownOpen = false;
+            document.getElementById('sitePanelList').classList.remove('show');
+        }
+
+        function toggleSiteDropdown() {
+            siteDropdownOpen ? closeSiteDropdown() : openSiteDropdown();
+        }
+
+        document.addEventListener('click', (e) => {
+            const wrap = document.querySelector('.site-dropdown');
+            if (!wrap.contains(e.target)) closeSiteDropdown();
+        });
+
+        function renderCloneGames() {
+            const v = document.getElementById('cloneVendor').value || Object.keys(vendors.clone)[0];
+            const list = vendors.clone[v] || [];
+            document.getElementById('cloneGameCheckboxes').innerHTML = list.map(g => `
+                <label class="toggle" style="display:block;">
+                    <input type="checkbox" value="${g}">
+                    ${g}
+                </label>
+            `).join('');
+        }
+
+        function resetSelections() {
+            document.querySelectorAll('#siteCheckboxes input').forEach(c => c.checked = false);
+            renderCloneGames();
+        }
+
+        function renderTable() {
+            const tbody = document.querySelector('#mapTable tbody');
+            const list = mappings;
+            tbody.innerHTML = list.map(m => `
+                <tr onclick="selectMapping(${m.id})" style="${activeId===m.id?'background:#eef2ff;':''}">
+                    <td>${m.site}</td>
+                    <td>${m.srcVendor}</td>
+                    <td>${m.srcGame}</td>
+                    <td>${m.cloneVendor}</td>
+                    <td>${m.cloneGame}</td>
+                    <td><button class="btn-ghost" style="padding:6px 10px;" onclick="event.stopPropagation();deleteMapping(${m.id})">删除</button></td>
+                </tr>
+            `).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--sub);">暂无映射</td></tr>';
+            if (!list.find(m => m.id === activeId)) activeId = list[0]?.id || null;
+            renderSites();
+        }
+
+        function selectMapping(id) {
+            activeId = id;
+            renderTable();
+            renderSites();
+        }
+
+        function deleteMapping(id) {
+            mappings = mappings.filter(m => m.id !== id);
+            delete siteConfig[id];
+            if (activeId === id) activeId = null;
+            renderTable();
+        }
+
+        function batchMap() {
+            const siteArr = Array.from(selectedSites);
+            const sv = document.getElementById('srcVendor').value || Object.keys(vendors.source)[0];
+            const cv = document.getElementById('cloneVendor').value || Object.keys(vendors.clone)[0];
+            const sgList = vendors.source[sv] || [];
+            const cgList = Array.from(document.querySelectorAll('#cloneGameCheckboxes input:checked')).map(i => i.value);
+            if (!siteArr.length) { alert('请先选择站点'); return; }
+            if (!cgList.length) { alert('请至少选择一个映射子游戏'); return; }
+            const combos = [];
+            sgList.forEach(sg => {
+                cgList.forEach(cg => {
+                    siteArr.forEach(site => combos.push({ site, sv, sg, cv, cg }));
+                });
+            });
+            combos.forEach(({site, sv, sg, cv, cg}) => {
+                const exists = mappings.some(m =>
+                    m.site === site &&
+                    m.srcVendor === sv &&
+                    m.srcGame === sg &&
+                    m.cloneVendor === cv &&
+                    m.cloneGame === cg
+                );
+                if (!exists) {
+                    const id = Date.now() + Math.random();
+                    mappings.push({ id, site, srcVendor: sv, srcGame: sg, cloneVendor: cv, cloneGame: cg });
+                    siteConfig[id] = { [site]: 'clone' };
+                    activeId = id;
+                }
+            });
+            renderTable();
+        }
+
+        function renderSites() {
+            const panel = document.getElementById('sitePanel');
+            const info = document.getElementById('currentMapping');
+            const tbody = document.getElementById('siteTable');
+            if (!activeId) {
+                info.textContent = '未选择映射';
+                tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--sub);">请选择左侧一条映射</td></tr>';
+                return;
+            }
+            const m = mappings.find(x => x.id === activeId);
+            info.textContent = `映射：${m.srcVendor}/${m.srcGame} → ${m.cloneVendor}/${m.cloneGame}`;
+            const cfg = siteConfig[activeId] || {};
+            tbody.innerHTML = sites.map(s => {
+                const val = cfg[s] || 'source';
+                return `
+                    <tr>
+                        <td>${s}</td>
+                        <td>
+                            <label class="toggle">
+                                <input type="radio" name="site-${activeId}-${s}" ${val==='source'?'checked':''} onclick="setSite('${s}','source')">
+                                启用源厂
+                            </label>
+                        </td>
+                        <td>
+                            <label class="toggle">
+                                <input type="radio" name="site-${activeId}-${s}" ${val==='clone'?'checked':''} onclick="setSite('${s}','clone')">
+                                启用高仿
+                            </label>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function setSite(site, val) {
+            if (!activeId) return;
+            if (!siteConfig[activeId]) siteConfig[activeId] = {};
+            siteConfig[activeId][site] = val;
+        }
+
+        function applyAll(val) {
+            if (!activeId) { alert('请先选择映射'); return; }
+            siteConfig[activeId] = {};
+            sites.forEach(s => siteConfig[activeId][s] = val);
+            renderSites();
+        }
+
+        function saveConfig() {
+            alert('已保存当前映射及站点启用配置（示意）');
+        }
+
+        initForm();
+    </script>
+</body>
+</html>
+
