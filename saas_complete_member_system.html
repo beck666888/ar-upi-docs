@@ -7910,6 +7910,34 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 集团编辑弹窗 -->
+            <div id="groupEditModal" class="modal">
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="groupModalTitle">新增集团</h3>
+                        <span class="modal-close" onclick="closeGroupModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">集团名 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="groupName" class="form-input" placeholder="请输入集团名" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">状态</label>
+                            <label class="switch">
+                                <input type="checkbox" id="groupStatus" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span style="margin-left: 10px; color: #8c8c8c; font-size: 13px;">开启后该集团可用</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" onclick="closeGroupModal()">取消</button>
+                        <button class="btn btn-primary" onclick="saveGroup()">确定</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 站点管理页面 -->
@@ -8073,6 +8101,109 @@
                         <button class="page-item" disabled>上一页</button>
                         <button class="page-item active">1</button>
                         <button class="page-item" disabled>下一页</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 站点编辑弹窗 -->
+            <div id="siteEditModal" class="modal">
+                <div class="modal-content" style="max-width: 600px;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="siteModalTitle">新增站点</h3>
+                        <span class="modal-close" onclick="closeSiteModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">商户名称 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="siteName" class="form-input" placeholder="请输入商户名称" style="width: 100%;">
+                        </div>
+                        
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">选择国家 <span style="color: #ff4d4f;">*</span></label>
+                            <select id="siteCountry" class="form-input" style="width: 100%;">
+                                <option value="">请选择国家</option>
+                                <option value="印度">印度</option>
+                                <option value="巴西">巴西</option>
+                                <option value="泰国">泰国</option>
+                                <option value="越南">越南</option>
+                                <option value="菲律宾">菲律宾</option>
+                                <option value="马来西亚">马来西亚</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">选择币种 <span style="color: #ff4d4f;">*</span></label>
+                            <select id="siteCurrency" class="form-input" style="width: 100%;">
+                                <option value="">请选择币种</option>
+                                <option value="INR">INR (印度卢比)</option>
+                                <option value="BRL">BRL (巴西雷亚尔)</option>
+                                <option value="THB">THB (泰铢)</option>
+                                <option value="VND">VND (越南盾)</option>
+                                <option value="PHP">PHP (菲律宾比索)</option>
+                                <option value="MYR">MYR (马来西亚林吉特)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">选择语种 <span style="color: #ff4d4f;">*</span> <span style="color: #8c8c8c; font-size: 12px;">(可多选)</span></label>
+                            <div id="languageOptions" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px; border: 1px solid #d9d9d9; border-radius: 4px; background: #fafafa;">
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="英文" style="margin-right: 6px;">
+                                    <span>英文</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="中文" style="margin-right: 6px;">
+                                    <span>中文</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="印地语" style="margin-right: 6px;">
+                                    <span>印地语</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="葡萄牙语" style="margin-right: 6px;">
+                                    <span>葡萄牙语</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="泰语" style="margin-right: 6px;">
+                                    <span>泰语</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="越南语" style="margin-right: 6px;">
+                                    <span>越南语</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="马来语" style="margin-right: 6px;">
+                                    <span>马来语</span>
+                                </label>
+                                <label style="display: flex; align-items: center; cursor: pointer;">
+                                    <input type="checkbox" value="菲律宾语" style="margin-right: 6px;">
+                                    <span>菲律宾语</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">归属集团 <span style="color: #ff4d4f;">*</span></label>
+                            <select id="siteGroup" class="form-input" style="width: 100%;">
+                                <option value="">请选择集团</option>
+                                <option value="亚太集团">亚太集团</option>
+                                <option value="欧洲集团">欧洲集团</option>
+                                <option value="美洲集团">美洲集团</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">站点状态</label>
+                            <label class="switch">
+                                <input type="checkbox" id="siteStatus" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span style="margin-left: 10px; color: #8c8c8c; font-size: 13px;">开启后该站点可用</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" onclick="closeSiteModal()">取消</button>
+                        <button class="btn btn-primary" onclick="saveSite()">确定</button>
                     </div>
                 </div>
             </div>
@@ -8322,6 +8453,106 @@
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- 语种配置弹窗 -->
+            <div id="languageEditModal" class="modal">
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="languageModalTitle">新增语种</h3>
+                        <span class="modal-close" onclick="closeLanguageModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">语种名称 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="languageName" class="form-input" placeholder="请输入语种名称" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">语种代码 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="languageCode" class="form-input" placeholder="例如：en, zh, hi" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">状态</label>
+                            <label class="switch">
+                                <input type="checkbox" id="languageStatus" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span style="margin-left: 10px; color: #8c8c8c; font-size: 13px;">开启后该语种可用</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" onclick="closeLanguageModal()">取消</button>
+                        <button class="btn btn-primary" onclick="saveLanguage()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 币种配置弹窗 -->
+            <div id="currencyEditModal" class="modal">
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="currencyModalTitle">新增币种</h3>
+                        <span class="modal-close" onclick="closeCurrencyModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">币种名称 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="currencyName" class="form-input" placeholder="请输入币种名称" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">币种代码 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="currencyCode" class="form-input" placeholder="例如：INR, BRL, THB" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">符号 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="currencySymbol" class="form-input" placeholder="例如：₹, R$, ฿" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">状态</label>
+                            <label class="switch">
+                                <input type="checkbox" id="currencyStatus" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span style="margin-left: 10px; color: #8c8c8c; font-size: 13px;">开启后该币种可用</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" onclick="closeCurrencyModal()">取消</button>
+                        <button class="btn btn-primary" onclick="saveCurrency()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 国家配置弹窗 -->
+            <div id="countryEditModal" class="modal">
+                <div class="modal-content" style="max-width: 500px;">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="countryModalTitle">新增国家</h3>
+                        <span class="modal-close" onclick="closeCountryModal()">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">国家名称 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="countryName" class="form-input" placeholder="请输入国家名称" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">国家代码 <span style="color: #ff4d4f;">*</span></label>
+                            <input type="text" id="countryCode" class="form-input" placeholder="例如：IN, BR, TH" style="width: 100%;">
+                        </div>
+                        <div class="form-item" style="margin-bottom: 20px;">
+                            <label class="form-label" style="display: block; margin-bottom: 8px;">状态</label>
+                            <label class="switch">
+                                <input type="checkbox" id="countryStatus" checked>
+                                <span class="slider"></span>
+                            </label>
+                            <span style="margin-left: 10px; color: #8c8c8c; font-size: 13px;">开启后该国家可用</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" onclick="closeCountryModal()">取消</button>
+                        <button class="btn btn-primary" onclick="saveCountry()">确定</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -10514,13 +10745,60 @@
 
         // ==================== 集团管理 ====================
         // 新增集团
+        // 新增集团
+        let currentGroupId = null;
+        
         function addGroup() {
-            alert('新增集团...');
+            currentGroupId = null;
+            document.getElementById('groupModalTitle').textContent = '新增集团';
+            document.getElementById('groupName').value = '';
+            document.getElementById('groupStatus').checked = true;
+            document.getElementById('groupEditModal').classList.add('show');
         }
 
         // 编辑集团
         function editGroup(id) {
-            alert('编辑集团 ID: ' + id);
+            currentGroupId = id;
+            document.getElementById('groupModalTitle').textContent = '编辑集团';
+            
+            // 模拟从数据库获取数据
+            const groupData = {
+                1: { name: '亚太集团', status: true },
+                2: { name: '欧洲集团', status: true },
+                3: { name: '美洲集团', status: false }
+            };
+            
+            if (groupData[id]) {
+                document.getElementById('groupName').value = groupData[id].name;
+                document.getElementById('groupStatus').checked = groupData[id].status;
+            }
+            
+            document.getElementById('groupEditModal').classList.add('show');
+        }
+
+        // 关闭集团弹窗
+        function closeGroupModal() {
+            document.getElementById('groupEditModal').classList.remove('show');
+        }
+
+        // 保存集团
+        function saveGroup() {
+            const name = document.getElementById('groupName').value.trim();
+            const status = document.getElementById('groupStatus').checked;
+            
+            if (!name) {
+                alert('请输入集团名');
+                return;
+            }
+            
+            if (currentGroupId) {
+                alert('编辑集团成功！\n集团名：' + name + '\n状态：' + (status ? '启用' : '禁用'));
+            } else {
+                alert('新增集团成功！\n集团名：' + name + '\n状态：' + (status ? '启用' : '禁用'));
+            }
+            
+            closeGroupModal();
+            // 这里可以添加刷新列表的逻辑
         }
 
         // 删除集团
@@ -10542,13 +10820,158 @@
         }
 
         // 新增站点
+        // 新增站点
+        let currentSiteId = null;
+        
         function addSite() {
-            alert('新增站点...');
+            currentSiteId = null;
+            document.getElementById('siteModalTitle').textContent = '新增站点';
+            
+            // 清空表单
+            document.getElementById('siteName').value = '';
+            document.getElementById('siteName').disabled = false;
+            document.getElementById('siteCountry').value = '';
+            document.getElementById('siteCountry').disabled = false;
+            document.getElementById('siteCurrency').value = '';
+            document.getElementById('siteCurrency').disabled = false;
+            document.getElementById('siteGroup').value = '';
+            document.getElementById('siteStatus').checked = true;
+            
+            // 清空语种选择
+            const checkboxes = document.querySelectorAll('#languageOptions input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = false);
+            
+            document.getElementById('siteEditModal').classList.add('show');
         }
 
         // 编辑站点
         function editSite(id) {
-            alert('编辑站点 ID: ' + id);
+            currentSiteId = id;
+            document.getElementById('siteModalTitle').textContent = '编辑站点';
+            
+            // 模拟从数据库获取数据
+            const siteData = {
+                1: { 
+                    name: 'Lucky Casino India', 
+                    country: '印度', 
+                    currency: 'INR', 
+                    languages: ['英文', '印地语'],
+                    group: '亚太集团',
+                    status: true 
+                },
+                2: { 
+                    name: 'Brasil Bet', 
+                    country: '巴西', 
+                    currency: 'BRL', 
+                    languages: ['葡萄牙语'],
+                    group: '美洲集团',
+                    status: true 
+                },
+                3: { 
+                    name: 'Thai Win Casino', 
+                    country: '泰国', 
+                    currency: 'THB', 
+                    languages: ['英文', '泰语'],
+                    group: '亚太集团',
+                    status: false 
+                },
+                4: { 
+                    name: 'Viet Lucky', 
+                    country: '越南', 
+                    currency: 'VND', 
+                    languages: ['越南语'],
+                    group: '亚太集团',
+                    status: true 
+                }
+            };
+            
+            if (siteData[id]) {
+                const data = siteData[id];
+                
+                // 填充表单数据
+                document.getElementById('siteName').value = data.name;
+                document.getElementById('siteName').disabled = true; // 编辑时不可修改
+                
+                document.getElementById('siteCountry').value = data.country;
+                document.getElementById('siteCountry').disabled = true; // 编辑时不可修改
+                
+                document.getElementById('siteCurrency').value = data.currency;
+                document.getElementById('siteCurrency').disabled = true; // 编辑时不可修改
+                
+                document.getElementById('siteGroup').value = data.group;
+                document.getElementById('siteStatus').checked = data.status;
+                
+                // 设置语种多选
+                const checkboxes = document.querySelectorAll('#languageOptions input[type="checkbox"]');
+                checkboxes.forEach(cb => {
+                    cb.checked = data.languages.includes(cb.value);
+                });
+            }
+            
+            document.getElementById('siteEditModal').classList.add('show');
+        }
+
+        // 关闭站点弹窗
+        function closeSiteModal() {
+            document.getElementById('siteEditModal').classList.remove('show');
+        }
+
+        // 保存站点
+        function saveSite() {
+            const name = document.getElementById('siteName').value.trim();
+            const country = document.getElementById('siteCountry').value;
+            const currency = document.getElementById('siteCurrency').value;
+            const group = document.getElementById('siteGroup').value;
+            const status = document.getElementById('siteStatus').checked;
+            
+            // 获取选中的语种
+            const checkboxes = document.querySelectorAll('#languageOptions input[type="checkbox"]:checked');
+            const languages = Array.from(checkboxes).map(cb => cb.value);
+            
+            // 表单验证
+            if (!name) {
+                alert('请输入商户名称');
+                return;
+            }
+            if (!country) {
+                alert('请选择国家');
+                return;
+            }
+            if (!currency) {
+                alert('请选择币种');
+                return;
+            }
+            if (languages.length === 0) {
+                alert('请至少选择一种语种');
+                return;
+            }
+            if (!group) {
+                alert('请选择归属集团');
+                return;
+            }
+            
+            const languageStr = languages.join(', ');
+            
+            if (currentSiteId) {
+                alert('编辑站点成功！\n' +
+                    '商户名称：' + name + '\n' +
+                    '国家：' + country + '\n' +
+                    '币种：' + currency + '\n' +
+                    '语种：' + languageStr + '\n' +
+                    '归属集团：' + group + '\n' +
+                    '状态：' + (status ? '启用' : '禁用'));
+            } else {
+                alert('新增站点成功！\n' +
+                    '商户名称：' + name + '\n' +
+                    '国家：' + country + '\n' +
+                    '币种：' + currency + '\n' +
+                    '语种：' + languageStr + '\n' +
+                    '归属集团：' + group + '\n' +
+                    '状态：' + (status ? '启用' : '禁用'));
+            }
+            
+            closeSiteModal();
+            // 这里可以添加刷新列表的逻辑
         }
 
         // 删除站点
@@ -10567,13 +10990,63 @@
 
         // ==================== 配置管理 - 语种 ====================
         // 新增语种
+        // 语种配置管理
+        let currentLanguageId = null;
+        
         function addLanguage() {
-            alert('新增语种...');
+            currentLanguageId = null;
+            document.getElementById('languageModalTitle').textContent = '新增语种';
+            document.getElementById('languageName').value = '';
+            document.getElementById('languageCode').value = '';
+            document.getElementById('languageStatus').checked = true;
+            document.getElementById('languageEditModal').classList.add('show');
         }
 
-        // 编辑语种
         function editLanguage(id) {
-            alert('编辑语种 ID: ' + id);
+            currentLanguageId = id;
+            document.getElementById('languageModalTitle').textContent = '编辑语种';
+            
+            // 模拟从数据库获取数据
+            const languageData = {
+                1: { name: '英文', code: 'en', status: true },
+                2: { name: '印地语', code: 'hi', status: true },
+                3: { name: '葡萄牙语', code: 'pt', status: true }
+            };
+            
+            if (languageData[id]) {
+                document.getElementById('languageName').value = languageData[id].name;
+                document.getElementById('languageCode').value = languageData[id].code;
+                document.getElementById('languageStatus').checked = languageData[id].status;
+            }
+            
+            document.getElementById('languageEditModal').classList.add('show');
+        }
+
+        function closeLanguageModal() {
+            document.getElementById('languageEditModal').classList.remove('show');
+        }
+
+        function saveLanguage() {
+            const name = document.getElementById('languageName').value.trim();
+            const code = document.getElementById('languageCode').value.trim();
+            const status = document.getElementById('languageStatus').checked;
+            
+            if (!name) {
+                alert('请输入语种名称');
+                return;
+            }
+            if (!code) {
+                alert('请输入语种代码');
+                return;
+            }
+            
+            if (currentLanguageId) {
+                alert('编辑语种成功！\n语种名称：' + name + '\n语种代码：' + code + '\n状态：' + (status ? '启用' : '禁用'));
+            } else {
+                alert('新增语种成功！\n语种名称：' + name + '\n语种代码：' + code + '\n状态：' + (status ? '启用' : '禁用'));
+            }
+            
+            closeLanguageModal();
         }
 
         // 删除语种
@@ -10585,13 +11058,71 @@
 
         // ==================== 配置管理 - 币种 ====================
         // 新增币种
+        // 币种配置管理
+        let currentCurrencyId = null;
+        
         function addCurrency() {
-            alert('新增币种...');
+            currentCurrencyId = null;
+            document.getElementById('currencyModalTitle').textContent = '新增币种';
+            document.getElementById('currencyName').value = '';
+            document.getElementById('currencyCode').value = '';
+            document.getElementById('currencySymbol').value = '';
+            document.getElementById('currencyStatus').checked = true;
+            document.getElementById('currencyEditModal').classList.add('show');
         }
 
-        // 编辑币种
         function editCurrency(id) {
-            alert('编辑币种 ID: ' + id);
+            currentCurrencyId = id;
+            document.getElementById('currencyModalTitle').textContent = '编辑币种';
+            
+            // 模拟从数据库获取数据
+            const currencyData = {
+                1: { name: '印度卢比', code: 'INR', symbol: '₹', status: true },
+                2: { name: '巴西雷亚尔', code: 'BRL', symbol: 'R$', status: true },
+                3: { name: '泰铢', code: 'THB', symbol: '฿', status: true },
+                4: { name: '越南盾', code: 'VND', symbol: '₫', status: true }
+            };
+            
+            if (currencyData[id]) {
+                document.getElementById('currencyName').value = currencyData[id].name;
+                document.getElementById('currencyCode').value = currencyData[id].code;
+                document.getElementById('currencySymbol').value = currencyData[id].symbol;
+                document.getElementById('currencyStatus').checked = currencyData[id].status;
+            }
+            
+            document.getElementById('currencyEditModal').classList.add('show');
+        }
+
+        function closeCurrencyModal() {
+            document.getElementById('currencyEditModal').classList.remove('show');
+        }
+
+        function saveCurrency() {
+            const name = document.getElementById('currencyName').value.trim();
+            const code = document.getElementById('currencyCode').value.trim();
+            const symbol = document.getElementById('currencySymbol').value.trim();
+            const status = document.getElementById('currencyStatus').checked;
+            
+            if (!name) {
+                alert('请输入币种名称');
+                return;
+            }
+            if (!code) {
+                alert('请输入币种代码');
+                return;
+            }
+            if (!symbol) {
+                alert('请输入币种符号');
+                return;
+            }
+            
+            if (currentCurrencyId) {
+                alert('编辑币种成功！\n币种名称：' + name + '\n币种代码：' + code + '\n符号：' + symbol + '\n状态：' + (status ? '启用' : '禁用'));
+            } else {
+                alert('新增币种成功！\n币种名称：' + name + '\n币种代码：' + code + '\n符号：' + symbol + '\n状态：' + (status ? '启用' : '禁用'));
+            }
+            
+            closeCurrencyModal();
         }
 
         // 删除币种
@@ -10603,13 +11134,64 @@
 
         // ==================== 配置管理 - 国家 ====================
         // 新增国家
+        // 国家配置管理
+        let currentCountryId = null;
+        
         function addCountry() {
-            alert('新增国家...');
+            currentCountryId = null;
+            document.getElementById('countryModalTitle').textContent = '新增国家';
+            document.getElementById('countryName').value = '';
+            document.getElementById('countryCode').value = '';
+            document.getElementById('countryStatus').checked = true;
+            document.getElementById('countryEditModal').classList.add('show');
         }
 
-        // 编辑国家
         function editCountry(id) {
-            alert('编辑国家 ID: ' + id);
+            currentCountryId = id;
+            document.getElementById('countryModalTitle').textContent = '编辑国家';
+            
+            // 模拟从数据库获取数据
+            const countryData = {
+                1: { name: '印度', code: 'IN', status: true },
+                2: { name: '巴西', code: 'BR', status: true },
+                3: { name: '泰国', code: 'TH', status: true },
+                4: { name: '越南', code: 'VN', status: true }
+            };
+            
+            if (countryData[id]) {
+                document.getElementById('countryName').value = countryData[id].name;
+                document.getElementById('countryCode').value = countryData[id].code;
+                document.getElementById('countryStatus').checked = countryData[id].status;
+            }
+            
+            document.getElementById('countryEditModal').classList.add('show');
+        }
+
+        function closeCountryModal() {
+            document.getElementById('countryEditModal').classList.remove('show');
+        }
+
+        function saveCountry() {
+            const name = document.getElementById('countryName').value.trim();
+            const code = document.getElementById('countryCode').value.trim();
+            const status = document.getElementById('countryStatus').checked;
+            
+            if (!name) {
+                alert('请输入国家名称');
+                return;
+            }
+            if (!code) {
+                alert('请输入国家代码');
+                return;
+            }
+            
+            if (currentCountryId) {
+                alert('编辑国家成功！\n国家名称：' + name + '\n国家代码：' + code + '\n状态：' + (status ? '启用' : '禁用'));
+            } else {
+                alert('新增国家成功！\n国家名称：' + name + '\n国家代码：' + code + '\n状态：' + (status ? '启用' : '禁用'));
+            }
+            
+            closeCountryModal();
         }
 
         // 删除国家
