@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户详情 - 博彩后台管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        /* 顶部header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 25px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 搜索区域 */
+        .search-section {
+            padding: 25px 30px;
+            background: #f8f9ff;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+            flex-wrap: wrap;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .form-group input {
+            padding: 10px 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn-search {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-search:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-wash {
+            background: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-wash:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* 主内容区域 */
+        .main-content {
+            padding: 25px 30px;
+        }
+
+        /* 数据卡片网格 */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .data-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .data-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .card-title.green {
+            color: #10b981;
+        }
+
+        .card-title.blue {
+            color: #3b82f6;
+        }
+
+        .card-title.purple {
+            color: #8b5cf6;
+        }
+
+        .card-body {
+            display: grid;
+            gap: 8px;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 13px;
+        }
+
+        .data-label {
+            color: #6b7280;
+        }
+
+        .data-value {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .data-value.red {
+            color: #ef4444;
+        }
+
+        .data-value.green {
+            color: #10b981;
+        }
+
+        .data-value.blue {
+            color: #3b82f6;
+        }
+
+        /* 标签页 */
+        .tabs-container {
+            margin-top: 30px;
+        }
+
+        .tabs-header {
+            display: flex;
+            gap: 5px;
+            border-bottom: 2px solid #e5e7eb;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            background: #f3f4f6;
+            border: none;
+            color: #6b7280;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .tab-btn:hover {
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .tab-btn.active {
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px 0;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 表格样式 */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            background: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 12px 15px;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        tbody tr {
+            transition: all 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 操作按钮 */
+        .action-btns {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .btn-icon {
+            padding: 6px 12px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #6b7280;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-icon:hover {
+            border-color: #667eea;
+            color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .btn-icon.add {
+            color: #10b981;
+            border-color: #10b981;
+        }
+
+        .btn-icon.add:hover {
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9ca3af;
+        }
+
+        .empty-state-text {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* 徽章 */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge.success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge.danger {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1400px) {
+            .data-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .search-form {
+                flex-direction: column;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs-header {
+                overflow-x: scroll;
+            }
+        }
+
+        /* 模态框 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 20px 25px;
+            border-bottom: 2px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .modal-header h3 {
+            font-size: 18px;
+        }
+
+        .close-modal {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-footer {
+            padding: 20px 25px;
+            border-top: 2px solid #e5e7eb;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>👤 用户详情</h1>
+            <div class="header-actions">
+                <button class="btn btn-secondary" onclick="refreshData()">
+                    🔄 刷新
+                </button>
+                <button class="btn btn-primary" onclick="exportData()">
+                    📥 导出
+                </button>
+            </div>
+        </div>
+
+        <!-- 搜索区域 -->
+        <div class="search-section">
+            <form class="search-form" onsubmit="searchUser(event)">
+                <div class="form-group">
+                    <label>用户ID：</label>
+                    <input type="text" id="userId" placeholder="输入用户ID" value="2247503">
+                </div>
+                <div class="form-group">
+                    <label>开始时间</label>
+                    <input type="text" id="startTime" placeholder="开始时间">
+                </div>
+                <div class="form-group">
+                    <label>结束时间</label>
+                    <input type="text" id="endTime" placeholder="结束时间">
+                </div>
+                <div>
+                    <button type="submit" class="btn-search">查询</button>
+                </div>
+                <div>
+                    <button type="button" class="btn-wash">打码洗码统计</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 主内容区域 -->
+        <div class="main-content">
+            <!-- 数据卡片网格 -->
+            <div class="data-grid">
+                <!-- 充值提现 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title">充值提现</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">人工充值</span>
+                            <span class="data-value">0/0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">累计充值</span>
+                            <span class="data-value">0.00/0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">累计提现</span>
+                            <span class="data-value">0.00/0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">累计充提差</span>
+                            <span class="data-value red">0.00</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">充值带来</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">彩金充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">等待出款</span>
+                            <span class="data-value">0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 活动奖励 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title green">活动奖励</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">已领红包</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">注册送金</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">每周/日奖励</span>
+                            <span class="data-value">0/0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">首充奖励</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">超级大奖</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">每日签到</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">国标来奖励</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">新手礼包</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">逆袭转账奖励</span>
+                            <span class="data-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIP -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title blue">VIP</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">代理红包充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">VIP经验值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">新充值充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">VIP等级</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">同日充值奖励</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">VIP每月奖励</span>
+                            <span class="data-value">0/0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">TG回馈活动</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">VIP升级礼包</span>
+                            <span class="data-value">0/0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">同日新充值奖励</span>
+                            <span class="data-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 保险箱 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title purple">保险箱</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">充值等级</span>
+                            <span class="data-value">L0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">首次首充</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">次充充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">三充充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">已领取收益</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">待领取收益</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">保险箱利率</span>
+                            <span class="data-value green">48.00%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 账号数据 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title">账号数据</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">用户余额</span>
+                            <span class="data-value">0.00</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">累计打码量</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">总盈利额</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">总输赢额</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">合伙人奖金</span>
+                            <span class="data-value">0.00</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">总水金额</span>
+                            <span class="data-value">0.00</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">合伙人奖金</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">本水打码量</span>
+                            <span class="data-value">0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 代理数据 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title green">代理数据</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">保险箱加点充值3</span>
+                            <span class="data-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 打码/洗码 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title blue">打码/洗码</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">累计打码量</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">承载打码量</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">总点数奖金</span>
+                            <span class="data-value">0.00</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">下级数据</span>
+                            <span class="data-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 账号信息 -->
+                <div class="data-card">
+                    <div class="card-header">
+                        <div class="card-title purple">账号信息</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="data-row">
+                            <span class="data-label">上级代理ID</span>
+                            <span class="data-value">2247503</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">会员ID</span>
+                            <span class="data-value">2247503</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">账号</span>
+                            <span class="data-value">+8684428461</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">用户昵称</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">是否领取返现</span>
+                            <span class="data-value">是</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">用户状态</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">次充充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                        <div class="data-row">
+                            <span class="data-label">三充充值</span>
+                            <span class="data-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 标签页 -->
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab('notes')">用户备注</button>
+                    <button class="tab-btn" onclick="switchTab('nameplate')">用户铭牌</button>
+                    <button class="tab-btn" onclick="switchTab('points')">积分</button>
+                    <button class="tab-btn" onclick="switchTab('package')">打包</button>
+                    <button class="tab-btn" onclick="switchTab('register')">注册信息</button>
+                    <button class="tab-btn" onclick="switchTab('recharge')">最后3次充值信息</button>
+                    <button class="tab-btn" onclick="switchTab('withdraw')">最后3次提现信息</button>
+                    <button class="tab-btn" onclick="switchTab('login')">注册信息</button>
+                    <button class="tab-btn" onclick="switchTab('zero')">0</button>
+                </div>
+
+                <!-- 用户备注 -->
+                <div id="notes" class="tab-content active">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>充值时间</th>
+                                    <th>金额</th>
+                                    <th>类型</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无数据</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 用户铭牌 -->
+                <div id="nameplate" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>持续周期</th>
+                                    <th>总盈亏额</th>
+                                    <th>合伙人资奖/奖励金</th>
+                                    <th>累计数</th>
+                                    <th>派通彩奖励</th>
+                                    <th>回传彩奖励</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无数据</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 积分 -->
+                <div id="points" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>订单数量</th>
+                                    <th>打包金额</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 打包 -->
+                <div id="package" class="tab-content">
+                    <div class="empty-state">
+                        <div class="empty-state-text">暂无打包信息</div>
+                    </div>
+                </div>
+
+                <!-- 注册信息 -->
+                <div id="register" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>首次首充</th>
+                                    <th>最后首充时间</th>
+                                    <th>注册时间</th>
+                                    <th>注册IP</th>
+                                    <th>同IP用户数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无数据</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 最后3次充值信息 -->
+                <div id="recharge" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>最后首充金额</th>
+                                    <th>最后首充时间</th>
+                                    <th>金额</th>
+                                    <th>类型</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无数据</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 最后3次提现信息 -->
+                <div id="withdraw" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>最后首款金额</th>
+                                    <th>最后首款时间</th>
+                                    <th>金额</th>
+                                    <th>类型</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无数据</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 登录信息 -->
+                <div id="login" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>登录日期</th>
+                                    <th>IP</th>
+                                    <th>同IP用户数</th>
+                                    <th>注册时间</th>
+                                    <th>注册IP</th>
+                                    <th>同IP注册用户数</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2026-02-28 13:11:03</td>
+                                    <td>8.211....</td>
+                                    <td>5</td>
+                                    <td>2026-02-28 13:10:29</td>
+                                    <td>8.21....</td>
+                                    <td>6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button class="btn-icon add" onclick="showRegisterUsers()">注册渐器该信息</button>
+                        <button class="btn-icon add" onclick="showSameIPUsers()">同IP注册用户</button>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <p style="font-size: 14px; color: #6b7280;">0</p>
+                    </div>
+                </div>
+
+                <!-- 0 -->
+                <div id="zero" class="tab-content">
+                    <div class="empty-state">
+                        <div class="empty-state-text">暂无数据</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二组标签 - 会员信息 -->
+            <div class="tabs-container" style="margin-top: 40px;">
+                <div class="tabs-header">
+                    <button class="tab-btn active" onclick="switchTab2('game-stats')">会员抹除卡包信息</button>
+                    <button class="tab-btn" onclick="switchTab2('bank-cards')">会员银行卡信息</button>
+                    <button class="tab-btn" onclick="switchTab2('e-wallet')">会员电子钱包信息</button>
+                    <button class="tab-btn" onclick="switchTab2('upi')">会员UPI信息</button>
+                    <button class="tab-btn" onclick="switchTab2('newupi')">会员NEWUPI信息</button>
+                    <button class="tab-btn" onclick="switchTab2('usdt')">会员USDT信息</button>
+                </div>
+
+                <!-- 会员抹除卡包信息 -->
+                <div id="game-stats" class="tab-content active">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>合计</th>
+                                    <th>Win</th>
+                                    <th>5D</th>
+                                    <th>K3</th>
+                                    <th>Trx_Win</th>
+                                    <th>Bingo18</th>
+                                    <th>极速XOSO</th>
+                                    <th>4D</th>
+                                    <th>烟酒</th>
+                                    <th>MetoRace</th>
+                                    <th>VideoWinGo</th>
+                                    <th>电子</th>
+                                    <th>视讯</th>
+                                    <th>体育</th>
+                                    <th>棋牌</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>下注：</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>手续费：</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr style="color: #ef4444;">
+                                    <td>盈亏：</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                    <td>0.00</td>
+                                </tr>
+                                <tr>
+                                    <td>订单数：</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; font-weight: 600;">会员银行卡信息：</div>
+                </div>
+
+                <!-- 会员银行卡信息 -->
+                <div id="bank-cards" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>卡号ID</th>
+                                    <th>用户名称</th>
+                                    <th>持卡人姓名/卡号/IFSCCODE</th>
+                                    <th>银行信息</th>
+                                    <th>手机/邮箱</th>
+                                    <th>所在省/市/支行</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无银行卡信息</div>
+                                            <button class="btn-icon add" onclick="openAddModal()">添加</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; font-weight: 600;">会员电子钱包信息：</div>
+                </div>
+
+                <!-- 会员电子钱包信息 -->
+                <div id="e-wallet" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>钱包ID</th>
+                                    <th>用户名称</th>
+                                    <th>账号/手机</th>
+                                    <th>电子钱包</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无电子钱包信息</div>
+                                            <button class="btn-icon add" onclick="openAddModal()">添加</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; font-weight: 600;">会员UPI信息：</div>
+                </div>
+
+                <!-- 会员UPI信息 -->
+                <div id="upi" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>UPI ID</th>
+                                    <th>UPI名称</th>
+                                    <th>UPI_ID</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无UPI信息</div>
+                                            <button class="btn-icon add" onclick="openAddModal()">添加</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; font-weight: 600;">会员NEWUPI信息：</div>
+                </div>
+
+                <!-- 会员NEWUPI信息 -->
+                <div id="newupi" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>NEWUPI ID</th>
+                                    <th>NEWUPI名称</th>
+                                    <th>NEWUPI_ID</th>
+                                    <th>绑定银行卡ID</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无NEWUPI信息</div>
+                                            <button class="btn-icon add" onclick="openAddModal()">添加</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; font-weight: 600;">会员USDT信息：</div>
+                </div>
+
+                <!-- 会员USDT信息 -->
+                <div id="usdt" class="tab-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>USDT ID</th>
+                                    <th>USDT类型</th>
+                                    <th>主网络</th>
+                                    <th>USDT地址</th>
+                                    <th>地址别称</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="empty-state">
+                                            <div class="empty-state-text">暂无USDT信息</div>
+                                            <button class="btn-icon add" onclick="openAddModal()">添加</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模态框 -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加信息</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>标题</label>
+                    <input type="text" placeholder="请输入标题" style="width: 100%;">
+                </div>
+                <div class="form-group" style="margin-top: 15px;">
+                    <label>内容</label>
+                    <textarea placeholder="请输入内容" style="width: 100%; padding: 10px; border: 2px solid #e5e7eb; border-radius: 8px; min-height: 100px; font-family: inherit;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">取消</button>
+                <button class="btn btn-primary" onclick="submitAdd()">确认</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 标签页切换 - 第一组
+        function switchTab(tabName) {
+            const parent = document.querySelectorAll('.tabs-container')[0];
+            const tabContents = parent.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            const tabButtons = parent.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // 标签页切换 - 第二组
+        function switchTab2(tabName) {
+            const parent = document.querySelectorAll('.tabs-container')[1];
+            const tabContents = parent.querySelectorAll('.tab-content');
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            const tabButtons = parent.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // 搜索用户
+        function searchUser(event) {
+            event.preventDefault();
+            const userId = document.getElementById('userId').value;
+            alert('查询用户: ' + userId);
+        }
+
+        // 刷新数据
+        function refreshData() {
+            alert('数据已刷新');
+        }
+
+        // 导出数据
+        function exportData() {
+            alert('正在导出数据...');
+        }
+
+        // 打开模态框
+        function openAddModal() {
+            document.getElementById('addModal').classList.add('show');
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('addModal').classList.remove('show');
+        }
+
+        // 提交添加
+        function submitAdd() {
+            alert('添加成功');
+            closeModal();
+        }
+
+        // 显示注册用户
+        function showRegisterUsers() {
+            alert('显示注册用户信息');
+        }
+
+        // 显示同IP用户
+        function showSameIPUsers() {
+            alert('显示同IP注册用户');
+        }
+
+        // 点击模态框背景关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('addModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

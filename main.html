@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS后台管理系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* 顶部导航栏 */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+            margin-right: 40px;
+            white-space: nowrap;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .nav-item {
+            padding: 8px 16px;
+            color: rgba(255, 255, 255, 0.85);
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-size: 14px;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 4px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            min-width: 160px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 1001;
+        }
+
+        .nav-dropdown.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-dropdown-item {
+            padding: 10px 16px;
+            color: #595959;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 13px;
+        }
+
+        .nav-dropdown-item:hover {
+            background: #f5f5f5;
+            color: #1890ff;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-left: auto;
+        }
+
+        .notification {
+            position: relative;
+            font-size: 18px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .notification:hover {
+            color: white;
+        }
+
+        .notification-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff4d4f;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        /* 页签栏 */
+        .tabs-bar {
+            position: fixed;
+            top: 64px;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #fafafa;
+            border-bottom: 1px solid #e8e8e8;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            z-index: 998;
+            overflow-x: auto;
+            overflow-y: hidden;
+            gap: 6px;
+        }
+
+        .tabs-bar::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .tabs-bar::-webkit-scrollbar-thumb {
+            background: #d9d9d9;
+            border-radius: 2px;
+        }
+
+        .page-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #595959;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            position: relative;
+            user-select: none;
+            min-width: fit-content;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            animation: tabSlideIn 0.15s ease;
+        }
+
+        @keyframes tabSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .page-tab:hover {
+            background: #e6f7ff;
+            color: #1890ff;
+            border-color: #91d5ff;
+            box-shadow: 0 2px 4px rgba(24, 144, 255, 0.1);
+        }
+
+        .page-tab.active {
+            background: #1890ff;
+            color: white;
+            border-color: #1890ff;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(24, 144, 255, 0.3);
+        }
+
+        .tab-label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }
+
+        .tab-close {
+            font-size: 14px;
+            opacity: 0.6;
+            transition: all 0.2s;
+            padding: 0 2px;
+        }
+
+        .tab-close:hover {
+            opacity: 1;
+            color: #ff4d4f;
+            transform: scale(1.2);
+        }
+
+        .page-tab.active .tab-close:hover {
+            color: #fff;
+        }
+
+        .tabs-actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+            padding-left: 12px;
+            border-left: 1px solid #e8e8e8;
+        }
+
+        .tab-action-btn {
+            padding: 4px 8px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 12px;
+            color: #595959;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .tab-action-btn:hover {
+            background: #e6f7ff;
+            color: #1890ff;
+        }
+
+        /* 内容区域 */
+        .content-area {
+            position: fixed;
+            top: 104px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f5f5f5;
+        }
+
+        .page-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: none;
+        }
+
+        .page-frame.active {
+            display: block;
+        }
+
+        /* 右键菜单 */
+        .context-menu {
+            position: fixed;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 4px 0;
+            min-width: 120px;
+            display: none;
+            z-index: 9999;
+        }
+
+        .context-menu-item {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #595959;
+            transition: all 0.2s;
+        }
+
+        .context-menu-item:hover {
+            background: #f5f5f5;
+            color: #1890ff;
+        }
+
+        .context-menu-divider {
+            height: 1px;
+            background: #f0f0f0;
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="top-nav">
+        <div class="logo">🎯 SaaS管理系统</div>
+        <div class="nav-menu">
+            <div class="nav-item">
+                会员管理
+                <div class="nav-dropdown">
+                    <div class="nav-dropdown-item" onclick="openTab('member-list', '会员列表', 'member_list.html')">会员列表</div>
+                    <div class="nav-dropdown-item" onclick="openTab('member-level', '会员等级管理', 'member_level.html')">会员等级管理</div>
+                    <div class="nav-dropdown-item" onclick="openTab('member-tags', '会员标签管理', 'member_tags.html')">会员标签管理</div>
+                    <div class="nav-dropdown-item" onclick="openTab('bank-card', '银行卡管理', 'bank_card_management.html')">银行卡管理</div>
+                    <div class="nav-dropdown-item" onclick="openTab('blacklist', '黑名单管理', 'blacklist.html')">黑名单管理</div>
+                </div>
+            </div>
+            <div class="nav-item">代理管理</div>
+            <div class="nav-item">活动管理</div>
+            <div class="nav-item">
+                报表
+                <div class="nav-dropdown">
+                    <div class="nav-dropdown-item" onclick="openTab('deposit-records', '充值记录', 'deposit_records.html')">充值记录</div>
+                    <div class="nav-dropdown-item" onclick="openTab('withdraw-records', '提现记录', 'withdraw_records.html')">提现记录</div>
+                    <div class="nav-dropdown-item" onclick="openTab('fund-change', '资金账变', 'fund_change.html')">资金账变</div>
+                </div>
+            </div>
+            <div class="nav-item">设置</div>
+        </div>
+        <div class="user-area">
+            <div class="notification">
+                🔔
+                <span class="notification-count">5</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: rgba(255, 255, 255, 0.85);">
+                <span>👤</span>
+                <span>管理员</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页签栏 -->
+    <div class="tabs-bar" id="tabsBar">
+        <div class="tabs-actions">
+            <button class="tab-action-btn" onclick="closeAllTabs()" title="关闭所有">✕</button>
+            <button class="tab-action-btn" onclick="refreshAllTabs()" title="刷新">🔄</button>
+        </div>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="content-area" id="contentArea"></div>
+
+    <!-- 右键菜单 -->
+    <div id="contextMenu" class="context-menu">
+        <div class="context-menu-item" onclick="refreshCurrentTab()">🔄 刷新</div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" id="closeCurrentTab" onclick="closeCurrentTabFromMenu()">✕ 关闭</div>
+        <div class="context-menu-item" onclick="closeOtherTabsFromMenu()">✕ 关闭其他</div>
+        <div class="context-menu-item" onclick="closeAllTabsFromMenu()">✕ 关闭所有</div>
+        <div class="context-menu-divider"></div>
+        <div class="context-menu-item" onclick="closeLeftTabsFromMenu()">← 关闭左侧</div>
+        <div class="context-menu-item" onclick="closeRightTabsFromMenu()">→ 关闭右侧</div>
+    </div>
+
+    <script>
+        // 页签管理
+        const openedTabs = new Set();
+        const dropdownTimers = {};
+        const dropdownShowTime = {};
+        let currentTab = null;
+        let contextMenuTab = null;
+
+        // 下拉菜单处理
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(navItem => {
+                const dropdown = navItem.querySelector('.nav-dropdown');
+                if (!dropdown) return;
+                
+                const itemId = Array.from(navItems).indexOf(navItem);
+                
+                navItem.addEventListener('mouseenter', function() {
+                    if (dropdownTimers[itemId]) {
+                        clearTimeout(dropdownTimers[itemId]);
+                    }
+                    dropdown.classList.add('show');
+                    dropdownShowTime[itemId] = Date.now();
+                });
+                
+                navItem.addEventListener('mouseleave', function() {
+                    const showDuration = Date.now() - (dropdownShowTime[itemId] || 0);
+                    const minShowTime = 1000;
+                    const remainingTime = Math.max(0, minShowTime - showDuration);
+                    
+                    if (dropdownTimers[itemId]) {
+                        clearTimeout(dropdownTimers[itemId]);
+                    }
+                    
+                    dropdownTimers[itemId] = setTimeout(() => {
+                        dropdown.classList.remove('show');
+                    }, remainingTime);
+                });
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    if (dropdownTimers[itemId]) {
+                        clearTimeout(dropdownTimers[itemId]);
+                    }
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    const showDuration = Date.now() - (dropdownShowTime[itemId] || 0);
+                    const minShowTime = 1000;
+                    const remainingTime = Math.max(0, minShowTime - showDuration);
+                    
+                    if (dropdownTimers[itemId]) {
+                        clearTimeout(dropdownTimers[itemId]);
+                    }
+                    
+                    dropdownTimers[itemId] = setTimeout(() => {
+                        dropdown.classList.remove('show');
+                    }, remainingTime);
+                });
+            });
+
+            // 默认打开所有页签
+            const defaultTabs = [
+                { id: 'member-list', title: '会员列表', url: 'member_list.html' },
+                { id: 'member-level', title: '会员等级管理', url: 'member_level.html' },
+                { id: 'member-tags', title: '会员标签管理', url: 'member_tags.html' },
+                { id: 'bank-card', title: '银行卡管理', url: 'bank_card_management.html' },
+                { id: 'blacklist', title: '黑名单管理', url: 'blacklist.html' },
+                { id: 'deposit-records', title: '充值记录', url: 'deposit_records.html' },
+                { id: 'withdraw-records', title: '提现记录', url: 'withdraw_records.html' },
+                { id: 'fund-change', title: '资金账变', url: 'fund_change.html' }
+            ];
+
+            defaultTabs.forEach(tab => {
+                openTab(tab.id, tab.title, tab.url);
+            });
+
+            switchToTab('member-list');
+        });
+
+        // 打开新页签
+        function openTab(pageId, pageTitle, pageUrl) {
+            if (openedTabs.has(pageId)) {
+                switchToTab(pageId);
+                return;
+            }
+
+            openedTabs.add(pageId);
+
+            // 创建新页签
+            const tabsBar = document.getElementById('tabsBar');
+            const newTab = document.createElement('div');
+            newTab.className = 'page-tab';
+            newTab.setAttribute('data-page', pageId);
+            newTab.innerHTML = `
+                <span class="tab-label">${pageTitle}</span>
+                <span class="tab-close" onclick="closeTab(event, '${pageId}')">×</span>
+            `;
+            newTab.onclick = function(e) {
+                if (!e.target.classList.contains('tab-close')) {
+                    switchToTab(pageId);
+                }
+            };
+
+            newTab.addEventListener('contextmenu', function(e) {
+                showContextMenu(e, pageId);
+            });
+            
+            const tabsActions = tabsBar.querySelector('.tabs-actions');
+            tabsBar.insertBefore(newTab, tabsActions);
+
+            // 创建iframe
+            const contentArea = document.getElementById('contentArea');
+            const iframe = document.createElement('iframe');
+            iframe.className = 'page-frame';
+            iframe.id = 'frame-' + pageId;
+            iframe.src = pageUrl;
+            contentArea.appendChild(iframe);
+
+            switchToTab(pageId);
+        }
+
+        // 切换到指定页签
+        function switchToTab(pageId) {
+            document.querySelectorAll('.page-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            const activeTab = document.querySelector(`.page-tab[data-page="${pageId}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            document.querySelectorAll('.page-frame').forEach(frame => {
+                frame.classList.remove('active');
+            });
+            
+            const activeFrame = document.getElementById('frame-' + pageId);
+            if (activeFrame) {
+                activeFrame.classList.add('active');
+            }
+
+            currentTab = pageId;
+        }
+
+        // 关闭页签
+        function closeTab(event, pageId) {
+            event.stopPropagation();
+            
+            if (openedTabs.size === 1) {
+                alert('至少需要保留一个页签');
+                return;
+            }
+
+            openedTabs.delete(pageId);
+            
+            const tab = document.querySelector(`.page-tab[data-page="${pageId}"]`);
+            const frame = document.getElementById('frame-' + pageId);
+            
+            if (tab && tab.classList.contains('active')) {
+                const allTabs = Array.from(document.querySelectorAll('.page-tab'));
+                const currentIndex = allTabs.indexOf(tab);
+                const nextTab = allTabs[currentIndex + 1] || allTabs[currentIndex - 1];
+                
+                if (nextTab) {
+                    switchToTab(nextTab.getAttribute('data-page'));
+                }
+            }
+            
+            if (tab) tab.remove();
+            if (frame) frame.remove();
+        }
+
+        // 关闭所有页签
+        function closeAllTabs() {
+            if (confirm('确定要关闭所有页签吗？')) {
+                const tabs = Array.from(document.querySelectorAll('.page-tab'));
+                tabs.forEach((tab, index) => {
+                    if (index === 0) return; // 保留第一个
+                    const pageId = tab.getAttribute('data-page');
+                    openedTabs.delete(pageId);
+                    tab.remove();
+                    const frame = document.getElementById('frame-' + pageId);
+                    if (frame) frame.remove();
+                });
+                
+                const firstTab = document.querySelector('.page-tab');
+                if (firstTab) {
+                    switchToTab(firstTab.getAttribute('data-page'));
+                }
+            }
+        }
+
+        // 刷新所有页签
+        function refreshAllTabs() {
+            document.querySelectorAll('.page-frame').forEach(frame => {
+                frame.contentWindow.location.reload();
+            });
+        }
+
+        // 显示右键菜单
+        function showContextMenu(e, pageId) {
+            e.preventDefault();
+            contextMenuTab = pageId;
+            
+            const menu = document.getElementById('contextMenu');
+            menu.style.display = 'block';
+            menu.style.left = e.pageX + 'px';
+            menu.style.top = e.pageY + 'px';
+        }
+
+        // 隐藏右键菜单
+        document.addEventListener('click', function() {
+            document.getElementById('contextMenu').style.display = 'none';
+        });
+
+        // 右键菜单操作
+        function refreshCurrentTab() {
+            const frame = document.getElementById('frame-' + contextMenuTab);
+            if (frame) {
+                frame.contentWindow.location.reload();
+            }
+        }
+
+        function closeCurrentTabFromMenu() {
+            closeTab({stopPropagation: () => {}}, contextMenuTab);
+        }
+
+        function closeOtherTabsFromMenu() {
+            const tabs = Array.from(document.querySelectorAll('.page-tab'));
+            tabs.forEach(tab => {
+                const pageId = tab.getAttribute('data-page');
+                if (pageId !== contextMenuTab) {
+                    openedTabs.delete(pageId);
+                    tab.remove();
+                    const frame = document.getElementById('frame-' + pageId);
+                    if (frame) frame.remove();
+                }
+            });
+            switchToTab(contextMenuTab);
+        }
+
+        function closeAllTabsFromMenu() {
+            closeAllTabs();
+        }
+
+        function closeLeftTabsFromMenu() {
+            const tabs = Array.from(document.querySelectorAll('.page-tab'));
+            const currentIndex = tabs.findIndex(tab => tab.getAttribute('data-page') === contextMenuTab);
+            
+            for (let i = 0; i < currentIndex; i++) {
+                const pageId = tabs[i].getAttribute('data-page');
+                openedTabs.delete(pageId);
+                tabs[i].remove();
+                const frame = document.getElementById('frame-' + pageId);
+                if (frame) frame.remove();
+            }
+        }
+
+        function closeRightTabsFromMenu() {
+            const tabs = Array.from(document.querySelectorAll('.page-tab'));
+            const currentIndex = tabs.findIndex(tab => tab.getAttribute('data-page') === contextMenuTab);
+            
+            for (let i = currentIndex + 1; i < tabs.length; i++) {
+                const pageId = tabs[i].getAttribute('data-page');
+                openedTabs.delete(pageId);
+                tabs[i].remove();
+                const frame = document.getElementById('frame-' + pageId);
+                if (frame) frame.remove();
+            }
+        }
+    </script>
+</body>
+</html>
+

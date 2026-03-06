@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资金账变</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div class="page-header">
+        <div class="page-title">资金账变</div>
+    </div>
+
+    <!-- 筛选区域 -->
+    <div class="filter-card">
+        <div class="filter-grid">
+            <div class="form-item">
+                <label class="form-label">*会员ID</label>
+                <input type="text" class="form-input" placeholder="会员ID">
+            </div>
+            <div class="form-item">
+                <label class="form-label">订单号</label>
+                <input type="text" class="form-input" placeholder="订单号">
+            </div>
+            <div class="form-item">
+                <label class="form-label">账变类型</label>
+                <select class="form-input">
+                    <option value="">全部</option>
+                    <option value="1">投注</option>
+                    <option value="2">投注返佣</option>
+                    <option value="3">中奖</option>
+                    <option value="4">红包</option>
+                    <option value="5">充值</option>
+                    <option value="6">提现</option>
+                    <option value="7">提现退回</option>
+                    <option value="8">人工充值</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">操作人</label>
+                <input type="text" class="form-input" placeholder="操作人">
+            </div>
+            <div class="form-item">
+                <label class="form-label">开始时间</label>
+                <input type="text" class="form-input" placeholder="开始时间">
+            </div>
+            <div class="form-item">
+                <label class="form-label">结束时间</label>
+                <input type="text" class="form-input" placeholder="结束时间">
+            </div>
+        </div>
+        <div class="filter-actions">
+            <button class="btn btn-primary" onclick="searchFundChange()">🔍 查询</button>
+            <button class="btn btn-reset" onclick="resetFilters()">🔄 重置</button>
+            <button class="btn btn-default" onclick="exportData()">📥 导出</button>
+        </div>
+    </div>
+
+    <!-- 数据统计 -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px;">
+        <div class="stat-card">
+            <div class="stat-label">总收入</div>
+            <div class="stat-value" style="color: #52c41a;">+358,920.50</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">总支出</div>
+            <div class="stat-value" style="color: #ff4d4f;">-342,150.30</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">账变笔数</div>
+            <div class="stat-value">1,245</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">净流水</div>
+            <div class="stat-value" style="color: #52c41a;">+16,770.20</div>
+        </div>
+    </div>
+
+    <!-- 表格 -->
+    <div class="table-card">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>会员ID</th>
+                        <th>订单号</th>
+                        <th>账变类型</th>
+                        <th>账变金额</th>
+                        <th>变动前余额</th>
+                        <th>变动后余额</th>
+                        <th>备注说明</th>
+                        <th>操作人</th>
+                        <th>账变时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff;">5001</a></td>
+                        <td>ACH20240228001</td>
+                        <td><span class="tag tag-success">充值</span></td>
+                        <td style="color: #52c41a; font-weight: 600;">+5,000.00</td>
+                        <td>10,680.50</td>
+                        <td>15,680.50</td>
+                        <td>UPI充值成功</td>
+                        <td>系统</td>
+                        <td>2024-02-28 10:22:30</td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editRemark('ACH20240228001'); return false;">修改备注</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff;">5001</a></td>
+                        <td>ACH20240228002</td>
+                        <td><span class="tag tag-warning">投注</span></td>
+                        <td style="color: #ff4d4f; font-weight: 600;">-500.00</td>
+                        <td>15,680.50</td>
+                        <td>15,180.50</td>
+                        <td>Win Go 投注</td>
+                        <td>系统</td>
+                        <td>2024-02-28 15:30:15</td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editRemark('ACH20240228002'); return false;">修改备注</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff;">5001</a></td>
+                        <td>ACH20240228003</td>
+                        <td><span class="tag tag-success">中奖</span></td>
+                        <td style="color: #52c41a; font-weight: 600;">+750.00</td>
+                        <td>15,180.50</td>
+                        <td>15,930.50</td>
+                        <td>Win Go 中奖</td>
+                        <td>系统</td>
+                        <td>2024-02-28 15:31:00</td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editRemark('ACH20240228003'); return false;">修改备注</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff;">5002</a></td>
+                        <td>ACH20240227001</td>
+                        <td><span class="tag tag-danger">提现</span></td>
+                        <td style="color: #ff4d4f; font-weight: 600;">-3,000.00</td>
+                        <td>12,240.30</td>
+                        <td>9,240.30</td>
+                        <td>银行卡提现</td>
+                        <td>系统</td>
+                        <td>2024-02-27 16:45:20</td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editRemark('ACH20240227001'); return false;">修改备注</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-wrapper">
+            <div style="font-size: 13px; color: #8c8c8c;">显示 1-4 条，共 1,245 条记录</div>
+            <div class="pagination">
+                <button class="page-item" disabled>上一页</button>
+                <button class="page-item active">1</button>
+                <button class="page-item">2</button>
+                <button class="page-item">3</button>
+                <button class="page-item">下一页</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchFundChange() {
+            alert('正在查询资金账变记录...');
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.value = '';
+            });
+        }
+
+        function exportData() {
+            alert('正在导出数据...');
+        }
+
+        function editRemark(orderId) {
+            const remark = prompt('修改备注信息：');
+            if (remark !== null) {
+                alert('备注已更新：订单号 ' + orderId);
+            }
+        }
+    </script>
+</body>
+</html>
+

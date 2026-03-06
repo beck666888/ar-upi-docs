@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>银行卡管理</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div class="page-header">
+        <div class="page-title">银行卡管理</div>
+    </div>
+
+    <!-- 筛选区域 -->
+    <div class="filter-card">
+        <div class="filter-grid">
+            <div class="form-item">
+                <label class="form-label">用户ID</label>
+                <input type="text" class="form-input" placeholder="用户ID">
+            </div>
+            <div class="form-item">
+                <label class="form-label">姓名</label>
+                <input type="text" class="form-input" placeholder="姓名">
+            </div>
+            <div class="form-item">
+                <label class="form-label">卡号</label>
+                <input type="text" class="form-input" placeholder="卡号">
+            </div>
+            <div class="form-item">
+                <label class="form-label">邮箱</label>
+                <input type="text" class="form-input" placeholder="邮箱">
+            </div>
+            <div class="form-item">
+                <label class="form-label">手机</label>
+                <input type="text" class="form-input" placeholder="手机">
+            </div>
+            <div class="form-item">
+                <label class="form-label">银行</label>
+                <select class="form-input">
+                    <option value="">请选择</option>
+                    <option value="SMBT/SMBC">SMBT/SMBC</option>
+                    <option value="ANZ">ANZ</option>
+                    <option value="GoTyme Bank">GoTyme Bank</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">省</label>
+                <input type="text" class="form-input" placeholder="省">
+            </div>
+            <div class="form-item">
+                <label class="form-label">市</label>
+                <input type="text" class="form-input" placeholder="市">
+            </div>
+            <div class="form-item">
+                <label class="form-label">分行</label>
+                <input type="text" class="form-input" placeholder="分行">
+            </div>
+        </div>
+        <div class="filter-actions">
+            <button class="btn btn-primary" onclick="searchBankCards()">🔍 查询</button>
+            <button class="btn btn-reset" onclick="resetFilters()">🔄 重置</button>
+            <button class="btn btn-success" onclick="addBankCard()">➕ 新增</button>
+        </div>
+    </div>
+
+    <!-- 表格 -->
+    <div class="table-card">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>用户ID</th>
+                        <th>姓名</th>
+                        <th>卡号</th>
+                        <th>银行名称</th>
+                        <th>手机</th>
+                        <th>IFSCCode</th>
+                        <th>邮箱</th>
+                        <th>省</th>
+                        <th>市</th>
+                        <th>分行</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff; font-weight: 600;" onclick="showMemberDetail(600022); return false;">600022</a></td>
+                        <td>TESTQW</td>
+                        <td>1299824602910968</td>
+                        <td>SMBT/SMBC</td>
+                        <td>9199****23</td>
+                        <td>MFST0739909</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editBankCard('600022'); return false;">编辑</a>
+                            <a href="#" class="action-link delete" onclick="deleteBankCard('600022'); return false;">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff; font-weight: 600;" onclick="showMemberDetail(2247480); return false;">2247480</a></td>
+                        <td>MILO</td>
+                        <td>1234567894561234456</td>
+                        <td>ANZ</td>
+                        <td>6688****8</td>
+                        <td>HDFC0001234</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editBankCard('2247480'); return false;">编辑</a>
+                            <a href="#" class="action-link delete" onclick="deleteBankCard('2247480'); return false;">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff; font-weight: 600;" onclick="showMemberDetail(2247487); return false;">2247487</a></td>
+                        <td>rebecca</td>
+                        <td>12345678998788888887</td>
+                        <td>GoTyme Bank</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editBankCard('2247487'); return false;">编辑</a>
+                            <a href="#" class="action-link delete" onclick="deleteBankCard('2247487'); return false;">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" style="color: #1890ff; font-weight: 600;" onclick="showMemberDetail(2244147); return false;">2244147</a></td>
+                        <td>rebecca</td>
+                        <td>12345678998788888889</td>
+                        <td>GoTyme Bank</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a href="#" class="action-link" onclick="editBankCard('2244147'); return false;">编辑</a>
+                            <a href="#" class="action-link delete" onclick="deleteBankCard('2244147'); return false;">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-wrapper">
+            <div style="font-size: 13px; color: #8c8c8c;">显示 1-4 条，共 4 条记录</div>
+            <div class="pagination">
+                <button class="page-item" disabled>上一页</button>
+                <button class="page-item active">1</button>
+                <button class="page-item" disabled>下一页</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 银行卡编辑弹窗 -->
+    <div id="bankCardEditModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.45); z-index: 2000; align-items: center; justify-content: center;">
+        <div style="background: white; border-radius: 4px; width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+            <div style="padding: 16px 24px; border-bottom: 1px solid #f0f0f0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: white; z-index: 1;">
+                <div style="font-size: 16px; font-weight: 600; color: #262626;" id="modalTitle">编辑银行卡信息</div>
+                <button style="background: none; border: none; font-size: 20px; color: #8c8c8c; cursor: pointer; padding: 4px; line-height: 1;" onclick="closeBankCardModal()">×</button>
+            </div>
+            <div style="padding: 24px;">
+                <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">银行卡名称：</label>
+                        <select id="edit_bank_name" class="form-input">
+                            <option value="">请选择</option>
+                            <option value="SMBT/SMBC">SMBT/SMBC</option>
+                            <option value="ANZ">ANZ</option>
+                            <option value="GoTyme Bank">GoTyme Bank</option>
+                            <option value="BDO">BDO</option>
+                            <option value="BPI">BPI</option>
+                            <option value="Metrobank">Metrobank</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">姓名：</label>
+                        <input type="text" id="edit_name" class="form-input" placeholder="请输入姓名">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">卡号：</label>
+                        <input type="text" id="edit_card_number" class="form-input" placeholder="请输入卡号">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">手机：</label>
+                        <input type="text" id="edit_phone" class="form-input" placeholder="请输入手机号">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">IFSCCODE：</label>
+                        <input type="text" id="edit_ifsc_code" class="form-input" placeholder="请输入IFSCCODE">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">邮箱：</label>
+                        <input type="text" id="edit_email" class="form-input" placeholder="请输入邮箱">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">省：</label>
+                        <input type="text" id="edit_province" class="form-input" placeholder="请输入省份">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">市：</label>
+                        <input type="text" id="edit_city" class="form-input" placeholder="请输入城市">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <label style="font-size: 12px; color: #595959; font-weight: 500;">分行：</label>
+                        <input type="text" id="edit_branch" class="form-input" placeholder="请输入分行">
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 12px 24px; border-top: 1px solid #f0f0f0; display: flex; gap: 8px; justify-content: flex-end; position: sticky; bottom: 0; background: white;">
+                <button class="btn btn-reset" onclick="closeBankCardModal()">取消</button>
+                <button class="btn btn-primary" onclick="saveBankCard()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentEditUserId = null;
+
+        // 银行卡数据（模拟数据库）
+        const bankCardData = {
+            '600022': {
+                bankName: 'SMBT/SMBC',
+                name: 'TESTQW',
+                cardNumber: '1299824602910968',
+                phone: '9199****23',
+                ifscCode: 'MFST0739909',
+                email: '',
+                province: '',
+                city: '',
+                branch: ''
+            },
+            '2247480': {
+                bankName: 'ANZ',
+                name: 'MILO',
+                cardNumber: '1234567894561234456',
+                phone: '6688****8',
+                ifscCode: 'HDFC0001234',
+                email: '',
+                province: '',
+                city: '',
+                branch: ''
+            },
+            '2247487': {
+                bankName: 'GoTyme Bank',
+                name: 'rebecca',
+                cardNumber: '12345678998788888887',
+                phone: '',
+                ifscCode: '',
+                email: '',
+                province: '',
+                city: '',
+                branch: ''
+            },
+            '2244147': {
+                bankName: 'GoTyme Bank',
+                name: 'rebecca',
+                cardNumber: '12345678998788888889',
+                phone: '',
+                ifscCode: '',
+                email: '',
+                province: '',
+                city: '',
+                branch: ''
+            }
+        };
+
+        // 查询银行卡
+        function searchBankCards() {
+            alert('正在查询银行卡记录...');
+        }
+
+        // 重置筛选
+        function resetFilters() {
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.value = '';
+            });
+        }
+
+        // 新增银行卡
+        function addBankCard() {
+            // 清空表单
+            currentEditUserId = null;
+            document.getElementById('edit_bank_name').value = '';
+            document.getElementById('edit_name').value = '';
+            document.getElementById('edit_card_number').value = '';
+            document.getElementById('edit_phone').value = '';
+            document.getElementById('edit_ifsc_code').value = '';
+            document.getElementById('edit_email').value = '';
+            document.getElementById('edit_province').value = '';
+            document.getElementById('edit_city').value = '';
+            document.getElementById('edit_branch').value = '';
+            
+            // 修改标题
+            document.getElementById('modalTitle').textContent = '新增银行卡信息';
+            
+            // 显示弹窗
+            document.getElementById('bankCardEditModal').style.display = 'flex';
+        }
+
+        // 编辑银行卡
+        function editBankCard(userId) {
+            currentEditUserId = userId;
+            const data = bankCardData[userId];
+            
+            if (data) {
+                // 填充表单数据
+                document.getElementById('edit_bank_name').value = data.bankName;
+                document.getElementById('edit_name').value = data.name;
+                document.getElementById('edit_card_number').value = data.cardNumber;
+                document.getElementById('edit_phone').value = data.phone;
+                document.getElementById('edit_ifsc_code').value = data.ifscCode;
+                document.getElementById('edit_email').value = data.email;
+                document.getElementById('edit_province').value = data.province;
+                document.getElementById('edit_city').value = data.city;
+                document.getElementById('edit_branch').value = data.branch;
+                
+                // 修改标题
+                document.getElementById('modalTitle').textContent = '编辑银行卡信息';
+                
+                // 显示弹窗
+                document.getElementById('bankCardEditModal').style.display = 'flex';
+            }
+        }
+
+        function closeBankCardModal() {
+            document.getElementById('bankCardEditModal').style.display = 'none';
+        }
+
+        function saveBankCard() {
+            // 获取表单数据
+            const data = {
+                bankName: document.getElementById('edit_bank_name').value,
+                name: document.getElementById('edit_name').value,
+                cardNumber: document.getElementById('edit_card_number').value,
+                phone: document.getElementById('edit_phone').value,
+                ifscCode: document.getElementById('edit_ifsc_code').value,
+                email: document.getElementById('edit_email').value,
+                province: document.getElementById('edit_province').value,
+                city: document.getElementById('edit_city').value,
+                branch: document.getElementById('edit_branch').value
+            };
+            
+            // 验证必填项
+            if (!data.bankName) {
+                alert('请选择银行卡名称');
+                return;
+            }
+            if (!data.name) {
+                alert('请输入姓名');
+                return;
+            }
+            if (!data.cardNumber) {
+                alert('请输入卡号');
+                return;
+            }
+            
+            // 保存数据（这里应该调用后端API）
+            if (currentEditUserId) {
+                bankCardData[currentEditUserId] = data;
+                alert('银行卡信息已更新');
+            } else {
+                alert('银行卡信息已添加');
+            }
+            
+            // 关闭弹窗
+            closeBankCardModal();
+            
+            // 刷新列表（实际应用中应该重新加载数据）
+            // location.reload();
+        }
+
+        // 删除银行卡
+        function deleteBankCard(userId) {
+            if (confirm('确定要删除用户 ' + userId + ' 的银行卡信息吗？')) {
+                delete bankCardData[userId];
+                alert('银行卡信息已删除');
+                // 实际应用中应该刷新列表
+                // location.reload();
+            }
+        }
+
+        // 查看会员详情（调用父窗口的函数）
+        function showMemberDetail(memberId) {
+            // 如果在iframe中，调用父窗口的函数
+            if (window.parent && window.parent.showMemberDetail) {
+                window.parent.showMemberDetail(memberId);
+            } else {
+                // 如果不在iframe中，显示提示
+                alert('查看会员详情：会员ID ' + memberId);
+            }
+        }
+    </script>
+</body>
+</html>
+

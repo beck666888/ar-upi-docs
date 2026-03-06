@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员列表</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div class="page-header">
+        <div class="page-title">会员列表</div>
+    </div>
+
+    <!-- 筛选区域 -->
+    <div class="filter-card">
+        <div class="filter-grid">
+            <div class="form-item">
+                <label class="form-label">会员ID</label>
+                <input type="text" class="form-input" placeholder="会员ID">
+            </div>
+            <div class="form-item">
+                <label class="form-label">代理ID</label>
+                <input type="text" class="form-input" placeholder="代理ID">
+            </div>
+            <div class="form-item">
+                <label class="form-label">会员账号</label>
+                <input type="text" class="form-input" placeholder="会员账号">
+            </div>
+            <div class="form-item">
+                <label class="form-label">注册IP</label>
+                <input type="text" class="form-input" placeholder="注册IP">
+            </div>
+            <div class="form-item">
+                <label class="form-label">备注</label>
+                <input type="text" class="form-input" placeholder="备注">
+            </div>
+            <div class="form-item">
+                <label class="form-label">渠道</label>
+                <select class="form-input">
+                    <option value="">全部</option>
+                    <option value="1">渠道1</option>
+                    <option value="2">渠道2</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">注册设备</label>
+                <select class="form-input">
+                    <option value="">请选择</option>
+                    <option value="android">Android</option>
+                    <option value="ios">iOS</option>
+                    <option value="web">PC</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">用户状态</label>
+                <select class="form-input">
+                    <option value="">请选择</option>
+                    <option value="1">启用</option>
+                    <option value="2">禁用</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">代理状态</label>
+                <select class="form-input">
+                    <option value="">请选择</option>
+                    <option value="1">未开通</option>
+                    <option value="2">外部代理</option>
+                    <option value="3">内部代理</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">邀请码</label>
+                <input type="text" class="form-input" placeholder="邀请码">
+            </div>
+            <div class="form-item">
+                <label class="form-label">余额排序</label>
+                <select class="form-input">
+                    <option value="">请选择</option>
+                    <option value="1">用户余额升序</option>
+                    <option value="2">用户余额降序</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label class="form-label">VIP等级</label>
+                <select class="form-input">
+                    <option value="">请选择</option>
+                    <option value="0">L 0</option>
+                    <option value="1">L 1</option>
+                    <option value="2">L 2</option>
+                    <option value="3">L 3</option>
+                </select>
+            </div>
+        </div>
+        <div class="filter-actions">
+            <button class="btn btn-primary" onclick="searchMembers()">🔍 查询</button>
+            <button class="btn btn-reset" onclick="resetFilters()">🔄 重置</button>
+            <button class="btn btn-default" onclick="batchTransfer()">📤 批量拉黑</button>
+            <button class="btn btn-default">👥 批量拉白</button>
+            <button class="btn btn-default">✓ 批量启用</button>
+            <button class="btn btn-default">🚫 批量禁用</button>
+            <button class="btn btn-default">📥 导出</button>
+            <button class="btn btn-danger">❌ 批量删除</button>
+        </div>
+    </div>
+
+    <!-- 表格 -->
+    <div class="table-card">
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" onclick="toggleSelectAll(this)"></th>
+                        <th>会员ID</th>
+                        <th>昵称</th>
+                        <th>会员账号</th>
+                        <th>余额</th>
+                        <th>积分</th>
+                        <th>邀请码</th>
+                        <th>渠道号</th>
+                        <th>注册IP</th>
+                        <th>注册设备</th>
+                        <th>打码量</th>
+                        <th>黑名单</th>
+                        <th>状态</th>
+                        <th>在线状态</th>
+                        <th>代理</th>
+                        <th>领取返佣</th>
+                        <th>注册时间</th>
+                        <th>VIP等级</th>
+                        <th>充值次数</th>
+                        <th>充值金额</th>
+                        <th>备注</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#" style="color: #1890ff; font-weight: 600;">5001</a></td>
+                        <td>张三</td>
+                        <td>zhang_san</td>
+                        <td>15,680.50</td>
+                        <td>1,280</td>
+                        <td>INVITE2024</td>
+                        <td>CH001</td>
+                        <td>8.211.x.x</td>
+                        <td>Android</td>
+                        <td>125,340</td>
+                        <td><span class="tag tag-success">正常</span></td>
+                        <td><span class="tag tag-success">启用</span></td>
+                        <td><span class="tag tag-success">在线</span></td>
+                        <td><span class="tag tag-info">未开通</span></td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </td>
+                        <td>2024-01-15 10:30</td>
+                        <td><span class="tag tag-info">L 3</span></td>
+                        <td>45</td>
+                        <td>125,340</td>
+                        <td>活跃用户</td>
+                        <td>
+                            <div class="action-group">
+                                <button class="action-btn changepassword">修改密码</button>
+                                <button class="action-btn danger">删除</button>
+                                <button class="action-btn info">三方信息</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td><a href="#" style="color: #1890ff; font-weight: 600;">5002</a></td>
+                        <td>李四</td>
+                        <td>li_si_user</td>
+                        <td>9,240.30</td>
+                        <td>850</td>
+                        <td>INVITE2025</td>
+                        <td>CH002</td>
+                        <td>8.212.x.x</td>
+                        <td>iOS</td>
+                        <td>68,500</td>
+                        <td><span class="tag tag-success">正常</span></td>
+                        <td><span class="tag tag-success">启用</span></td>
+                        <td><span class="tag tag-default">离线</span></td>
+                        <td><span class="tag tag-warning">外部代理</span></td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </td>
+                        <td>2024-01-20 14:15</td>
+                        <td><span class="tag tag-info">L 2</span></td>
+                        <td>28</td>
+                        <td>68,500</td>
+                        <td>代理下级</td>
+                        <td>
+                            <div class="action-group">
+                                <button class="action-btn changepassword">修改密码</button>
+                                <button class="action-btn danger">删除</button>
+                                <button class="action-btn info">三方信息</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-wrapper">
+            <div style="font-size: 13px; color: #8c8c8c;">显示 1-2 条，共 125 条记录</div>
+            <div class="pagination">
+                <button class="page-item" disabled>上一页</button>
+                <button class="page-item active">1</button>
+                <button class="page-item">2</button>
+                <button class="page-item">3</button>
+                <button class="page-item">下一页</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchMembers() {
+            alert('正在查询会员列表...');
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('.form-input').forEach(input => {
+                input.value = '';
+            });
+        }
+
+        function toggleSelectAll(checkbox) {
+            const checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+            checkboxes.forEach(cb => cb.checked = checkbox.checked);
+        }
+
+        function batchTransfer() {
+            alert('批量操作...');
+        }
+    </script>
+</body>
+</html>
+
