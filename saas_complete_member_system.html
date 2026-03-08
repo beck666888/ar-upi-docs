@@ -892,10 +892,13 @@
             background: white;
             border-radius: 4px;
             width: 90%;
-            max-width: 1400px;
+            max-width: 1410px;
             max-height: 90vh;
-            overflow-y: auto;
+            height: 90vh;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .modal-header {
@@ -904,10 +907,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
             background: white;
-            z-index: 1;
+            flex-shrink: 0;
         }
 
         .modal-title {
@@ -928,6 +929,8 @@
 
         .modal-body {
             padding: 24px;
+            overflow-y: auto;
+            flex: 1;
         }
 
         .modal-footer {
@@ -936,9 +939,8 @@
             display: flex;
             gap: 8px;
             justify-content: flex-end;
-            position: sticky;
-            bottom: 0;
             background: white;
+            flex-shrink: 0;
         }
 
         /* 银行卡Tab切换样式 */
@@ -1030,7 +1032,7 @@
             display: flex;
             gap: 8px;
             border-bottom: 1px solid #f0f0f0;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
             flex-wrap: wrap;
         }
 
@@ -7950,7 +7952,7 @@
 
             <!-- 筛选区域 -->
             <div class="filter-card">
-                <div class="filter-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="filter-grid" style="grid-template-columns: repeat(5, 1fr);">
                     <div class="form-item">
                         <label class="form-label">商户名</label>
                         <input type="text" class="form-input" placeholder="请输入商户名">
@@ -7973,6 +7975,15 @@
                             <option>BRL</option>
                             <option>THB</option>
                             <option>VND</option>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label class="form-label">归属集团</label>
+                        <select class="form-input">
+                            <option>全部</option>
+                            <option>亚太集团</option>
+                            <option>欧洲集团</option>
+                            <option>美洲集团</option>
                         </select>
                     </div>
                     <div class="form-item">
@@ -8572,184 +8583,498 @@
 
     <!-- 会员详情模态框 -->
     <div id="memberDetailModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="max-width: 1410px;">
             <div class="modal-header">
-                <div class="modal-title">会员详情 - ID: <span id="detailMemberId">5001</span></div>
+                <h3 class="modal-title">会员详情 - ID: <span id="detailMemberId"></span></h3>
                 <button class="modal-close" onclick="closeModal('memberDetailModal')">&times;</button>
             </div>
             <div class="modal-body">
-                <!-- 数据卡片 -->
-                <div class="card-grid">
-                    <div class="stat-card">
-                        <div class="stat-label">账户余额</div>
-                        <div class="stat-value" style="color: #52c41a;">15,680</div>
+                <!-- 顶部固定区域容器 -->
+                <div style="position: sticky; top: 0; z-index: 10; background: white; padding-bottom: 0px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <!-- 筛选区域 -->
+                    <div style="display: flex; gap: 12px; align-items: flex-end; padding: 12px; background: #fafafa; border-radius: 4px; margin-bottom: 16px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">用户ID</label>
+                            <input type="text" class="form-input" id="detailUserId" placeholder="请输入用户ID" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">开始时间</label>
+                            <input type="text" class="form-input" id="detailStartTime" placeholder="开始时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">结束时间</label>
+                            <input type="text" class="form-input" id="detailEndTime" placeholder="结束时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" onclick="queryMemberDetail()" style="height: 32px; padding: 0 24px; font-size: 13px;">查询</button>
+                        </div>
                     </div>
-                    <div class="stat-card green">
-                        <div class="stat-label">累计充值</div>
-                        <div class="stat-value">125,340</div>
-                    </div>
-                    <div class="stat-card orange">
-                        <div class="stat-label">累计提现</div>
-                        <div class="stat-value">98,250</div>
-                    </div>
-                    <div class="stat-card red">
-                        <div class="stat-label">累计盈亏</div>
-                        <div class="stat-value" style="color: #52c41a;">+12,580</div>
+                    
+                    <!-- Tab 切换 -->
+                    <div class="tabs">
+                        <div class="tab-item active" onclick="switchMemberDetailTab(0)">基本信息</div>
+                        <div class="tab-item" onclick="switchMemberDetailTab(1)">充提信息</div>
+                        <div class="tab-item" onclick="switchMemberDetailTab(2)">投注信息</div>
+                        <div class="tab-item" onclick="switchMemberDetailTab(3)">钱包信息</div>
+                        <div class="tab-item" onclick="switchMemberDetailTab(4)">账变信息</div>
+                        <div class="tab-item" onclick="switchMemberDetailTab(5)">操作日志</div>
                     </div>
                 </div>
 
-                <!-- Tab 切换 -->
-                <div class="tabs">
-                    <div class="tab-item active" onclick="switchDetailTab(0)">基本信息</div>
-                    <div class="tab-item" onclick="switchDetailTab(1)">财务信息</div>
-                    <div class="tab-item" onclick="switchDetailTab(2)">投注记录</div>
-                    <div class="tab-item" onclick="switchDetailTab(3)">充值记录</div>
-                    <div class="tab-item" onclick="switchDetailTab(4)">提现记录</div>
-                    <div class="tab-item" onclick="switchDetailTab(5)">账变记录</div>
-                    <div class="tab-item" onclick="switchDetailTab(6)">登录记录</div>
-                    <div class="tab-item" onclick="switchDetailTab(7)">银行卡信息</div>
-                    <div class="tab-item" onclick="switchDetailTab(8)">UPI信息</div>
-                    <div class="tab-item" onclick="switchDetailTab(9)">操作日志</div>
-                </div>
-
-                <!-- Tab 0: 基本信息 -->
-                <div class="tab-content active" id="detailTab0">
+                <!-- Tab 0: 基础信息 -->
+                <div class="tab-content active" id="memberDetailTab0" style="margin-top: -8px;">
+                    <!-- 基本信息区块 -->
                     <div class="detail-section">
-                        <div class="section-title">账号信息</div>
-                        <div class="info-grid">
+                        <div class="section-title">基本信息</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr);">
                             <div class="info-item">
                                 <div class="info-label">会员ID</div>
-                                <div class="info-value">5001</div>
+                                <div class="info-value">233213312</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">用户名</div>
-                                <div class="info-value">zhang_san_2024</div>
+                                <div class="info-label">账号</div>
+                                <div class="info-value">+923231231</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">真实姓名</div>
-                                <div class="info-value">张三</div>
+                                <div class="info-label">绑定(邮箱/手机号)</div>
+                                <div class="info-value">123@gmail.com</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">手机号</div>
-                                <div class="info-value">138****1234</div>
+                                <div class="info-label">语种</div>
+                                <div class="info-value">英语</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">邮箱</div>
-                                <div class="info-value">zhang***@example.com</div>
+                                <div class="info-label">用户余额</div>
+                                <div class="info-value">2323123</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">会员等级</div>
-                                <div class="info-value"><span class="tag tag-info">VIP 3</span></div>
+                                <div class="info-label">三方余额</div>
+                                <div class="info-value">223213</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">未开奖下注金额</div>
+                                <div class="info-value">21321312</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">充值等级</div>
+                                <div class="info-value">L1</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">首次登陆</div>
+                                <div class="info-value">2022-22-22 11:11:11</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">注册时间</div>
-                                <div class="info-value">2024-01-15 10:30:25</div>
+                                <div class="info-value">2022-22-22 11:11:11</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">最后登录</div>
-                                <div class="info-value">2024-02-28 15:22:10</div>
+                                <div class="info-label">用户积分</div>
+                                <div class="info-value">
+                                    23123 
+                                    <button class="btn btn-sm" onclick="editMemberPoints()" style="margin-left: 8px; padding: 2px 8px; font-size: 12px;">修改</button>
+                                </div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">账户状态</div>
-                                <div class="info-value"><span class="tag tag-success">正常</span></div>
+                                <div class="info-label">是否有效</div>
+                                <div class="info-value">是</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">用户状态</div>
+                                <div class="info-value">
+                                    启用 
+                                    <button class="btn btn-sm" onclick="editMemberStatus()" style="margin-left: 8px; padding: 2px 8px; font-size: 12px;">修改</button>
+                                </div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">用户备注</div>
+                                <div class="info-value">
+                                    正常用户 
+                                    <button class="btn btn-sm" onclick="editMemberRemark()" style="margin-left: 8px; padding: 2px 8px; font-size: 12px;">修改</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 代理数据区块 -->
+                    <div class="detail-section">
+                        <div class="section-title">代理数据</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr);">
+                            <div class="info-item">
+                                <div class="info-label">总获得佣金</div>
+                                <div class="info-value">23123</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">邀请奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">下级数量</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">合伙人奖励</div>
+                                <div class="info-value">2323</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">上级代理ID</div>
-                                <div class="info-value">-</div>
+                                <div class="info-value">232323213</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">注册IP</div>
-                                <div class="info-value">8.211.xxx.xxx</div>
+                                <div class="info-label">是否领取返佣</div>
+                                <div class="info-value">是</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIP区块 -->
+                    <div class="detail-section">
+                        <div class="section-title">VIP</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr);">
+                            <div class="info-item">
+                                <div class="info-label">VIP经验值</div>
+                                <div class="info-value">23</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">注册设备</div>
-                                <div class="info-value">Android</div>
+                                <div class="info-label">VIP等级</div>
+                                <div class="info-value">0</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">VIP每月奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">VIP升级礼包</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 保险箱区块 -->
+                    <div class="detail-section">
+                        <div class="section-title">保险箱</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr);">
+                            <div class="info-item">
+                                <div class="info-label">保险箱余额</div>
+                                <div class="info-value">32323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">已领取收益</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">待领取收益</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">保险箱利率</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <!-- 打码/洗码区块 -->
+                    <div class="detail-section">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                            <div class="section-title" style="margin-bottom: 0;">打码/洗码</div>
+                            <button class="btn btn-primary btn-sm" onclick="designBettingRules()">打码规则统计</button>
+                        </div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr);">
+                            <div class="info-item">
+                                <div class="info-label">累计打码量</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">需要打码量</div>
+                                <div class="info-value">2332</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">会员洗码量</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">返水金额</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">本次打码倍数</div>
+                                <div class="info-value">2</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">打码量</div>
+                                <div class="info-value">
+                                    0 
+                                    <button class="btn btn-sm" onclick="editBettingAmount()" style="margin-left: 8px; padding: 2px 8px; font-size: 12px;">修改</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 活动奖励信息区块 -->
+                    <div class="detail-section">
+                        <div class="section-title">活动奖励信息</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr);">
+                            <div class="info-item">
+                                <div class="info-label">已领红包</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">新手礼包</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">大转盘</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">注册送金</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">每周/日奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">邀请转盘奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">TG频道活动</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">首充奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">超级大奖</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">代理红包充值</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">回归新充值奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">每日签到</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">锦标赛奖励</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">新会员礼包</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">回归奖励</div>
+                                <div class="info-value">23231</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Tab 1: 财务信息 -->
-                <div class="tab-content" id="detailTab1">
+                <!-- Tab 1: 充值信息 -->
+                <div class="tab-content" id="memberDetailTab1" style="margin-top: -8px;">
                     <div class="detail-section">
-                        <div class="section-title">充值提现数据</div>
-                        <div class="info-grid">
+                        <div class="section-title" style="font-size: 14px; margin-bottom: 12px;">充值提现数据</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr); gap: 12px;">
                             <div class="info-item">
-                                <div class="info-label">账户余额</div>
-                                <div class="info-value" style="color: #52c41a; font-size: 18px;">15,680.50</div>
+                                <div class="info-label">人工充值</div>
+                                <div class="info-value">125,340.00</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">充值赠送</div>
+                                <div class="info-value">125,340.00</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">累计充值</div>
-                                <div class="info-value">125,340.00</div>
+                                <div class="info-value">8,250.30</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">彩金充值</div>
+                                <div class="info-value">8,250.30</div>
                             </div>
                             <div class="info-item">
                                 <div class="info-label">累计提现</div>
                                 <div class="info-value">8,250.30</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">充值次数</div>
-                                <div class="info-value">45 次</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">提现次数</div>
-                                <div class="info-value">32 次</div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-label">人工充值</div>
+                                <div class="info-label">等待出款</div>
                                 <div class="info-value">5,000.00</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">人工提现</div>
+                                <div class="info-label">累计充提差</div>
                                 <div class="info-value">2,000.00</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">充提差</div>
-                                <div class="info-value" style="color: #52c41a;">+27,089.70</div>
+                                <div class="info-label">累计提现手续费</div>
+                                <div class="info-value">2,000.00</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">首充日期</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">首充金额</div>
+                                <div class="info-value">2,000.00</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">次充日期</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">次充金额</div>
+                                <div class="info-value">2,000.00</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">三充日期</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">三充金额</div>
+                                <div class="info-value">2,000.00</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="detail-section">
-                        <div class="section-title">游戏数据</div>
-                        <div class="info-grid">
+                    <!-- 最后3次充值信息 -->
+                    <div class="detail-section" style="margin-top: 16px;">
+                        <div class="section-title" style="font-size: 14px; margin-bottom: 12px;">最后3次充值信息</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(3, 1fr); gap: 12px;">
                             <div class="info-item">
-                                <div class="info-label">累计投注</div>
-                                <div class="info-value">356,780.00</div>
+                                <div class="info-label">充值时间</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">累计中奖</div>
-                                <div class="info-value">369,360.20</div>
+                                <div class="info-label">金额</div>
+                                <div class="info-value">2323</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">累计盈亏</div>
-                                <div class="info-value" style="color: #52c41a;">+12,580.20</div>
+                                <div class="info-label">类型</div>
+                                <div class="info-value">ARpay</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">投注笔数</div>
-                                <div class="info-value">1,248 笔</div>
+                                <div class="info-label">充值时间</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">有效投注</div>
-                                <div class="info-value">298,560.00</div>
+                                <div class="info-label">金额</div>
+                                <div class="info-value">2323</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">返水金额</div>
-                                <div class="info-value">3,580.00</div>
+                                <div class="info-label">类型</div>
+                                <div class="info-value">ARpay</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">优惠金额</div>
-                                <div class="info-value">8,240.00</div>
+                                <div class="info-label">充值时间</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
                             </div>
                             <div class="info-item">
-                                <div class="info-label">佣金收入</div>
-                                <div class="info-value">0.00</div>
+                                <div class="info-label">金额</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">类型</div>
+                                <div class="info-value">ARpay</div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- 最后3次提现信息 -->
+                    <div class="detail-section" style="margin-top: 16px;">
+                        <div class="section-title" style="font-size: 14px; margin-bottom: 12px;">最后3次提现信息</div>
+                        <div class="info-grid" style="grid-template-columns: repeat(4, 1fr); gap: 12px;">
+                            <div class="info-item">
+                                <div class="info-label">提现倍数</div>
+                                <div class="info-value">22</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">提现时间</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">金额</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">类型</div>
+                                <div class="info-value">ARpay</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">提现倍数</div>
+                                <div class="info-value">22</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">提现时间</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">金额</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">类型</div>
+                                <div class="info-value">ARpay</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">提现倍数</div>
+                                <div class="info-value">22</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">提现时间</div>
+                                <div class="info-value">2022-11-11 11:11:11</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">金额</div>
+                                <div class="info-value">2323</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">类型</div>
+                                <div class="info-value">ARpay</div>
+                            </div>
+                        </div>
+                    </div>
+                    
                     </div>
                 </div>
 
-                <!-- Tab 2: 投注记录 -->
-                <div class="tab-content" id="detailTab2">
+                <!-- Tab 2: 投注信息 -->
+                <div class="tab-content" id="memberDetailTab2" style="margin-top: -8px;">
+                    <!-- 筛选条件 -->
+                    <div style="display: flex; gap: 12px; align-items: flex-end; margin-bottom: 16px; padding: 12px; background: #fafafa; border-radius: 4px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">订单号</label>
+                            <input type="text" class="form-input" placeholder="请输入订单号" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">游戏类型</label>
+                            <select class="form-input" style="width: 100%; height: 32px; font-size: 13px;">
+                                <option>全部</option>
+                                <option>彩票</option>
+                                <option>视讯</option>
+                                <option>体育</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">开始时间</label>
+                            <input type="text" class="form-input" placeholder="开始时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">结束时间</label>
+                            <input type="text" class="form-input" placeholder="结束时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" style="height: 32px; padding: 0 20px; font-size: 13px;">查询</button>
+                            <button class="btn" style="height: 32px; padding: 0 20px; font-size: 13px; margin-left: 8px;">重置</button>
+                        </div>
+                    </div>
+                    
+                    <div style="max-height: 500px; overflow-y: auto;">
                     <table>
                         <thead>
                             <tr>
@@ -8800,56 +9125,73 @@
                             </tr>
                         </tbody>
                     </table>
+                    
+                    <!-- 总计统计 -->
+                    <div style="background: #fff7e6; padding: 12px 16px; border-radius: 4px; margin-top: 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 24px; font-size: 14px;">
+                        <span style="color: #262626; font-weight: 600;">总计：</span>
+                        <span style="color: #1890ff;">投注金额：<strong>1,600.00</strong></span>
+                        <span style="color: #52c41a;">中奖金额：<strong>1,200.00</strong></span>
+                        <span style="color: #ff4d4f;">盈亏：<strong>-400.00</strong></span>
+                    </div>
+                    
+                    <!-- 分页 -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0; padding: 12px 0; border-top: 1px solid #f0f0f0;">
+                        <div style="color: #595959; font-size: 13px;">
+                            显示 1-10 条，共 328 条记录
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button style="padding: 4px 12px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #595959;">上一页</button>
+                            <button style="padding: 4px 10px; border: 1px solid #1890ff; background: #1890ff; color: white; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: 500;">1</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">2</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">3</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">4</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">5</button>
+                            <span style="color: #595959; padding: 0 4px;">...</span>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">33</button>
+                            <button style="padding: 4px 12px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #595959;">下一页</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
 
-                <!-- Tab 3: 充值记录 -->
-                <div class="tab-content" id="detailTab3">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>订单号</th>
-                                <th>充值金额</th>
-                                <th>充值方式</th>
-                                <th>充值通道</th>
-                                <th>手续费</th>
-                                <th>实际到账</th>
-                                <th>申请时间</th>
-                                <th>完成时间</th>
-                                <th>状态</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>DEP20240228001</td>
-                                <td>5,000.00</td>
-                                <td>UPI</td>
-                                <td>Paytm</td>
-                                <td>0.00</td>
-                                <td>5,000.00</td>
-                                <td>2024-02-28 10:20:15</td>
-                                <td>2024-02-28 10:22:30</td>
-                                <td><span class="tag tag-success">成功</span></td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>DEP20240227001</td>
-                                <td>3,000.00</td>
-                                <td>银行卡</td>
-                                <td>ICICI Bank</td>
-                                <td>30.00</td>
-                                <td>2,970.00</td>
-                                <td>2024-02-27 15:30:20</td>
-                                <td>2024-02-27 15:35:10</td>
-                                <td><span class="tag tag-success">成功</span></td>
-                                <td>-</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Tab 3: 钱包信息 -->
+                <div class="tab-content" id="memberDetailTab3" style="margin-top: -8px;">
+                    
+                    
                 </div>
 
-                <!-- Tab 4: 提现记录 -->
-                <div class="tab-content" id="detailTab4">
+                <!-- Tab 4: 账变信息 -->
+                <div class="tab-content" id="memberDetailTab4" style="margin-top: -8px;">
+                    <!-- 筛选条件 -->
+                    <div style="display: flex; gap: 12px; align-items: flex-end; margin-bottom: 16px; padding: 12px; background: #fafafa; border-radius: 4px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">订单号</label>
+                            <input type="text" class="form-input" placeholder="请输入订单号" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">提现方式</label>
+                            <select class="form-input" style="width: 100%; height: 32px; font-size: 13px;">
+                                <option>全部</option>
+                                <option>银行卡</option>
+                                <option>UPI</option>
+                                <option>USDT</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">开始时间</label>
+                            <input type="text" class="form-input" placeholder="开始时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">结束时间</label>
+                            <input type="text" class="form-input" placeholder="结束时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" style="height: 32px; padding: 0 20px; font-size: 13px;">查询</button>
+                            <button class="btn" style="height: 32px; padding: 0 20px; font-size: 13px; margin-left: 8px;">重置</button>
+                        </div>
+                    </div>
+                    
+                    <div style="max-height: 500px; overflow-y: auto;">
                     <table>
                         <thead>
                             <tr>
@@ -8895,10 +9237,60 @@
                             </tr>
                         </tbody>
                     </table>
+                    
+                    <!-- 分页 -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding: 12px 0; border-top: 1px solid #f0f0f0;">
+                        <div style="color: #595959; font-size: 13px;">
+                            显示 1-10 条，共 328 条记录
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button style="padding: 4px 12px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #595959;">上一页</button>
+                            <button style="padding: 4px 10px; border: 1px solid #1890ff; background: #1890ff; color: white; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: 500;">1</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">2</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">3</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">4</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">5</button>
+                            <span style="color: #595959; padding: 0 4px;">...</span>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">33</button>
+                            <button style="padding: 4px 12px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #595959;">下一页</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
 
-                <!-- Tab 5: 账变记录 -->
-                <div class="tab-content" id="detailTab5">
+                <!-- Tab 5: 操作日志 -->
+                <div class="tab-content" id="memberDetailTab5" style="margin-top: -8px;">
+                    <!-- 筛选条件 -->
+                    <div style="display: flex; gap: 12px; align-items: flex-end; margin-bottom: 16px; padding: 12px; background: #fafafa; border-radius: 4px;">
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">订单号</label>
+                            <input type="text" class="form-input" placeholder="请输入订单号" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">类型</label>
+                            <select class="form-input" style="width: 100%; height: 32px; font-size: 13px;">
+                                <option>全部</option>
+                                <option>投注中奖</option>
+                                <option>投注扣款</option>
+                                <option>充值入账</option>
+                                <option>提现扣款</option>
+                            </select>
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">开始时间</label>
+                            <input type="text" class="form-input" placeholder="开始时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="display: block; margin-bottom: 6px; font-size: 13px; color: #595959;">结束时间</label>
+                            <input type="text" class="form-input" placeholder="结束时间" style="width: 100%; height: 32px; font-size: 13px;">
+                        </div>
+                        <div>
+                            <button class="btn btn-primary" style="height: 32px; padding: 0 20px; font-size: 13px;">查询</button>
+                            <button class="btn" style="height: 32px; padding: 0 20px; font-size: 13px; margin-left: 8px;">重置</button>
+                        </div>
+                    </div>
+                    
+                    <div style="max-height: 500px; overflow-y: auto;">
                     <table>
                         <thead>
                             <tr>
@@ -8941,180 +9333,214 @@
                             </tr>
                         </tbody>
                     </table>
+                    
+                    <!-- 分页 -->
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 16px; padding: 12px 0; border-top: 1px solid #f0f0f0;">
+                        <div style="color: #595959; font-size: 13px;">
+                            显示 1-10 条，共 328 条记录
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <button style="padding: 4px 12px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #595959;">上一页</button>
+                            <button style="padding: 4px 10px; border: 1px solid #1890ff; background: #1890ff; color: white; border-radius: 4px; cursor: pointer; font-size: 13px; font-weight: 500;">1</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">2</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">3</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">4</button>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">5</button>
+                            <span style="color: #595959; padding: 0 4px;">...</span>
+                            <button style="padding: 4px 10px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #262626;">33</button>
+                            <button style="padding: 4px 12px; border: 1px solid #d9d9d9; background: white; border-radius: 4px; cursor: pointer; font-size: 13px; color: #595959;">下一页</button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
 
-                <!-- Tab 6: 登录记录 -->
-                <div class="tab-content" id="detailTab6">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>登录时间</th>
-                                <th>登录IP</th>
-                                <th>IP归属地</th>
-                                <th>设备类型</th>
-                                <th>设备型号</th>
-                                <th>浏览器</th>
-                                <th>登录方式</th>
-                                <th>状态</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2024-02-28 15:22:10</td>
-                                <td>8.211.xxx.xxx</td>
-                                <td>印度 孟买</td>
-                                <td>Android</td>
-                                <td>Samsung Galaxy S21</td>
-                                <td>Chrome 121</td>
-                                <td>密码登录</td>
-                                <td><span class="tag tag-success">成功</span></td>
-                            </tr>
-                            <tr>
-                                <td>2024-02-28 09:15:30</td>
-                                <td>8.211.xxx.xxx</td>
-                                <td>印度 孟买</td>
-                                <td>Android</td>
-                                <td>Samsung Galaxy S21</td>
-                                <td>Chrome 121</td>
-                                <td>密码登录</td>
-                                <td><span class="tag tag-success">成功</span></td>
-                            </tr>
-                            <tr>
-                                <td>2024-02-27 18:30:45</td>
-                                <td>8.211.xxx.xxx</td>
-                                <td>印度 孟买</td>
-                                <td>Android</td>
-                                <td>Samsung Galaxy S21</td>
-                                <td>Chrome 121</td>
-                                <td>密码登录</td>
-                                <td><span class="tag tag-success">成功</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Tab 7: 银行卡信息 -->
-                <div class="tab-content" id="detailTab7">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>卡号ID</th>
-                                <th>持卡人姓名</th>
-                                <th>银行卡号</th>
-                                <th>开户银行</th>
-                                <th>IFSC CODE</th>
-                                <th>手机号</th>
-                                <th>添加时间</th>
-                                <th>状态</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>BC001</td>
-                                <td>张三</td>
-                                <td>6214****5678****1234</td>
-                                <td>ICICI Bank</td>
-                                <td>ICIC0001234</td>
-                                <td>138****1234</td>
-                                <td>2024-01-15 11:20:30</td>
-                                <td><span class="tag tag-success">已验证</span></td>
-                                <td>
-                                    <button class="action-btn" onclick="editBankCard('BC001')">编辑</button>
-                                    <button class="action-btn danger" onclick="deleteBankCard('BC001')">删除</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Tab 8: UPI信息 -->
-                <div class="tab-content" id="detailTab8">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>UPI ID</th>
-                                <th>UPI名称</th>
-                                <th>UPI账号</th>
-                                <th>绑定手机</th>
-                                <th>添加时间</th>
-                                <th>状态</th>
-                                <th>操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>UPI001</td>
-                                <td>张三的Paytm</td>
-                                <td>zhang***@paytm</td>
-                                <td>138****1234</td>
-                                <td>2024-01-15 11:25:15</td>
-                                <td><span class="tag tag-success">已验证</span></td>
-                                <td>
-                                    <button class="action-btn" onclick="editUPI('UPI001')">编辑</button>
-                                    <button class="action-btn danger" onclick="deleteUPI('UPI001')">删除</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>UPI002</td>
-                                <td>张三的PhonePe</td>
-                                <td>zhang***@phonepe</td>
-                                <td>138****1234</td>
-                                <td>2024-01-20 14:30:20</td>
-                                <td><span class="tag tag-success">已验证</span></td>
-                                <td>
-                                    <button class="action-btn" onclick="editUPI('UPI002')">编辑</button>
-                                    <button class="action-btn danger" onclick="deleteUPI('UPI002')">删除</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Tab 9: 操作日志 -->
-                <div class="tab-content" id="detailTab9">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>操作时间</th>
-                                <th>操作人</th>
-                                <th>操作类型</th>
-                                <th>操作内容</th>
-                                <th>IP地址</th>
-                                <th>备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2024-02-28 16:30:15</td>
-                                <td>admin</td>
-                                <td>查看详情</td>
-                                <td>查看会员 5001 详情</td>
-                                <td>192.168.1.100</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td>2024-02-27 10:20:30</td>
-                                <td>admin</td>
-                                <td>审核提现</td>
-                                <td>审核通过提现订单 WIT20240227001</td>
-                                <td>192.168.1.100</td>
-                                <td>正常提现</td>
-                            </tr>
-                            <tr>
-                                <td>2024-02-15 14:15:20</td>
-                                <td>admin</td>
-                                <td>编辑信息</td>
-                                <td>修改会员等级 VIP 2 → VIP 3</td>
-                                <td>192.168.1.100</td>
-                                <td>达到升级条件</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn btn-default" onclick="closeModal('memberDetailModal')">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 银行卡编辑弹窗 -->
+    <div id="bankCardModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2 id="bankCardModalTitle">添加银行卡</h2>
+                <span class="close" onclick="closeModal('bankCardModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="bankCardId">
+                <div class="form-item">
+                    <label class="form-label">持卡人姓名 <span style="color: red;">*</span></label>
+                    <input type="text" id="bankCardHolderName" class="form-input" placeholder="请输入持卡人姓名">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">银行卡号 <span style="color: red;">*</span></label>
+                    <input type="text" id="bankCardNumber" class="form-input" placeholder="请输入银行卡号">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">IFSC Code <span style="color: red;">*</span></label>
+                    <input type="text" id="bankCardIFSC" class="form-input" placeholder="请输入IFSC Code">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">银行名称 <span style="color: red;">*</span></label>
+                    <input type="text" id="bankCardBankName" class="form-input" placeholder="请输入银行名称">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">手机号码</label>
+                    <input type="text" id="bankCardPhone" class="form-input" placeholder="请输入手机号码">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">邮箱地址</label>
+                    <input type="text" id="bankCardEmail" class="form-input" placeholder="请输入邮箱地址">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">所在省/市</label>
+                    <input type="text" id="bankCardCity" class="form-input" placeholder="请输入所在省/市">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">支行名称</label>
+                    <input type="text" id="bankCardBranch" class="form-input" placeholder="请输入支行名称">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('bankCardModal')">取消</button>
+                <button class="btn btn-primary" onclick="saveBankCard()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 电子钱包编辑弹窗 -->
+    <div id="ewalletModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="ewalletModalTitle">添加电子钱包</h2>
+                <span class="close" onclick="closeModal('ewalletModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ewalletId">
+                <div class="form-item">
+                    <label class="form-label">用户名称 <span style="color: red;">*</span></label>
+                    <input type="text" id="ewalletUserName" class="form-input" placeholder="请输入用户名称">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">账号 <span style="color: red;">*</span></label>
+                    <input type="text" id="ewalletAccount" class="form-input" placeholder="请输入账号">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">手机号码</label>
+                    <input type="text" id="ewalletPhone" class="form-input" placeholder="请输入手机号码">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">电子钱包类型 <span style="color: red;">*</span></label>
+                    <select id="ewalletType" class="form-input">
+                        <option value="">请选择</option>
+                        <option value="Paytm">Paytm</option>
+                        <option value="PhonePe">PhonePe</option>
+                        <option value="GooglePay">Google Pay</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('ewalletModal')">取消</button>
+                <button class="btn btn-primary" onclick="saveEWallet()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPI编辑弹窗 -->
+    <div id="upiModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="upiModalTitle">添加UPI</h2>
+                <span class="close" onclick="closeModal('upiModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="upiId">
+                <div class="form-item">
+                    <label class="form-label">UPI名称 <span style="color: red;">*</span></label>
+                    <input type="text" id="upiName" class="form-input" placeholder="请输入UPI名称">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">UPI ID <span style="color: red;">*</span></label>
+                    <input type="text" id="upiAddress" class="form-input" placeholder="请输入UPI ID">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('upiModal')">取消</button>
+                <button class="btn btn-primary" onclick="saveUPI()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEWUPI编辑弹窗 -->
+    <div id="newupiModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="newupiModalTitle">添加NEWUPI</h2>
+                <span class="close" onclick="closeModal('newupiModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="newupiId">
+                <div class="form-item">
+                    <label class="form-label">NEWUPI名称 <span style="color: red;">*</span></label>
+                    <input type="text" id="newupiName" class="form-input" placeholder="请输入NEWUPI名称">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">NEWUPI ID <span style="color: red;">*</span></label>
+                    <input type="text" id="newupiAddress" class="form-input" placeholder="请输入NEWUPI ID">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">绑定银行卡ID</label>
+                    <input type="text" id="newupiBankCardId" class="form-input" placeholder="请输入绑定银行卡ID">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('newupiModal')">取消</button>
+                <button class="btn btn-primary" onclick="saveNewUPI()">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- USDT编辑弹窗 -->
+    <div id="usdtModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2 id="usdtModalTitle">添加USDT</h2>
+                <span class="close" onclick="closeModal('usdtModal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="usdtId">
+                <div class="form-item">
+                    <label class="form-label">USDT类型 <span style="color: red;">*</span></label>
+                    <select id="usdtType" class="form-input">
+                        <option value="">请选择</option>
+                        <option value="TRC20">TRC20</option>
+                        <option value="ERC20">ERC20</option>
+                        <option value="BEP20">BEP20</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label class="form-label">主网络 <span style="color: red;">*</span></label>
+                    <select id="usdtNetwork" class="form-input">
+                        <option value="">请选择</option>
+                        <option value="TRON">TRON</option>
+                        <option value="Ethereum">Ethereum</option>
+                        <option value="BSC">BSC</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label class="form-label">USDT地址 <span style="color: red;">*</span></label>
+                    <input type="text" id="usdtAddress" class="form-input" placeholder="请输入USDT地址">
+                </div>
+                <div class="form-item">
+                    <label class="form-label">地址别称</label>
+                    <input type="text" id="usdtAlias" class="form-input" placeholder="请输入地址别称">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" onclick="closeModal('usdtModal')">取消</button>
+                <button class="btn btn-primary" onclick="saveUSDT()">保存</button>
             </div>
         </div>
     </div>
@@ -9469,9 +9895,14 @@
 
         // 显示会员详情
         function showMemberDetail(memberId) {
+            // 更新标题中的会员ID
             document.getElementById('detailMemberId').textContent = memberId;
+            // 填充用户ID到筛选框
+            document.getElementById('detailUserId').value = memberId;
+            // 显示弹窗
             document.getElementById('memberDetailModal').classList.add('show');
-            switchDetailTab(0); // 重置到第一个tab
+            // 重置到第一个tab
+            switchMemberDetailTab(0);
         }
 
         // 详情tab切换
@@ -9494,6 +9925,259 @@
                     content.classList.remove('active');
                 }
             });
+        }
+
+        // 会员详情 Tab 切换
+        function switchMemberDetailTab(index) {
+            const modal = document.getElementById('memberDetailModal');
+            const tabs = modal.querySelectorAll('.tabs .tab-item');
+            const contents = modal.querySelectorAll('[id^="memberDetailTab"]');
+            
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            contents.forEach((content) => {
+                const tabIndex = parseInt(content.id.replace('memberDetailTab', ''));
+                if (tabIndex === index) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+        }
+
+        // 会员详情查询
+        function queryMemberDetail() {
+            const userId = document.getElementById('detailUserId').value;
+            const startTime = document.getElementById('detailStartTime').value;
+            const endTime = document.getElementById('detailEndTime').value;
+            alert(`查询会员详情: 用户ID=${userId}, 开始时间=${startTime}, 结束时间=${endTime}`);
+        }
+
+        // 编辑会员积分
+        function editMemberPoints() {
+            const newPoints = prompt('请输入新的积分值:', '23123');
+            if (newPoints) {
+                alert(`积分已更新为: ${newPoints}`);
+            }
+        }
+
+        // 编辑会员状态
+        function editMemberStatus() {
+            const newStatus = confirm('是否启用该会员？');
+            alert(`会员状态已更新为: ${newStatus ? '启用' : '禁用'}`);
+        }
+
+        // 编辑会员备注
+        function editMemberRemark() {
+            const newRemark = prompt('请输入新的备注:', '正常用户');
+            if (newRemark) {
+                alert(`备注已更新为: ${newRemark}`);
+            }
+        }
+
+        // 打码规则统计
+        function designBettingRules() {
+            alert('打开打码规则统计页面');
+        }
+
+        // 编辑打码量
+        function editBettingAmount() {
+            const newAmount = prompt('请输入新的打码量:', '0');
+            if (newAmount) {
+                alert(`打码量已更新为: ${newAmount}`);
+            }
+        }
+
+        // 银行卡管理函数
+        function addBankCard() {
+            document.getElementById('bankCardModalTitle').textContent = '添加银行卡';
+            document.getElementById('bankCardId').value = '';
+            document.getElementById('bankCardHolderName').value = '';
+            document.getElementById('bankCardNumber').value = '';
+            document.getElementById('bankCardIFSC').value = '';
+            document.getElementById('bankCardBankName').value = '';
+            document.getElementById('bankCardPhone').value = '';
+            document.getElementById('bankCardEmail').value = '';
+            document.getElementById('bankCardCity').value = '';
+            document.getElementById('bankCardBranch').value = '';
+            document.getElementById('bankCardModal').classList.add('active');
+        }
+
+        function editBankCard(id) {
+            document.getElementById('bankCardModalTitle').textContent = '编辑银行卡';
+            document.getElementById('bankCardId').value = id;
+            // 这里应该从后端获取数据，暂时填充示例数据
+            document.getElementById('bankCardHolderName').value = '张三';
+            document.getElementById('bankCardNumber').value = '6222021234567890';
+            document.getElementById('bankCardIFSC').value = 'ICIC0001234';
+            document.getElementById('bankCardBankName').value = 'ICICI Bank';
+            document.getElementById('bankCardPhone').value = '9876543210';
+            document.getElementById('bankCardEmail').value = 'zhang@email.com';
+            document.getElementById('bankCardCity').value = 'Mumbai';
+            document.getElementById('bankCardBranch').value = 'Andheri Branch';
+            document.getElementById('bankCardModal').classList.add('active');
+        }
+
+        function saveBankCard() {
+            const holderName = document.getElementById('bankCardHolderName').value;
+            const cardNumber = document.getElementById('bankCardNumber').value;
+            const ifsc = document.getElementById('bankCardIFSC').value;
+            const bankName = document.getElementById('bankCardBankName').value;
+
+            if (!holderName || !cardNumber || !ifsc || !bankName) {
+                alert('请填写所有必填项！');
+                return;
+            }
+
+            // 这里应该调用后端API保存数据
+            alert('银行卡信息保存成功！');
+            closeModal('bankCardModal');
+        }
+
+        // 电子钱包管理函数
+        function addEWallet() {
+            document.getElementById('ewalletModalTitle').textContent = '添加电子钱包';
+            document.getElementById('ewalletId').value = '';
+            document.getElementById('ewalletUserName').value = '';
+            document.getElementById('ewalletAccount').value = '';
+            document.getElementById('ewalletPhone').value = '';
+            document.getElementById('ewalletType').value = '';
+            document.getElementById('ewalletModal').classList.add('active');
+        }
+
+        function editEWallet(id) {
+            document.getElementById('ewalletModalTitle').textContent = '编辑电子钱包';
+            document.getElementById('ewalletId').value = id;
+            // 这里应该从后端获取数据，暂时填充示例数据
+            document.getElementById('ewalletUserName').value = '李四';
+            document.getElementById('ewalletAccount').value = 'lisi@wallet.com';
+            document.getElementById('ewalletPhone').value = '9876543210';
+            document.getElementById('ewalletType').value = 'Paytm';
+            document.getElementById('ewalletModal').classList.add('active');
+        }
+
+        function saveEWallet() {
+            const userName = document.getElementById('ewalletUserName').value;
+            const account = document.getElementById('ewalletAccount').value;
+            const type = document.getElementById('ewalletType').value;
+
+            if (!userName || !account || !type) {
+                alert('请填写所有必填项！');
+                return;
+            }
+
+            // 这里应该调用后端API保存数据
+            alert('电子钱包信息保存成功！');
+            closeModal('ewalletModal');
+        }
+
+        // UPI管理函数
+        function addUPI() {
+            document.getElementById('upiModalTitle').textContent = '添加UPI';
+            document.getElementById('upiId').value = '';
+            document.getElementById('upiName').value = '';
+            document.getElementById('upiAddress').value = '';
+            document.getElementById('upiModal').classList.add('active');
+        }
+
+        function editUPI(id) {
+            document.getElementById('upiModalTitle').textContent = '编辑UPI';
+            document.getElementById('upiId').value = id;
+            // 这里应该从后端获取数据，暂时填充示例数据
+            document.getElementById('upiName').value = '王五UPI';
+            document.getElementById('upiAddress').value = 'wangwu@paytm';
+            document.getElementById('upiModal').classList.add('active');
+        }
+
+        function saveUPI() {
+            const name = document.getElementById('upiName').value;
+            const address = document.getElementById('upiAddress').value;
+
+            if (!name || !address) {
+                alert('请填写所有必填项！');
+                return;
+            }
+
+            // 这里应该调用后端API保存数据
+            alert('UPI信息保存成功！');
+            closeModal('upiModal');
+        }
+
+        // NEWUPI管理函数
+        function addNewUPI() {
+            document.getElementById('newupiModalTitle').textContent = '添加NEWUPI';
+            document.getElementById('newupiId').value = '';
+            document.getElementById('newupiName').value = '';
+            document.getElementById('newupiAddress').value = '';
+            document.getElementById('newupiBankCardId').value = '';
+            document.getElementById('newupiModal').classList.add('active');
+        }
+
+        function editNewUPI(id) {
+            document.getElementById('newupiModalTitle').textContent = '编辑NEWUPI';
+            document.getElementById('newupiId').value = id;
+            // 这里应该从后端获取数据，暂时填充示例数据
+            document.getElementById('newupiName').value = '赵六NEWUPI';
+            document.getElementById('newupiAddress').value = 'zhaoliu@newupi';
+            document.getElementById('newupiBankCardId').value = 'CARD001';
+            document.getElementById('newupiModal').classList.add('active');
+        }
+
+        function saveNewUPI() {
+            const name = document.getElementById('newupiName').value;
+            const address = document.getElementById('newupiAddress').value;
+
+            if (!name || !address) {
+                alert('请填写所有必填项！');
+                return;
+            }
+
+            // 这里应该调用后端API保存数据
+            alert('NEWUPI信息保存成功！');
+            closeModal('newupiModal');
+        }
+
+        // USDT管理函数
+        function addUSDT() {
+            document.getElementById('usdtModalTitle').textContent = '添加USDT';
+            document.getElementById('usdtId').value = '';
+            document.getElementById('usdtType').value = '';
+            document.getElementById('usdtNetwork').value = '';
+            document.getElementById('usdtAddress').value = '';
+            document.getElementById('usdtAlias').value = '';
+            document.getElementById('usdtModal').classList.add('active');
+        }
+
+        function editUSDT(id) {
+            document.getElementById('usdtModalTitle').textContent = '编辑USDT';
+            document.getElementById('usdtId').value = id;
+            // 这里应该从后端获取数据，暂时填充示例数据
+            document.getElementById('usdtType').value = 'TRC20';
+            document.getElementById('usdtNetwork').value = 'TRON';
+            document.getElementById('usdtAddress').value = 'TXnB7fK3...m9pQw2';
+            document.getElementById('usdtAlias').value = '主钱包';
+            document.getElementById('usdtModal').classList.add('active');
+        }
+
+        function saveUSDT() {
+            const type = document.getElementById('usdtType').value;
+            const network = document.getElementById('usdtNetwork').value;
+            const address = document.getElementById('usdtAddress').value;
+
+            if (!type || !network || !address) {
+                alert('请填写所有必填项！');
+                return;
+            }
+
+            // 这里应该调用后端API保存数据
+            alert('USDT信息保存成功！');
+            closeModal('usdtModal');
         }
 
         // 关闭模态框
